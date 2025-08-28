@@ -6,7 +6,9 @@ import CustomCursor from "@/components/CustomCursor";
 import Testimonials from "@/components/Testimonials";
 import Experience from "@/components/Experience";
 import Approach from "@/components/Approach";
+import Contact from "@/components/Contact";
 import Footer from "@/components/common/Footer";
+
 
 
 
@@ -27,6 +29,7 @@ export default function Home() {
       <Testimonials/>
       <Approach />
       <Experience/>
+      <Contact />
       <Footer />
     </main>
   );
