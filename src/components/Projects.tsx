@@ -54,7 +54,7 @@ const Projects = () => {
                       key={index}
                       className="bg-blue-900/50 w-8 h-8 flex justify-center items-center"
                       style={{
-                        clipPath: `polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%`,
+                        clipPath: `polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%)`,
                         transform: `translateX(-${5 * index + 2}px)`,
                       }}
                     >
