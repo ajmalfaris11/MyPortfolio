@@ -8,6 +8,7 @@ import Experience from "@/components/Experience";
 import Approach from "@/components/Approach";
 import Contact from "@/components/Contact";
 import Footer from "@/components/common/Footer";
+import SkillsSection from "@/components/SkillsSection";
 
 
 
@@ -29,6 +30,7 @@ export default function Home() {
       <Testimonials/>
       <Approach />
       <Experience/>
+      <SkillsSection />
       <Contact />
       <Footer />
     </main>
