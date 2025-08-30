@@ -9,6 +9,7 @@ import Approach from "@/components/Approach";
 import Contact from "@/components/Contact";
 import Footer from "@/components/common/Footer";
 import SkillsSection from "@/components/SkillsSection";
+import AchivementSection from "@/components/AchivementsSection";
 
 
 
@@ -31,6 +32,7 @@ export default function Home() {
       <Approach />
       <Experience/>
       <SkillsSection />
+      <AchivementSection />
       <Contact />
       <Footer />
     </main>
