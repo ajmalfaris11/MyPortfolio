@@ -1,40 +1,39 @@
-import Hero1 from "@/components/Hero/HeroV1";
-import Hero2 from "@/components/Hero/HeroV2";
-import Grid from "@/components/Grid";
-import Projects from "@/components/Projects"
+import HeroV2 from "@/components/Hero/HeroV2";
 import CustomCursor from "@/components/CustomCursor";
-import Testimonials from "@/components/Testimonials";
+import Grid from "@/components/Grid";
+import ServiceSection from "@/components/ServiceSection";
+import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
+import Testimonials from "@/components/Testimonials";
+import SkillsSection from "@/components/SkillsSection";
+import AchievementsSection from "@/components/AchievementsSection";
 import Approach from "@/components/Approach";
 import Contact from "@/components/Contact";
 import Footer from "@/components/common/Footer";
-import SkillsSection from "@/components/SkillsSection";
-import AchivementSection from "@/components/AchivementsSection";
-import ServiceSection from "@/components/ServiceSection";
-
-
-
 
 export default function Home() {
   return (
-    <main className="relative bg-black text-white flex justify-center items-center flex-col overflow-hidden mx-auto select-none">
-       <CustomCursor />
-       {/* Dots background */}
-       <div
+    <main className="relative bg-black text-white flex flex-col items-center justify-center overflow-hidden mx-auto select-none">
+      <CustomCursor />
+      
+      {/* Background dots */}
+      <div
         className="absolute inset-0
-        [background-size:20px_20px]
-        [background-image:radial-gradient(#2d2d2d_1px,transparent_1px)]
-        dark:[background-image:radial-gradient(#404040_1px,transparent_1px)]"
+          [background-size:20px_20px]
+          [background-image:radial-gradient(#2d2d2d_1px,transparent_1px)]
+          dark:[background-image:radial-gradient(#404040_1px,transparent_1px)]"
       />
-      <Hero2 />
+      
+      {/* Sections */}
+      <HeroV2 />
       <Grid />
-      <Projects />
-      <Testimonials/>
-      <Approach />
-      <Experience/>
-      <SkillsSection />
-      <AchivementSection />
       <ServiceSection />
+      <Projects />
+      <Experience />
+      <Testimonials />
+      <SkillsSection />
+      <AchievementsSection />
+      <Approach />
       <Contact />
       <Footer />
     </main>

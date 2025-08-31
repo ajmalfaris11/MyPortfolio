@@ -41,7 +41,7 @@ const achievements = [
   },
 ];
 
-const AchivementSection = () => {
+const AchievementsSection = () => {
   const [onClick, setOnClick] = useState(false);
 
   return (
@@ -99,4 +99,4 @@ const AchivementSection = () => {
   );
 };
 
-export default AchivementSection;
+export default AchievementsSection;
