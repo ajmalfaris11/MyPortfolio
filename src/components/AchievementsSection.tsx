@@ -4,42 +4,8 @@ import { AnimatedDiv } from "./ui/3DanimateDiv";
 import { GiAchievement } from "react-icons/gi";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { useState } from "react";
-import { FaCode, FaGithub, FaTrophy, FaKeyboard } from "react-icons/fa";
-import { GrAchievement } from "react-icons/gr";
-import { FaRegKeyboard } from "react-icons/fa";
-import { BsKeyboard } from "react-icons/bs";
-import { VscGithub } from "react-icons/vsc";
+import {achievements} from "@/data"
 
-const achievements = [
-  {
-    icon: <FaCode />,
-    title: "500 Days LeetCode Streak",
-    description:
-      "Solved coding problems daily for over 500 days, building consistency and strong problem-solving skills.",
-    style: "-mb-6 -rotate-2 bg-gradient-to-tr",
-  },
-  {
-    icon: <VscGithub />,
-    title: "Top 1% GitHub Contributor",
-    description:
-      "2034 contributions in a year, 204 stars earned, and a 170-day coding streak.",
-    style: "-mb-6 rotate-2 bg-gradient-to-tl",
-  },
-  {
-    icon: <GrAchievement />,
-    title: "Winner - Tegfly Coding Challenge",
-    description:
-      "Secured 1st place in Tegfly's 15-Day Coding Challenge, proving speed and skill.",
-    style: "-mb-6 -rotate-2 bg-gradient-to-tr",
-  },
-  {
-    icon: <BsKeyboard />,
-    title: "Top 1% Typist",
-    description:
-      "Achieved 100+ WPM in a 60-second test according to TCK Publishing.",
-    style: "-mb-6 rotate-2 bg-gradient-to-t",
-  },
-];
 
 const AchievementsSection = () => {
   const [onClick, setOnClick] = useState(false);
@@ -65,7 +31,7 @@ const AchievementsSection = () => {
             hover:rotate-0 flex gap-4`}
           >
             <div className="flex items-center space-x-6 w-[40%] text-5xl">
-              {achievement.icon}
+              <achievement.icon/>
               <h3 className="text-xl font-semibold">{achievement.title}</h3>
             </div>
             <span className="w-[60%]">

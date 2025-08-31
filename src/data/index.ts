@@ -4,3 +4,4 @@ export * from './sections/testimonials';
 export * from './sections/companies';
 export * from './sections/experience';
 export * from './sections/approach';
+export * from './sections/achievements';
