@@ -10,6 +10,7 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/common/Footer";
 import SkillsSection from "@/components/SkillsSection";
 import AchivementSection from "@/components/AchivementsSection";
+import ServiceSection from "@/components/ServiceSection";
 
 
 
@@ -33,6 +34,7 @@ export default function Home() {
       <Experience/>
       <SkillsSection />
       <AchivementSection />
+      <ServiceSection />
       <Contact />
       <Footer />
     </main>
