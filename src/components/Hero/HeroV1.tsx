@@ -1,6 +1,6 @@
 import React from "react";
 import { Spotlight } from "@/components/ui/Spotlight";
-import Navbar from "@/components/common/Navbar";
+import Navbar from "@/components/Navbar/Navbar";
 
 import MatrixScroller from "./MatrixScroller";
 // import AnimatedText from "../ui/AnimatedText";

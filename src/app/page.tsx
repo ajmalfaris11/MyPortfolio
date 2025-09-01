@@ -1,15 +1,16 @@
-import HeroV2 from "@/components/Hero/HeroV2";
-import CustomCursor from "@/components/CustomCursor";
-import Grid from "@/components/Grid";
-import ServiceSection from "@/components/ServiceSection";
-import Projects from "@/components/Projects";
-import Experience from "@/components/Experience";
-import Testimonials from "@/components/Testimonials";
-import SkillsSection from "@/components/SkillsSection";
-import AchievementsSection from "@/components/AchievementsSection";
-import Approach from "@/components/Approach";
-import Contact from "@/components/Contact";
-import Footer from "@/components/common/Footer";
+import HeroSection from "@/components/Hero/HeroSection";
+import CustomCursor from "@/components/Common/CustomCursor";
+import GridSection from "@/components/Grid/GridSection";
+import ServiceSection from "@/components/Service/ServiceSection";
+import ProjectsSection from "@/components/Projects/ProjectsSection";
+import ExperienceSection from "@/components/Experience/ExperienceSection";
+import TestimonialsSection from "@/components/Testimonials/TestimonialsSection";
+import SkillsSection from "@/components/Skills/SkillsSection";
+import AchievementsSection from "@/components/Achievements/AchievementsSection";
+import ApproachSection from "@/components/Approach/ApproachSection";
+import ContactSection from "@/components/Contact/ContactSection";
+import Footer from "@/components/Footer/Footer";
+
 
 export default function Home() {
   return (
@@ -25,16 +26,16 @@ export default function Home() {
       />
       
       {/* Sections */}
-      <HeroV2 />
-      <Grid />
+      <HeroSection />
+      <GridSection />
       <ServiceSection />
-      <Projects />
-      <Experience />
-      <Testimonials />
+      <ProjectsSection />
+      <ExperienceSection />
+      <TestimonialsSection />
       <SkillsSection />
       <AchievementsSection />
-      <Approach />
-      <Contact />
+      <ApproachSection />
+      <ContactSection />
       <Footer />
     </main>
   );

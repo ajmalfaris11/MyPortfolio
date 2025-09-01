@@ -6,7 +6,7 @@ import { createRoot } from "react-dom/client";
 
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { AnimatedDiv } from "./ui/3DanimateDiv";
+import { AnimatedDiv } from "../ui/3DanimateDiv";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import {skills} from "@/data"
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatedDiv } from "./ui/3DanimateDiv";
+import { AnimatedDiv } from "@/components/ui/3DanimateDiv";
 import { GiAchievement } from "react-icons/gi";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { useState } from "react";

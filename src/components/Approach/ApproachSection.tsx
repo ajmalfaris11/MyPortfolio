@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { CanvasRevealEffect } from "./ui/CanvasRevealEffect";
-import { AnimatedDiv } from "./ui/3DanimateDiv";
+import { CanvasRevealEffect } from "../ui/CanvasRevealEffect";
+import { AnimatedDiv } from "../ui/3DanimateDiv";
 import { ApproachSteps } from "@/data";
-import PlayCard from "../components/PlayCard";
+import PlayCard from "@/components/Approach/PlayCard";
 import { IconType } from "react-icons";
 
 export default function Approach() {

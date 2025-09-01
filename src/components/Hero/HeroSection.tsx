@@ -5,7 +5,7 @@ import { AnimatedHeroImage } from "@/components/Hero/AnimatedHeroImage ";
 import { AnimatedText } from "@/components/ui/3DanimateText";
 import { AnimatedDiv } from "@/components/ui/3DanimateDiv";
 import { MdDownloading } from "react-icons/md";
-import Navbar from "@/components/common/Navbar";
+import Navbar from "@/components/Navbar/Navbar";
 import { useState, useEffect } from "react";
 
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";

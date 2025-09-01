@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import CustomCursor from "@/components/CustomCursor";
+import CustomCursor from "@/components/Common/CustomCursor";
 import { IoIosArrowForward } from "react-icons/io";
 
 export default function NotFound() {

@@ -3,7 +3,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { GoArrowUpRight } from "react-icons/go";
 import { VscCallOutgoing } from "react-icons/vsc";
 import { SlLocationPin } from "react-icons/sl";
-import { AnimatedDiv } from "./ui/3DanimateDiv";
+import { AnimatedDiv } from "@/components/ui/3DanimateDiv";
 import { FiMail } from "react-icons/fi";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
