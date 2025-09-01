@@ -1,5 +1,5 @@
 import React from "react";
-import { FloatingDock } from "@/components/ui/AceternityUI/floating-dock";
+import { FloatingDock } from "@/components/ui/layouts";
 import {
   IconBrandGithub,
   IconBrandX,

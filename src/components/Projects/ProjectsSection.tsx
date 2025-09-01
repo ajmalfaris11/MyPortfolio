@@ -5,17 +5,17 @@ import { FaLocationArrow } from "react-icons/fa6";
 import { IoIosArrowForward } from "react-icons/io";
 
 import { projects } from "@/data";
-import { PinContainer } from "@/components/ui/AceternityUI/Pin";
-import { AnimatedDiv } from "@/components/ui/CustomeAnimations/3DanimateDiv";
+import { PinContainer } from "@/components/ui/layouts";
+import { Animate3DDiv } from "@/components/ui/animations";
 
 const Projects = () => {
   return (
     <div className="flex relative justify-center items-center flex-col z-20 p-5 pb-15">
-      <AnimatedDiv rotateDepth={10} translateDepth={10}>
+      <Animate3DDiv rotateDepth={10} translateDepth={10}>
         <h1 className="text-6xl font-semibold">
           My <span className="text-purple animate-shine">Projects</span>
         </h1>
-      </AnimatedDiv>
+      </Animate3DDiv>
       <div className="grid grid-cols-3 items-center justify-center">
         {projects.map((item) => (
           <div

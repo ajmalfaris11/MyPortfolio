@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatedDiv } from "@/components/ui/CustomeAnimations/3DanimateDiv";
+import { Animate3DDiv } from "@/components/ui/animations";
 import { GiAchievement } from "react-icons/gi";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { useState } from "react";
@@ -12,11 +12,11 @@ const AchievementsSection = () => {
 
   return (
     <div className="flex flex-col items-center py-20 text-white z-10">
-      <AnimatedDiv rotateDepth={10} translateDepth={10}>
+      <Animate3DDiv rotateDepth={10} translateDepth={10}>
         <h1 className="text-6xl font-semibold">
           My <span className="text-purple animate-shine">Achievements</span>
         </h1>
-      </AnimatedDiv>
+      </Animate3DDiv>
       <p className="text-center text-gray-300 my-5 max-w-xl">
         Highlights from my journey — milestones that reflect growth,
         consistency, and a drive to keep building.

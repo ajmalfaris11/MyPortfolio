@@ -1,5 +1,5 @@
 import React from "react";
-import { BentoGrid, BentoGridItem } from "@/components/ui/AceternityUI/bento-grid";
+import { BentoGrid, BentoGridItem } from "@/components/ui/layouts";
 import { gridItems } from "@/data";
 
 function Grid() {

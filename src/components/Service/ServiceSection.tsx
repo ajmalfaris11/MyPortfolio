@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { AnimatedDiv } from "../ui/CustomeAnimations/3DanimateDiv";
+import { Animate3DDiv } from "../ui/animations";
 import { services, Service } from "@/data";
 
 const ServiceCard: React.FC<Service> = ({ title, description, icon: Icon }) => {
@@ -38,11 +38,11 @@ export default function Services() {
   return (
     <section className="w-full py-10 text-white z-10">
       <div className="mx-auto max-w-5xl px-6 text-center">
-        <AnimatedDiv rotateDepth={5} translateDepth={5}>
+        <Animate3DDiv rotateDepth={5} translateDepth={5}>
           <h1 className="text-6xl font-semibold">
             My <span className="text-purple animate-shine">Services</span>
           </h1>
-        </AnimatedDiv>
+        </Animate3DDiv>
 
         <p className="mb-12 mt-5 text-neutral-400 max-w-3xl mx-auto">
           I deliver end-to-end web solutions — from building scalable web apps

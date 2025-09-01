@@ -3,23 +3,23 @@
 import React from "react";
 
 import { companies, testimonials } from "@/data";
-import { InfiniteMovingCards } from "@/components/ui/CustomeAnimations/InfiniteCards";
-import { InfiniteFlowCard } from "@/components/ui/CustomeAnimations/FlowCards";
-import { AnimatedDiv } from "@/components/ui/CustomeAnimations/3DanimateDiv";
+import { InfiniteCards } from "@/components/ui/animations";
+import { FlowCards } from "@/components/ui/animations";
+import { Animate3DDiv } from "@/components/ui/animations";
 
 const Testimonials = () => {
   return (
     <section
       id="testimonials"
       className="py-10 z-10 flex flex-col gap-10 justify-center items-center">
-      <AnimatedDiv rotateDepth={10} translateDepth={10}>
+      <Animate3DDiv rotateDepth={10} translateDepth={10}>
         <h1 className="text-6xl font-semibold">
           What <span className="text-purple animate-shine">People Say</span>
         </h1>
-      </AnimatedDiv>
+      </Animate3DDiv>
       <div className="flex flex-col items-center max-lg:mt-10">
         <div className="rounded-md flex flex-col antialiased items-center justify-center relative overflow-hidden">
-          <InfiniteMovingCards
+          <InfiniteCards
             items={testimonials}
             direction="right"
             speed="slow"
@@ -27,7 +27,7 @@ const Testimonials = () => {
         </div>
       </div>
       <div className="flex flex-wrap items-center justify-center gap-4 md:gap-16">
-        <InfiniteFlowCard items={companies} direction="left" speed="slow" />
+        <FlowCards items={companies} direction="left" speed="slow" />
       </div>
     </section>
   );

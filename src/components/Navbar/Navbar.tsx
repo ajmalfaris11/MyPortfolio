@@ -13,7 +13,7 @@ import {
   MobileNavMenu,
   MobileNavToggle,
   NavbarLogo,
-} from "@/components/ui/AceternityUI/resizable-navbar";
+} from "@/components/ui/layouts/resizable-navbar";
 
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";

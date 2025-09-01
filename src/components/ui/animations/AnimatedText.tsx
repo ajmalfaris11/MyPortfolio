@@ -16,7 +16,7 @@ type AnimatedTextProps = {
   animation?: Variants;          // Custom animation if needed
 };
 
-export default function AnimatedText({
+function AnimatedText({
   text,
   el: Wrapper = "p",            // Default wrapper tag
   className,
@@ -76,3 +76,5 @@ export default function AnimatedText({
     </Wrapper>
   );
 }
+
+export default  AnimatedText;

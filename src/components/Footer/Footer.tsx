@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
-import { AnimatedDiv } from "@/components/ui/CustomeAnimations/3DanimateDiv";
+import { Animate3DDiv } from "@/components/ui/animations";
 import { FooterFloatingDock } from "@/components/Footer/FooterFlowtingDock";
 
 const linkStyle = "hover:text-blue-500 transition-colors p-1 px-3 bg-black hover:bg-blue-900/30 rounded-full";
@@ -12,7 +11,7 @@ export default function Footer() {
     <footer className="bg-black text-blue-200/50 z-10 w-full border-t border-blue-700/50">
       <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col justify-center items-center">
         {/* Logo + Name */}
-        <AnimatedDiv
+        <Animate3DDiv
           className="flex items-center mb-4"
           rotateDepth={5}
           translateDepth={5}
@@ -23,7 +22,7 @@ export default function Footer() {
           >
             <img src="./images/ca_white_logo.webp" alt="logo" width={55} />
           </a>
-        </AnimatedDiv>
+        </Animate3DDiv>
 
         {/* Navigation Links */}
         <nav className="flex flex-wrap justify-center text-sm">
@@ -93,11 +92,11 @@ export default function Footer() {
           </Link>
         </nav>
 
-        <AnimatedDiv rotateDepth={2} translateDepth={2}>
+        <Animate3DDiv rotateDepth={2} translateDepth={2}>
           <h1 className="text-[15vw] font-extrabold bg-gradient-to-b from-black via-blue-700 to-blue-500 bg-clip-text text-transparent animate-gradient-x">
             Ajmal Faris
           </h1>
-        </AnimatedDiv>
+        </Animate3DDiv>
 
         {/* Social Links */}
         <FooterFloatingDock />

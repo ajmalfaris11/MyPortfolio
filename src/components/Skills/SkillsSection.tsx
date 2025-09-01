@@ -6,7 +6,7 @@ import { createRoot } from "react-dom/client";
 
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { AnimatedDiv } from "../ui/CustomeAnimations/3DanimateDiv";
+import { Animate3DDiv } from "../ui/animations";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import {skills} from "@/data"
 
@@ -43,12 +43,12 @@ export default function SkillsSection() {
       <div className="flex flex-col md:flex-row w-full h-full px-10 justify-between items-center">
         {/* Left-side content */}
         <div className="flex-1 flex flex-col justify-center items-start space-y-6">
-          <AnimatedDiv rotateDepth={10} translateDepth={10}>
-            <h1 className="text-5xl md:text-6xl font-bold">
+          <Animate3DDiv rotateDepth={10} translateDepth={10}>
+            <h1 className="text-5xl md:tetxt-6xl font-bold">
               Explore My{" "}
               <span className="text-purple animate-shine">Tech Skills</span>
             </h1>
-          </AnimatedDiv>
+          </Animate3DDiv>
           <p className="text-lg md:text-xl text-gray-300 max-w-md">
             Here you can see the technologies I work with. Click the button
             below to explore detailed information about each skill.

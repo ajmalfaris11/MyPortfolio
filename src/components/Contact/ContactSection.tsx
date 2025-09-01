@@ -3,7 +3,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { GoArrowUpRight } from "react-icons/go";
 import { VscCallOutgoing } from "react-icons/vsc";
 import { SlLocationPin } from "react-icons/sl";
-import { AnimatedDiv } from "@/components/ui/CustomeAnimations/3DanimateDiv";
+import { Animate3DDiv } from "@/components/ui/animations";
 import { FiMail } from "react-icons/fi";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
@@ -29,11 +29,11 @@ export default function Contact() {
 
       <div className="relative z-10 w-full max-w-xl px-6 py-8 text-center bg-transparent">
         {/* Heading */}
-        <AnimatedDiv rotateDepth={10} translateDepth={10}>
+        <Animate3DDiv rotateDepth={10} translateDepth={10}>
           <h1 className="text-6xl font-semibold">
             My <span className="text-purple animate-shine">Contact</span>
           </h1>
-        </AnimatedDiv>
+        </Animate3DDiv>
         <p className="text-gray-300 max-w-xl mx-auto my-8">
           If you're interested in working together, have a project in mind, or
           simply want to connect, reach out through the form below or via the

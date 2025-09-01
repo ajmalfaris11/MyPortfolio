@@ -7,7 +7,7 @@ import {
   useTransform,
 } from "motion/react";
 
-export const AnimatedDiv = ({
+const Animate3DDiv = ({
   children,
   rotateDepth = 17.5,
   translateDepth = 20,
@@ -62,3 +62,5 @@ export const AnimatedDiv = ({
     </div>
   );
 };
+
+export default Animate3DDiv;

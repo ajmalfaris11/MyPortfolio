@@ -2,8 +2,8 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { AnimatedHeroImage } from "@/components/Hero/AnimatedHeroImage ";
-import { AnimatedText } from "@/components/ui/CustomeAnimations/3DanimateText";
-import { AnimatedDiv } from "@/components/ui/CustomeAnimations/3DanimateDiv";
+import { Animate3DText } from "@/components/ui/animations";
+import { Animate3DDiv } from "@/components/ui/animations";
 import { MdDownloading } from "react-icons/md";
 import Navbar from "@/components/Navbar/Navbar";
 import { useState, useEffect } from "react";
@@ -129,7 +129,7 @@ export default function Hero() {
         {/* Left content */}
         <div className="text-center md:text-left flex-2">
           <p className="text-xl">Hello, It&apos;s Me</p>
-          <AnimatedText
+          <Animate3DText
             text="Ajmal Faris"
             className="text-[16vw] sm:text-[8vw] font-bold text-nowrap animate-shine"
             rotateDepth={10}
@@ -167,7 +167,7 @@ export default function Hero() {
           {/* Social icons */}
           <div className="flex justify-center md:justify-start gap-4 mt-6">
             {socialLinks.map(({ id, icon: Icon, url }) => (
-              <AnimatedDiv key={id} rotateDepth={5} translateDepth={6}>
+              <Animate3DDiv key={id} rotateDepth={5} translateDepth={6}>
                 <span
                   key={id}
                   className="bg-gray-800 hover:bg-transparent rounded-2xl"
@@ -185,7 +185,7 @@ export default function Hero() {
                     <Icon size={20} className="-rotate-90" />
                   </a>
                 </span>
-              </AnimatedDiv>
+              </Animate3DDiv>
             ))}
           </div>
 

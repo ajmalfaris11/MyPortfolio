@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 
-export const PinContainer = ({
+export default function PinContainer ({
   children,
   title,
   href,
@@ -16,7 +16,7 @@ export const PinContainer = ({
   href?: string;
   className?: string;
   containerClassName?: string;
-}) => {
+})  {
   const [transform, setTransform] = useState(
     "translate(-50%,-50%) rotateX(0deg)"
   );

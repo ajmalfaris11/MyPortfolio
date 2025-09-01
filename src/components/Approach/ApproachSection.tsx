@@ -1,20 +1,19 @@
 "use client";
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { CanvasRevealEffect } from "../ui/AceternityUI/CanvasRevealEffect";
-import { AnimatedDiv } from "../ui/CustomeAnimations/3DanimateDiv";
+import { CanvasRevealEffect } from "../ui/effects";
+import { Animate3DDiv } from "../ui/animations";
 import { ApproachSteps } from "@/data";
 import PlayCard from "@/components/Approach/PlayCard";
-import { IconType } from "react-icons";
 
 export default function Approach() {
   return (
     <section className="w-full p-10">
-      <AnimatedDiv>
+      <Animate3DDiv>
         <h1 className="text-6xl font-semibold">
           My <span className="text-purple animate-shine">approach</span>
         </h1>
-      </AnimatedDiv>
+      </Animate3DDiv>
 
       <div className="my-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-4 w-full">
         {ApproachSteps.map((step, i) => (

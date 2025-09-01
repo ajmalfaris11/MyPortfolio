@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
 
-export const InfiniteFlowCard = ({
+function FlowCards({
   items,
   direction = "left",
   speed = "fast",
@@ -20,7 +20,7 @@ export const InfiniteFlowCard = ({
   speed?: "fast" | "normal" | "slow";
   pauseOnHover?: boolean;
   className?: string;
-}) => {
+}) {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const scrollerRef = React.useRef<HTMLUListElement>(null);
 
@@ -115,3 +115,5 @@ export const InfiniteFlowCard = ({
     </div>
   );
 };
+
+export default FlowCards;

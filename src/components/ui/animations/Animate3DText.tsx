@@ -7,7 +7,7 @@ import {
   useTransform,
 } from "motion/react";
 
-export const AnimatedText = ({
+ const Animate3DText = ({
   text,
   rotateDepth = 17.5,
   translateDepth = 20,
@@ -62,3 +62,5 @@ export const AnimatedText = ({
     </div>
   );
 };
+
+export default Animate3DText;

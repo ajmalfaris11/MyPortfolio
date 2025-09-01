@@ -1,22 +1,22 @@
 import React from "react";
 
 import { workExperience } from "@/data";
-import { Button } from "@/components/ui/AceternityUI/MovingBorders";
+import { MovingBorders } from "@/components/ui/effects";
 
 import DimondAnimation from "@/components/Experience/DimondLottie";
-import { AnimatedDiv } from "@/components/ui/CustomeAnimations/3DanimateDiv";
+import { Animate3DDiv } from "@/components/ui/animations";
 
 const Experience = () => {
   return (
     <div className="py-5 w-full px-10 z-10 flex flex-col justify-center items-center">
-      <AnimatedDiv rotateDepth={10} translateDepth={10}>
+      <Animate3DDiv rotateDepth={10} translateDepth={10}>
         <h1 className="text-6xl font-semibold">
           My <span className="text-purple animate-shine">Experience</span>
         </h1>
-      </AnimatedDiv>
+      </Animate3DDiv>
       <div className="w-full mt-12 grid lg:grid-cols-4 grid-cols-1 gap-10">
         {workExperience.map((card) => (
-          <Button
+          <MovingBorders
             key={card.id}
             //   random duration will be fun , I think , may be not
             duration={Math.floor(Math.random() * 10000) + 10000}
@@ -44,7 +44,7 @@ const Experience = () => {
                 </p>
               </div>
             </div>
-          </Button>
+          </MovingBorders>
         ))}
       </div>
     </div>
