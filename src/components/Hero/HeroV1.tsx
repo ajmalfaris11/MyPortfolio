@@ -1,7 +1,6 @@
 import React from "react";
-import { Spotlight } from "@/components/ui/effects/Spotlight";
+import Spotlight from "@/components/ui/effects/Spotlight"; 
 import Navbar from "@/components/Navbar/Navbar";
-
 import MatrixScroller from "./MatrixScroller";
 // import AnimatedText from "../ui/AnimatedText";
 
@@ -19,16 +18,15 @@ function Hero() {
       >
         <div className="flex flex-col absolute bottom-10 gap-2 font-bold text-white">
           {/* <AnimatedText 
-        text={[
-          "Building the future.",
-          "Scaling ideas to billions.",
-          "Powered by Next.js + Framer Motion."
-        ]}
-        el="h1"
-        className="text-4xl font-bold"
-        repeatDelay={2000} 
-      /> */}
-  
+            text={[
+              "Building the future.",
+              "Scaling ideas to billions.",
+              "Powered by Next.js + Framer Motion."
+            ]}
+            el="h1"
+            className="text-4xl font-bold"
+            repeatDelay={2000} 
+          /> */}
         </div>
 
         <Spotlight />
