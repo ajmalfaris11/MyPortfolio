@@ -3,9 +3,9 @@
 import React from "react";
 
 import { companies, testimonials } from "@/data";
-import { InfiniteMovingCards } from "@/components/ui/InfiniteCards";
-import { InfiniteFlowCard } from "@/components/ui/FlowCards";
-import { AnimatedDiv } from "@/components/ui/3DanimateDiv";
+import { InfiniteMovingCards } from "@/components/ui/CustomeAnimations/InfiniteCards";
+import { InfiniteFlowCard } from "@/components/ui/CustomeAnimations/FlowCards";
+import { AnimatedDiv } from "@/components/ui/CustomeAnimations/3DanimateDiv";
 
 const Testimonials = () => {
   return (

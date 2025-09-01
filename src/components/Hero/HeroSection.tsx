@@ -2,8 +2,8 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { AnimatedHeroImage } from "@/components/Hero/AnimatedHeroImage ";
-import { AnimatedText } from "@/components/ui/3DanimateText";
-import { AnimatedDiv } from "@/components/ui/3DanimateDiv";
+import { AnimatedText } from "@/components/ui/CustomeAnimations/3DanimateText";
+import { AnimatedDiv } from "@/components/ui/CustomeAnimations/3DanimateDiv";
 import { MdDownloading } from "react-icons/md";
 import Navbar from "@/components/Navbar/Navbar";
 import { useState, useEffect } from "react";

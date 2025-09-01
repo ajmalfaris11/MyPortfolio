@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
-import { AnimatedDiv } from "@/components/ui/3DanimateDiv";
+import { AnimatedDiv } from "@/components/ui/CustomeAnimations/3DanimateDiv";
 import { FooterFloatingDock } from "@/components/Footer/FooterFlowtingDock";
 
 const linkStyle = "hover:text-blue-500 transition-colors p-1 px-3 bg-black hover:bg-blue-900/30 rounded-full";

@@ -5,8 +5,8 @@ import { FaLocationArrow } from "react-icons/fa6";
 import { IoIosArrowForward } from "react-icons/io";
 
 import { projects } from "@/data";
-import { PinContainer } from "@/components/ui/Pin";
-import { AnimatedDiv } from "@/components/ui/3DanimateDiv";
+import { PinContainer } from "@/components/ui/AceternityUI/Pin";
+import { AnimatedDiv } from "@/components/ui/CustomeAnimations/3DanimateDiv";
 
 const Projects = () => {
   return (

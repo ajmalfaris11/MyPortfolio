@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { AnimatedDiv } from "../ui/3DanimateDiv";
+import { AnimatedDiv } from "../ui/CustomeAnimations/3DanimateDiv";
 import { services, Service } from "@/data";
 
 const ServiceCard: React.FC<Service> = ({ title, description, icon: Icon }) => {

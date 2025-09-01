@@ -1,5 +1,5 @@
 import React from "react";
-import { Spotlight } from "@/components/ui/Spotlight";
+import { Spotlight } from "@/components/ui/AceternityUI/Spotlight";
 import Navbar from "@/components/Navbar/Navbar";
 
 import MatrixScroller from "./MatrixScroller";

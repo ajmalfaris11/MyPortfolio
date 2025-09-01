@@ -1,10 +1,10 @@
 import React from "react";
 
 import { workExperience } from "@/data";
-import { Button } from "@/components/ui/MovingBorders";
+import { Button } from "@/components/ui/AceternityUI/MovingBorders";
 
 import DimondAnimation from "@/components/Experience/DimondLottie";
-import { AnimatedDiv } from "@/components//ui/3DanimateDiv";
+import { AnimatedDiv } from "@/components/ui/CustomeAnimations/3DanimateDiv";
 
 const Experience = () => {
   return (
