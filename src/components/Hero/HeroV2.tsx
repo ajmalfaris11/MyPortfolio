@@ -14,7 +14,7 @@ import { SiLeetcode } from "react-icons/si";
 import { TfiDownload } from "react-icons/tfi";
 import { MdFileDownloadDone } from "react-icons/md";
 
-const myCv = "/myFakeCV.pdf";
+const myCv = "/resume/myFakeCV.pdf";
 
 const titles = [
   {

@@ -25,7 +25,7 @@ const Projects = () => {
             <PinContainer title={item.link} href={item.link}>
               <div className="relative flex items-center justify-center sm:w-[28vw] w-[90vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10 rounded-3xl bg-blue-700 bg-gradient-to-t from-blue-700/38 to-black">
                 <div className="relative w-full overflow-hidden h-full">
-                  <img src="/bg.png" alt="bgimg" />
+                  <img src="/projectThumb/bg.png" alt="bgimg" />
                   <img
                     src={item.img}
                     alt="cover"

@@ -7,7 +7,7 @@ export const gridItems = [
     imgClassName: "w-full h-full",
     titleClassName: "justify-end",
     titleStyle: "text-lg lg:text-7xl  w-full animate-shine",
-    img: "/b1.svg",
+    img: "/gridImages/b1.svg",
     spareImg: "",
   },
   {
@@ -40,8 +40,8 @@ export const gridItems = [
     imgClassName: "",
     titleClassName: "justify-start",
     titleStyle: "text-lg lg:text-3xl animate-shine",
-    img: "/grid.svg",
-    spareImg: "/b4.svg",
+    img: "/gridImages/grid.svg",
+    spareImg: "/gridImages/b4.svg",
   },
 
   {
@@ -52,8 +52,8 @@ export const gridItems = [
     imgClassName: "absolute right-0 bottom-0 md:w-96 w-60 h-full",
     titleClassName: "justify-center md:justify-start lg:justify-center",
     titleStyle: "text-lg lg:text-5xl ",
-    img: "/b5.svg",
-    spareImg: "/grid.svg",
+    img: "/gridImages/b5.svg",
+    spareImg: "/gridImages/grid.svg",
   },
   {
     id: 6,
