@@ -11,31 +11,33 @@ import ApproachSection from "@/components/Approach/ApproachSection";
 import ContactSection from "@/components/Contact/ContactSection";
 import Footer from "@/components/Footer/Footer";
 
+const sections = [
+  { id: "hero", Component: HeroSection },
+  { id: "grid", Component: GridSection },
+  { id: "services", Component: ServiceSection },
+  { id: "projects", Component: ProjectsSection },
+  { id: "experience", Component: ExperienceSection },
+  { id: "testimonials", Component: TestimonialsSection },
+  { id: "skills", Component: SkillsSection },
+  { id: "achievements", Component: AchievementsSection },
+  { id: "approach", Component: ApproachSection },
+  { id: "contact", Component: ContactSection },
+];
 
 export default function Home() {
   return (
-    <main className="relative bg-black text-white flex flex-col items-center justify-center overflow-hidden mx-auto select-none">
+    <main className="relative w-full bg-black text-white flex flex-col items-center justify-center overflow-hidden mx-auto select-none">
       <CustomCursor />
-      
-      {/* Background dots */}
       <div
         className="absolute inset-0
           [background-size:20px_20px]
-          [background-image:radial-gradient(#2d2d2d_1px,transparent_1px)]
-          dark:[background-image:radial-gradient(#404040_1px,transparent_1px)]"
+          [background-image:radial-gradient(#404040_1px,transparent_1px)]"
       />
-      
-      {/* Sections */}
-      <HeroSection />
-      <GridSection />
-      <ServiceSection />
-      <ProjectsSection />
-      <ExperienceSection />
-      <TestimonialsSection />
-      <SkillsSection />
-      <AchievementsSection />
-      <ApproachSection />
-      <ContactSection />
+
+      {sections.map(({ id, Component }) => (
+        <Component key={id} />
+      ))}
+
       <Footer />
     </main>
   );
