@@ -24,7 +24,7 @@ export default function Hero() {
 
       <div className="relative w-full z-10 flex flex-col-reverse md:flex-row items-center p-12">
         {/* Left content */}
-        <div className="flex flex-col justify-center items-center md:items-start w-[60%] py-5">
+        <div className="flex flex-col justify-center items-center md:items-start md:w-[60%] py-5">
           <HeroText />
           <HeroSocialIcons />
           <DownloadCVButton />
@@ -32,7 +32,7 @@ export default function Hero() {
 
         {/* Right image */}
         <motion.div
-          className="relative flex-2 w-[40%]"
+          className="relative flex-2 md:w-[40%]"
           style={{ willChange: "transform" }}
           animate={{ scale: [1, 1.05, 1] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
