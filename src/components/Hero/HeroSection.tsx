@@ -8,43 +8,14 @@ import { MdDownloading } from "react-icons/md";
 import Navbar from "@/components/Navbar/Navbar";
 import { useState, useEffect } from "react";
 
-import { FaGithub, FaLinkedinIn } from "react-icons/fa";
-import { AiFillInstagram } from "react-icons/ai";
-import { SiLeetcode } from "react-icons/si";
 import { TfiDownload } from "react-icons/tfi";
 import { MdFileDownloadDone } from "react-icons/md";
 
-import {heroCaptions} from "@/data/sections/heroCaptions";
+import {titles} from "@/data/sections/heroDatas";
+import {socialLinks} from "@/data/sections/heroDatas";
 
 const myCv = "/resume/myFakeCV.pdf";
 
-
-export const socialLinks = [
-  {
-    id: 1,
-    icon: FaGithub,
-    url: "https://github.com/your-username",
-    label: "GitHub",
-  },
-  {
-    id: 2,
-    icon: FaLinkedinIn,
-    url: "https://www.linkedin.com/in/your-username/",
-    label: "LinkedIn",
-  },
-  {
-    id: 3,
-    icon: AiFillInstagram,
-    url: "https://www.instagram.com/your-username/",
-    label: "Instagram",
-  },
-  {
-    id: 4,
-    icon: SiLeetcode,
-    url: "https://leetcode.com/your-username/",
-    label: "LeetCode",
-  },
-];
 
 export default function Hero() {
   const [index, setIndex] = useState(0);
@@ -53,7 +24,7 @@ export default function Hero() {
   const [isDownloaded, setIsDownloaded] = useState(false);
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % heroCaptions.length);
+      setIndex((prev) => (prev + 1) % titles.length);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
@@ -102,7 +73,7 @@ export default function Hero() {
                 exit={{ opacity: 0, y: 10 }}
                 transition={{ duration: 0.3 }}
               >
-                {heroCaptions[index].title}
+                {titles[index].title}
               </motion.h2>
             </AnimatePresence>
           </div>
@@ -116,7 +87,7 @@ export default function Hero() {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
             >
-              {heroCaptions[index].description}
+              {titles[index].description}
             </motion.p>
           </AnimatePresence>
 
