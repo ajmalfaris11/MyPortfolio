@@ -14,54 +14,10 @@ import { SiLeetcode } from "react-icons/si";
 import { TfiDownload } from "react-icons/tfi";
 import { MdFileDownloadDone } from "react-icons/md";
 
+import {heroCaptions} from "@/data/sections/heroCaptions";
+
 const myCv = "/resume/myFakeCV.pdf";
 
-const titles = [
-  {
-    title: "Full Stack Developer",
-    description: "Builds end-to-end web apps from database to user interface.",
-  },
-  {
-    title: "Frontend Developer",
-    description:
-      "Creates responsive, user-friendly interfaces using modern frameworks and tools.",
-  },
-  {
-    title: "Backend Developer",
-    description:
-      "Designs secure, scalable servers and APIs for complex applications.",
-  },
-  {
-    title: "MERN Developer",
-    description:
-      "Develops full-stack solutions with MongoDB, Express, React, and Node.",
-  },
-  {
-    title: "Next.js Developer",
-    description:
-      "Builds SEO-friendly, fast applications with server-side rendering.",
-  },
-  {
-    title: "API Developer",
-    description:
-      "Develops secure, scalable APIs to streamline communication between services.",
-  },
-  {
-    title: "Database Developer",
-    description:
-      "Optimizes database performance and ensures robust data management.",
-  },
-  {
-    title: "TypeScript Developer",
-    description:
-      "Writes type-safe, maintainable JavaScript for scalable applications.",
-  },
-  {
-    title: "Problem Solver",
-    description:
-      "Finds creative, efficient solutions to challenging technical issues.",
-  },
-];
 
 export const socialLinks = [
   {
@@ -97,7 +53,7 @@ export default function Hero() {
   const [isDownloaded, setIsDownloaded] = useState(false);
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % titles.length);
+      setIndex((prev) => (prev + 1) % heroCaptions.length);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
@@ -146,7 +102,7 @@ export default function Hero() {
                 exit={{ opacity: 0, y: 10 }}
                 transition={{ duration: 0.3 }}
               >
-                {titles[index].title}
+                {heroCaptions[index].title}
               </motion.h2>
             </AnimatePresence>
           </div>
@@ -160,7 +116,7 @@ export default function Hero() {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
             >
-              {titles[index].description}
+              {heroCaptions[index].description}
             </motion.p>
           </AnimatePresence>
 
