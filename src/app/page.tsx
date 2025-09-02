@@ -26,18 +26,13 @@ const sections = [
 
 export default function Home() {
   return (
-    <main className="relative w-full bg-black text-white flex flex-col items-center justify-center overflow-hidden mx-auto select-none">
+    <main className="relative w-full bg-black text-white flex flex-col items-center justify-center overflow-hidden mx-auto select-none before:absolute before:inset-0 before:[background-size:20px_20px] before:[background-image:radial-gradient(#404040_1px,transparent_1px)]">
       <CustomCursor />
-      <div
-        className="absolute inset-0
-          [background-size:20px_20px]
-          [background-image:radial-gradient(#404040_1px,transparent_1px)]"
-      />
-
       {sections.map(({ id, Component }) => (
-        <Component key={id} />
+        <section id={id} key={id} className="w-full">
+          <Component />
+        </section>
       ))}
-
       <Footer />
     </main>
   );
