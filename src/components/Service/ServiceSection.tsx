@@ -51,7 +51,7 @@ export default function Services() {
           businesses launch faster and grow smarter.
         </p>
 
-        <div className="grid gap-x-8 gap-y-10 md:grid-cols-3">
+        <div className="grid gap-x-8 gap-y-10 md:grid-cols-3 max-sm:px-[12%]">
           {services.map((service, idx) => (
             <ServiceCard key={idx} {...service} />
           ))}
