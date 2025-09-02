@@ -1,15 +1,10 @@
 "use client";
 import React, { useRef } from "react";
-import {
-  motion,
-  useMotionValue,
-  useSpring,
-  useTransform,
-} from "motion/react";
+import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 
 export const AnimatedHeroImage = ({
-  rotateDepth = 17.5,
-  translateDepth = 20,
+  rotateDepth = 10,
+  translateDepth = 15,
 }: {
   rotateDepth?: number;
   translateDepth?: number;
@@ -43,7 +38,6 @@ export const AnimatedHeroImage = ({
     [-0.5, 0.5],
     [`${translateDepth}px`, `-${translateDepth}px`]
   );
-
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
