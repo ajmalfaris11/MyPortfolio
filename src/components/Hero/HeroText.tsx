@@ -17,13 +17,15 @@ const HeroText: React.FC = () => {
   return (
     <div className="text-center md:text-left flex-2 min-h-[150px]">
       <p className="text-xl">Hello, It&apos;s Me</p>
-      <Animate3DText
+     <div className="">
+       <Animate3DText
         text="Ajmal Faris"
-        className="text-[16vw] sm:text-[8vw] font-bold text-nowrap animate-shine"
+        className="text-[16vw] md:text-[9vw] xl:text-[10vw] font-bold text-nowrap animate-shine text-start w-full"
         rotateDepth={10}
         translateDepth={10}
       />
-      <div className="flex flex-col sm:flex-row justify-start items-center sm:gap-2 text-[8vw] md:text-[2.5vw] xl:text-[3.5vw] font-semibold mt-2">
+     </div>
+      <div className="flex flex-col md:flex-row justify-start items-center sm:gap-2 text-[8vw] md:text-[2.5vw] lg:text-[3vw]  xl:text-[3.5vw] font-semibold mt-2">
         <span className="text-white">And I'm a</span>
         <AnimatePresence mode="wait">
           <motion.h2
@@ -42,7 +44,7 @@ const HeroText: React.FC = () => {
       <AnimatePresence mode="wait">
         <motion.p
           key={index}
-          className="mt-4 text-gray-300 max-w-md xl:max-w-xl text-[4vw] md:text-[2vw] lg:text-[1.3vw] xl:text-[1.5vw]"
+          className="mt-4 text-blue-200 max-w-xl text-[4vw] md:text-[2vw]"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}

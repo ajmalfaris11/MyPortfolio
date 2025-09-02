@@ -22,9 +22,9 @@ export default function Hero() {
       {/* Background overlay */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black via-transparent to-blue-700/48 opacity-80" />
 
-      <div className="relative w-full z-10 flex flex-col-reverse md:flex-row items-center gap-10 p-12">
+      <div className="relative w-full z-10 flex flex-col-reverse md:flex-row items-center p-12">
         {/* Left content */}
-        <div>
+        <div className="flex flex-col justify-center items-center md:items-start w-[60%] py-5">
           <HeroText />
           <HeroSocialIcons />
           <DownloadCVButton />
@@ -32,7 +32,7 @@ export default function Hero() {
 
         {/* Right image */}
         <motion.div
-          className="relative flex-2"
+          className="relative flex-2 w-[40%]"
           style={{ willChange: "transform" }}
           animate={{ scale: [1, 1.05, 1] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
