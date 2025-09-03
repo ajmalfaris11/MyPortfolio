@@ -91,7 +91,7 @@ const InfiniteMovingCards = ({
         {items.map((item, idx) => (
           <li
             //   change md:w-[450px] to md:w-[60vw] , px-8 py-6 to p-16, border-slate-700 to border-slate-800
-            className="w-[60vw] max-w-full relative rounded-3xl border border-b-0
+            className="w-[90vw] sm:w-[60vw] max-w-full relative rounded-3xl border border-b-0
              flex-shrink-0 border-blue-700 p-5 md:p-10 md:w-[60vw] bg-gradient-to-br to-blue-600 from-blue-900"
             // change to idx cuz we have the same name
             key={idx}
