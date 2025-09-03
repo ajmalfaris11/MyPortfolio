@@ -176,7 +176,7 @@ export const BentoGridItem = ({
             </div>
           )}
           {id === 6 && (
-            <div className="relative">
+            <div className="relative mt-4 sm:mt-0">
               {/* button border magic from tailwind css buttons  */}
               {/* add rounded-md h-8 md:h-8, remove rounded-full */}
               {/* remove focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 */}

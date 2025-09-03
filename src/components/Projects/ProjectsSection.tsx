@@ -10,17 +10,17 @@ import { Animate3DDiv } from "@/components/ui/animations";
 
 const Projects = () => {
   return (
-    <div className="flex relative justify-center items-center flex-col z-20 p-5 pb-15">
+    <div className="flex relative justify-center items-center flex-col z-20 sm:p-5 pb-10 mt-20">
       <Animate3DDiv rotateDepth={10} translateDepth={10}>
-        <h1 className="text-6xl font-semibold">
+        <h1 className="text-5xl sm:text-6xl font-semibold text-center">
           My <span className="text-purple animate-shine">Projects</span>
         </h1>
       </Animate3DDiv>
-      <div className="grid grid-cols-3 items-center justify-center">
+      <div className="flex max-sm:overflow-x-scroll max-sm:overflow-y-hidden w-full sm:grid sm:grid-cols-2 md:grid-cols-3 gap-6 scrollbar-hide">
         {projects.map((item) => (
           <div
-            className="lg:min-h-[28rem] h-[25rem] flex items-center justify-center sm:w-96 w-[90vw]"
             key={item.id}
+            className="lg:min-h-[28rem] h-[25rem] flex-shrink-0 sm:flex-shrink sm:w-96 w-[90vw] flex items-center justify-center max-sm:ml-5"
           >
             <PinContainer title={item.link} href={item.link}>
               <div className="relative flex items-center justify-center sm:w-[28vw] w-[90vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10 rounded-3xl bg-blue-700 bg-gradient-to-t from-blue-700/38 to-black">
@@ -40,9 +40,7 @@ const Projects = () => {
 
               <p
                 className="lg:text-md xl:text-xl lg:font-normal font-light text-sm line-clamp-2 text-blue-200/80"
-                style={{
-                  margin: "1vh 0",
-                }}
+                style={{ margin: "1vh 0" }}
               >
                 {item.des}
               </p>
@@ -54,11 +52,12 @@ const Projects = () => {
                       key={index}
                       className="bg-blue-900/50 w-8 h-8 flex justify-center items-center"
                       style={{
-                        clipPath: `polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%)`,
+                        clipPath:
+                          "polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%)",
                         transform: `translateX(-${5 * index + 2}px)`,
                       }}
                     >
-                      <img src={icon} alt="icon5" className="p-2" />
+                      <img src={icon} alt="icon" className="p-2" />
                     </div>
                   ))}
                 </div>
@@ -74,7 +73,8 @@ const Projects = () => {
           </div>
         ))}
       </div>
-      <div className="w-[100vw] h-[200px] absolute z-50 -bottom-5 bg-gradient-to-t from-transparent via-blue-700/40 to-transparent flex justify-center items-center">
+
+      <div className="w-[100vw] h-[200px] absolute z-50 -bottom-5 bg-gradient-to-t from-transparent via-blue-700/40 to-transparent  justify-center items-center hidden sm:flex">
         <Link href="/projects">
           <button className="relative inline-flex h-12 xl:h-14 overflow-hidden rounded-full p-[1px] focus:outline-none hover:text-blue-500 hover:animate-pulse">
             <span className="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#0000ff_0%,#fff_50%,#0000ff_100%)]" />
