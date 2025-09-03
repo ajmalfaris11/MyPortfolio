@@ -30,7 +30,7 @@ export default function Contact() {
       <div className="relative z-10 w-full max-w-xl px-6 py-8 text-center bg-transparent">
         {/* Heading */}
         <Animate3DDiv rotateDepth={10} translateDepth={10}>
-          <h1 className="text-6xl font-semibold">
+          <h1 className="text-5xl sm:text-6xl font-semibold">
             My <span className="text-purple animate-shine">Contact</span>
           </h1>
         </Animate3DDiv>
@@ -95,8 +95,9 @@ export default function Contact() {
           </span>
         </div>
 
-        <div className="flex items-center gap-3 rounded-full backdrop-blur-md bg-transparent border border-blue-700/50 p-1 pr-2">
-          <span className="flex justify-center items-center text-black rounded-full w-10 h-10 bg-blue-700">
+        <div className="flex items-center justify-between gap-3 rounded-full backdrop-blur-md bg-transparent border border-blue-700/50 p-1 pr-2">
+          <div className="flex items-center gap-3">
+            <span className="flex justify-center items-center text-black rounded-full w-10 h-10 bg-blue-700">
             <VscCallOutgoing />
           </span>
           <div className="flex flex-col mr-10">
@@ -105,6 +106,7 @@ export default function Contact() {
               +91 755 896 9093
             </span>
           </div>{" "}
+          </div>
           <span className="flex justify-center items-center text-white rounded-full w-8 h-8 bg-blue-700/25">
             <GoArrowUpRight />
           </span>
