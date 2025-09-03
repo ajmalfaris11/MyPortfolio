@@ -11,9 +11,9 @@ const AchievementsSection = () => {
   const [onClick, setOnClick] = useState(false);
 
   return (
-    <div className="flex flex-col items-center py-20 text-white z-10">
+    <div className="flex flex-col items-center p-10 text-white z-10">
       <Animate3DDiv rotateDepth={10} translateDepth={10}>
-        <h1 className="text-6xl font-semibold">
+        <h1 className="text-4xl sm:text-6xl font-semibold">
           My <span className="text-purple animate-shine">Achievements</span>
         </h1>
       </Animate3DDiv>
@@ -27,14 +27,14 @@ const AchievementsSection = () => {
           <div
             key={idx}
             className={`${achievement.style} relative from-blue-900/30 hover:from-blue-700 via-blue-700 to-blue-600 hover:scale-105 
-            transition-transform duration-300 text-white rounded-4xl p-6 py-10 shadow-xl backdrop-blur-sm hover:z-50 
-            hover:rotate-0 flex gap-4`}
+            transition-transform duration-300 text-white rounded-4xl p-6 sm:py-10 shadow-xl backdrop-blur-sm hover:z-50 
+            hover:rotate-0 flex flex-col md:flex-row gap-4`}
           >
-            <div className="flex items-center space-x-6 w-[40%] text-5xl">
+            <div className="flex items-center space-x-6 md:w-[40%] text-5xl">
               <achievement.icon/>
               <h3 className="text-xl font-semibold">{achievement.title}</h3>
             </div>
-            <span className="w-[60%]">
+            <span className="md:w-[60%]">
               <p className="mt-2 text-gray-200">{achievement.description}</p>
             </span>
           </div>
@@ -47,9 +47,9 @@ const AchievementsSection = () => {
           onMouseEnter={() => setOnClick(true)}
           onMouseLeave={() => setOnClick(false)}
         >
-          <GiAchievement className="text-4xl" />
+          <GiAchievement className="sm:text-4xl" />
           <span className="flex items-center gap-0 transition-all duration-500">
-            <h3 className="text-lg font-semibold transition-all duration-500">
+            <h3 className="text-md text-center sm:text-lg font-semibold transition-all duration-500">
               VIEW ALL MY ACHIEVEMENTS
             </h3>
             <MdKeyboardDoubleArrowRight
@@ -58,7 +58,7 @@ const AchievementsSection = () => {
               }`}
             />
           </span>
-          <GiAchievement className="text-4xl" />
+          <GiAchievement className="sm:text-4xl" />
         </div>
       </div>
     </div>
