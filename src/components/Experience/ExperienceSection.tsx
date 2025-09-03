@@ -10,7 +10,7 @@ const Experience = () => {
   return (
     <div className="py-5 w-full px-10 z-10 flex flex-col justify-center items-center">
       <Animate3DDiv rotateDepth={10} translateDepth={10}>
-        <h1 className="text-6xl font-semibold">
+        <h1 className="text-5xl sm:text-6xl font-semibold text-center">
           My <span className="text-purple animate-shine">Experience</span>
         </h1>
       </Animate3DDiv>
@@ -30,8 +30,8 @@ const Experience = () => {
             }}
             className="flex-1 border-slate-800"
           >
-            <div className="flex lg:flex-row flex-col justify-between lg:items-center p-3 md:p-4 lg:p-6 gap-4">
-              <div className="w-[50%] flex justify-center items-center">
+            <div className="flex lg:flex-row flex-col justify-between items-center p-3 md:p-4 lg:p-6 gap-4">
+              <div className="w-[70%] sm:w-[50%] flex justify-center items-center">
                 <DimondAnimation />
               </div>
 
