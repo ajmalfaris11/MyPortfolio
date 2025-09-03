@@ -93,7 +93,7 @@ export default function Footer() {
         </nav>
 
         <Animate3DDiv rotateDepth={2} translateDepth={2}>
-          <h1 className="text-[15vw] font-extrabold bg-gradient-to-b from-black via-blue-700 to-blue-500 bg-clip-text text-transparent animate-gradient-x">
+          <h1 className="text-[15vw] font-extrabold bg-gradient-to-b from-black via-blue-700 to-blue-500 bg-clip-text text-transparent animate-gradient-x text-nowrap">
             Ajmal Faris
           </h1>
         </Animate3DDiv>
