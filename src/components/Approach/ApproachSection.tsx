@@ -10,7 +10,7 @@ export default function Approach() {
   return (
     <section className="w-full p-10">
       <Animate3DDiv>
-        <h1 className="text-6xl font-semibold">
+        <h1 className="text-5xl sm:text-6xl font-semibold">
           My <span className="text-purple animate-shine">approach</span>
         </h1>
       </Animate3DDiv>
@@ -47,13 +47,13 @@ const Card = ({
   children: React.ReactNode;
   des: string;
   value: string;
-  symbol: any; 
+  symbol: any;
 }) => {
   const [hovered, setHovered] = React.useState(false);
 
   return (
     <div
-      className="relative w-full h-[22rem]"
+      className="relative w-full h-[28rem] sm:h-[22rem]"
       style={{ perspective: "1000px" }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
