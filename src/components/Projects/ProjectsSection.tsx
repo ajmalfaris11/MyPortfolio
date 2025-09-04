@@ -7,6 +7,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import { projects } from "@/data";
 import { PinContainer } from "@/components/ui/layouts";
 import { Animate3DDiv } from "@/components/ui/animations";
+import { GrProjects } from "react-icons/gr";
 
 const Projects = () => {
   return (
@@ -16,7 +17,7 @@ const Projects = () => {
           My <span className="text-purple animate-shine">Projects</span>
         </h1>
       </Animate3DDiv>
-      <div className="flex max-sm:overflow-x-scroll max-sm:overflow-y-hidden w-full sm:grid sm:grid-cols-2 md:grid-cols-3 gap-6 scrollbar-hide">
+      <div className="flex max-sm:overflow-x-scroll max-sm:overflow-y-hidden w-full sm:grid sm:grid-cols-2 md:grid-cols-3 gap-6 scrollbar-hide pb-10">
         {projects.map((item) => (
           <div
             key={item.id}
@@ -72,6 +73,16 @@ const Projects = () => {
             </PinContainer>
           </div>
         ))}
+
+         {/* MORE PROJECT BUTTON IN SMALL DEVICE */}
+        <div className="sm:hidden h-[25rem] flex-shrink-0 sm:flex-shrink w-[70px] flex items-center justify-center max-sm:ml-5 mr-10">
+          <button className="flex flex-col justify-center items-center w-full h-full  rounded-3xl">
+            <span className="rotate-90 border-1 px-8 py-6 rounded-full text-center text-blue-500 font-bold text-xl animate-pulse whitespace-nowrap flex gap-2 justify-center items-center">
+             <GrProjects className="text-xl" />  VIEW ALL MY PROJECTS <IoIosArrowForward className="text-3xl -rotate-90" />
+            </span>
+          </button>
+        </div>
+
       </div>
 
       <div className="w-[100vw] h-[200px] absolute z-50 -bottom-5 bg-gradient-to-t from-transparent via-blue-700/40 to-transparent  justify-center items-center hidden sm:flex">
