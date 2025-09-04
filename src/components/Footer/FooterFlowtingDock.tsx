@@ -33,8 +33,8 @@ export function FooterFloatingDock() {
     },
   ];
   return (
-    <div className="flex items-center justify-center my-2 w-auto">
-      <FloatingDock mobileClassName="translate-y-10" items={links} />
+    <div className="flex items-center justify-center my-2 w-full">
+      <FloatingDock items={links} />
     </div>
   );
 }
