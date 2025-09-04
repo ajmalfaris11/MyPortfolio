@@ -9,51 +9,57 @@ const defaultAnimation: Variants = {
 };
 
 type AnimatedTextProps = {
-  text: string[];                // Multiple words/sentences to cycle through
+  text: string[];
   el?: React.ElementType<{ className?: string; children?: React.ReactNode }>;
   className?: string;
-  repeatDelay?: number;          // Time to hold before switching
-  animation?: Variants;          // Custom animation if needed
+  repeatDelay?: number;
+  animation?: Variants;
 };
 
 function AnimatedText({
   text,
-  el: Wrapper = "p",            // Default wrapper tag
+  el: Wrapper = "p",
   className,
-  repeatDelay = 3000,            // <-- how long each text stays before switching
+  repeatDelay = 3000,
   animation = defaultAnimation,
 }: AnimatedTextProps) {
   const controls = useAnimation();
   const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false); // pause on touch
   const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
+    if (paused) return; // skip animation when paused
     let timeout: NodeJS.Timeout;
 
     const animateText = () => {
       controls.start("visible");
       timeout = setTimeout(async () => {
-        await controls.start("hidden");                   // animate out
-        setIndex((prev) => (prev + 1) % text.length);      // switch to next text
-        controls.start("visible");                        // animate in
+        await controls.start("hidden");
+        setIndex((prev) => (prev + 1) % text.length);
+        controls.start("visible");
       }, repeatDelay);
     };
 
-    animateText();                                        // start immediately
-    return () => clearTimeout(timeout);                   // cleanup on unmount
-  }, [controls, repeatDelay, index, text.length]);
+    animateText();
+    return () => clearTimeout(timeout);
+  }, [controls, repeatDelay, index, text.length, paused]);
 
   const currentText = text[index];
 
   return (
-    <Wrapper className={className}>
+    <Wrapper
+      className={className}
+      onTouchStart={() => setPaused(true)}   // pause when finger down
+      onTouchEnd={() => setPaused(false)}   // resume when released
+    >
       <span className="sr-only">{currentText}</span>
       <motion.span
         ref={ref}
         initial="hidden"
         animate={controls}
         variants={{
-          visible: { transition: { staggerChildren: 0.05 } }, // <-- control letter delay
+          visible: { transition: { staggerChildren: 0.05 } },
           hidden: {},
         }}
         aria-hidden
@@ -77,4 +83,4 @@ function AnimatedText({
   );
 }
 
-export default  AnimatedText;
+export default AnimatedText;
