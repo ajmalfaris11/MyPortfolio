@@ -3,7 +3,7 @@ import { useState, useRef } from "react";
 import { MdDownloading, MdFileDownloadDone } from "react-icons/md";
 import { TfiDownload } from "react-icons/tfi";
 
-const myCv = "/resume/myFakeCV.pdf";
+const myCv = "/resume/myCv.pdf";
 
 const DownloadCVButton: React.FC = () => {
   const [downloadHover, setDownloadHover] = useState(false);
