@@ -4,11 +4,15 @@ import Link from "next/link";
 import { FaLocationArrow } from "react-icons/fa6";
 import { IoIosArrowForward } from "react-icons/io";
 import { GrProjects } from "react-icons/gr";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
 
-import "swiper/css";
-import "swiper/css/pagination";
+
+import { Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";                // core styles
+import "swiper/css/pagination";     // pagination styles
+import "swiper/css/navigation";     // navigation styles
+import "swiper/css/effect-coverflow"; // effect styles
+
 
 import { projects } from "@/data";
 import { PinContainer } from "@/components/ui/layouts";
@@ -16,7 +20,7 @@ import { Animate3DDiv } from "@/components/ui/animations";
 
 const Projects = () => {
   return (
-    <div className="flex relative justify-center items-center flex-col z-20 sm:p-5 pb-10 mt-20">
+    <div className="flex relative justify-center items-center flex-col z-20 sm:p-5 my-10">
       {/* Heading */}
       <Animate3DDiv rotateDepth={10} translateDepth={10}>
         <h1 className="text-5xl sm:text-6xl font-semibold text-center">
@@ -25,16 +29,16 @@ const Projects = () => {
       </Animate3DDiv>
 
       {/* ---- MOBILE SWIPER ---- */}
-      <div className="w-full sm:hidden mt-10">
+      <div className="w-full sm:hidden">
         <Swiper
           modules={[Pagination]}
           pagination={{ clickable: true }}
           spaceBetween={20}
           slidesPerView={1}
-          className="pb-12"
+          freeMode={true}
         >
           {projects.map((item) => (
-            <SwiperSlide key={item.id}>
+            <SwiperSlide key={item.id} className="pb-16">
               <div className="h-[25rem] flex items-center justify-center">
                 <PinContainer title={item.link} href={item.link}>
                   <div className="relative flex items-center justify-center w-[90vw] overflow-hidden h-[20vh] mb-10 rounded-3xl bg-blue-700 bg-gradient-to-t from-blue-700/38 to-black">

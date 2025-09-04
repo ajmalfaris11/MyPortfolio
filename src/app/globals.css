@@ -122,3 +122,28 @@
   .rounded-md { border-radius: calc(var(--radius) - 2px); }
   .rounded-sm { border-radius: calc(var(--radius) - 4px); }
 }
+
+
+.swiper-pagination {
+  bottom: 0px !important;
+}
+
+/* Make dots round and bigger */
+.swiper-pagination-bullet {
+  background-color: #104cff !important; /* blue-500 */
+  opacity: 0.5 !important;
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 9999px; 
+  transition: all 0.5s ease-in-out !important;
+}
+
+/* Active dot */
+.swiper-pagination-bullet-active {
+  background-color: #0026ff !important; 
+  opacity: 1 !important;
+  width: 50px !important; 
+  height: 8px !important;
+  border-radius: 50px !important; 
+
+}
