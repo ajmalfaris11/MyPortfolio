@@ -42,7 +42,7 @@ const DownloadCVButton: React.FC = () => {
           ${downloadHover ? "text-blue-500" : "text-white"}`}
       >
         {isDownloaded && (
-          <img src="/confetti.gif" alt="success" className="absolute" />
+          <img src="/gif/confetti.gif" alt="success" className="absolute" />
         )}
         <p className={`${isDownloading ? "animate-pulse" : ""}`}>Download CV</p>
         {isDownloaded ? (

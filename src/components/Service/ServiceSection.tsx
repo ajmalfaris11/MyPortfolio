@@ -39,7 +39,7 @@ export default function Services() {
     <section className="w-full py-10 text-white z-10">
       <div className="mx-auto max-w-5xl px-6 text-center">
         <Animate3DDiv rotateDepth={5} translateDepth={5}>
-          <h1 className="text-6xl font-semibold">
+          <h1 className="text-5xl sm:text-6xl font-semibold">
             My <span className="text-purple animate-shine">Services</span>
           </h1>
         </Animate3DDiv>
