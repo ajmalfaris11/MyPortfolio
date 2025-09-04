@@ -1,15 +1,20 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaLocationArrow } from "react-icons/fa6";
 
 export default function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const pos = useRef({ x: 0, y: 0 });
   const mouse = useRef({ x: 0, y: 0 });
+  const [isTouch, setIsTouch] = useState(false);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    // detect if it's a touch device
+    if (window.matchMedia("(pointer: coarse)").matches) {
+      setIsTouch(true);
+      return;
+    }
 
     const moveMouse = (e: MouseEvent) => {
       mouse.current.x = e.clientX;
@@ -38,6 +43,8 @@ export default function CustomCursor() {
       cancelAnimationFrame(animationFrame);
     };
   }, []);
+
+  if (isTouch) return null; // don’t render cursor on touch screens
 
   return (
     <div
