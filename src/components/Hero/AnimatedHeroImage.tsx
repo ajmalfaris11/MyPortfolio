@@ -39,16 +39,33 @@ export const AnimatedHeroImage = ({
     [`${translateDepth}px`, `-${translateDepth}px`]
   );
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const updatePosition = (clientX: number, clientY: number) => {
     if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-    x.set(mouseX / rect.width - 0.5);
-    y.set(mouseY / rect.height - 0.5);
+    const relativeX = clientX - rect.left;
+    const relativeY = clientY - rect.top;
+    x.set(relativeX / rect.width - 0.5);
+    y.set(relativeY / rect.height - 0.5);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    updatePosition(e.clientX, e.clientY);
   };
 
   const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  // For touch devices
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (e.touches.length > 0) {
+      const touch = e.touches[0];
+      updatePosition(touch.clientX, touch.clientY);
+    }
+  };
+
+  const handleTouchEnd = () => {
     x.set(0);
     y.set(0);
   };
@@ -59,9 +76,12 @@ export const AnimatedHeroImage = ({
         ref={ref}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
         style={{ rotateX, rotateY, translateX, translateY }}
         initial={{ scale: 1 }}
         whileHover={{ scale: 1.05, z: 50, transition: { duration: 0.2 } }}
+        whileTap={{ scale: 1.05, z: 50, transition: { duration: 0.2 } }}
         className="relative rounded-2xl overflow-hidden"
       >
         <img
