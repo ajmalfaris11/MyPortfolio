@@ -47,4 +47,28 @@ export const projects = [
     iconLists: ["/technologiesIcons/next.svg", "/technologiesIcons/tail.svg", "/technologiesIcons/ts.svg", "/technologiesIcons/three.svg", "/technologiesIcons/gsap.svg"],
     link: "/ui.apple.com",
   },
+   {
+    id: 7,
+    title: "Animated Apple Iphone 3D Website",
+    des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
+    img: "/projectThumb/p4.svg",
+    iconLists: ["/technologiesIcons/next.svg", "/technologiesIcons/tail.svg", "/technologiesIcons/ts.svg", "/technologiesIcons/three.svg", "/technologiesIcons/gsap.svg"],
+    link: "/ui.apple.com",
+  },
+  {
+    id: 8,
+    title: "Animated Apple Iphone 3D Website",
+    des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
+    img: "/projectThumb/p4.svg",
+    iconLists: ["/technologiesIcons/next.svg", "/technologiesIcons/tail.svg", "/technologiesIcons/ts.svg", "/technologiesIcons/three.svg", "/technologiesIcons/gsap.svg"],
+    link: "/ui.apple.com",
+  },
+  {
+    id: 9,
+    title: "Animated Apple Iphone 3D Website",
+    des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
+    img: "/projectThumb/p4.svg",
+    iconLists: ["/technologiesIcons/next.svg", "/technologiesIcons/tail.svg", "/technologiesIcons/ts.svg", "/technologiesIcons/three.svg", "/technologiesIcons/gsap.svg"],
+    link: "/ui.apple.com",
+  },
 ];
