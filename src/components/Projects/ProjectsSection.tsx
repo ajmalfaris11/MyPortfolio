@@ -5,20 +5,38 @@ import { FaLocationArrow } from "react-icons/fa6";
 import { IoIosArrowForward } from "react-icons/io";
 import { GrProjects } from "react-icons/gr";
 
-
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";                // core styles
-import "swiper/css/pagination";     // pagination styles
-import "swiper/css/navigation";     // navigation styles
+import "swiper/css"; // core styles
+import "swiper/css/pagination"; // pagination styles
+import "swiper/css/navigation"; // navigation styles
 import "swiper/css/effect-coverflow"; // effect styles
-
 
 import { projects } from "@/data";
 import { PinContainer } from "@/components/ui/layouts";
 import { Animate3DDiv } from "@/components/ui/animations";
 
+import { useState, useEffect } from "react";
+
 const Projects = () => {
+  const [visible, setVisible] = useState(3);
+
+  useEffect(() => {
+    const updateVisible = () => {
+      if (window.innerWidth < 640) {
+        setVisible(2); 
+      } else if (window.innerWidth < 1250) {
+        setVisible(6); 
+      } else {
+        setVisible(8); 
+      }
+    };
+
+    updateVisible(); // run on mount
+    window.addEventListener("resize", updateVisible);
+    return () => window.removeEventListener("resize", updateVisible);
+  }, []);
+
   return (
     <div className="flex relative justify-center items-center flex-col z-20 sm:p-5 my-10">
       {/* Heading */}
@@ -37,11 +55,11 @@ const Projects = () => {
           slidesPerView={1}
           freeMode={true}
         >
-          {projects.map((item) => (
+          {projects.slice(0,3).map((item) => (
             <SwiperSlide key={item.id} className="pb-16">
               <div className="h-[25rem] flex items-center justify-center">
                 <PinContainer title={item.link} href={item.link}>
-                  <div className="relative flex items-center justify-center w-[90vw] overflow-hidden h-[20vh] mb-10 rounded-3xl bg-blue-700 bg-gradient-to-t from-blue-700/38 to-black">
+                  <div className="relative flex items-center justify-center w-[90vw] overflow-hidden h-[50vw] mb-10 rounded-3xl bg-blue-700 bg-gradient-to-t from-blue-700/38 to-black">
                     <div className="relative w-full overflow-hidden h-full">
                       <img src="/projectThumb/bg.png" alt="bgimg" />
                       <img
@@ -52,7 +70,9 @@ const Projects = () => {
                     </div>
                   </div>
 
-                  <h1 className="font-bold text-lg line-clamp-1">{item.title}</h1>
+                  <h1 className="font-bold text-lg line-clamp-1">
+                    {item.title}
+                  </h1>
                   <p className="text-sm font-light line-clamp-2 text-blue-200/80 my-2">
                     {item.des}
                   </p>
@@ -76,7 +96,9 @@ const Projects = () => {
                     </div>
 
                     <div className="flex justify-center items-center gap-2 mr-2">
-                      <p className="flex text-sm text-purple">Check Live Site</p>
+                      <p className="flex text-sm text-purple">
+                        Check Live Site
+                      </p>
                       <FaLocationArrow className="text-xl text-blue-500" />
                     </div>
                   </div>
@@ -100,14 +122,14 @@ const Projects = () => {
       </div>
 
       {/* ---- DESKTOP GRID ---- */}
-      <div className="hidden sm:grid sm:grid-cols-2 md:grid-cols-3 gap-6 pb-10 mt-10">
-        {projects.map((item) => (
+      <div className="hidden sm:grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 pb-10 mt-10">
+        {projects.slice(0, visible).map((item) => (
           <div
             key={item.id}
             className="lg:min-h-[28rem] h-[25rem] flex items-center justify-center"
           >
             <PinContainer title={item.link} href={item.link}>
-              <div className="relative flex items-center justify-center sm:w-[28vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10 rounded-3xl bg-blue-700 bg-gradient-to-t from-blue-700/38 to-black">
+              <div className="relative flex items-center justify-center sm:w-[28vw] xl:w-[20vw] xl:h-[20vh] overflow-hidden h-[20vh] lg:h-[30vh] mb-10 rounded-3xl bg-blue-700 bg-gradient-to-t from-blue-700/38 to-black">
                 <div className="relative w-full overflow-hidden h-full">
                   <img src="/projectThumb/bg.png" alt="bgimg" />
                   <img
