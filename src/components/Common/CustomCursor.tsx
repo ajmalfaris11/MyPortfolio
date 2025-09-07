@@ -5,9 +5,10 @@ import { FaLocationArrow } from "react-icons/fa6";
 
 export default function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
-  const pos = useRef({ x: 0, y: 0 });
-  const mouse = useRef({ x: 0, y: 0 });
-  const [isTouch, setIsTouch] = useState(false);
+const pos = useRef({ x: window.innerWidth / 2, y: window.innerHeight / 2 }); // start at center
+const mouse = useRef({ x: window.innerWidth / 2, y: window.innerHeight / 2 });  const [isTouch, setIsTouch] = useState(false);
+
+  
 
   useEffect(() => {
     // detect if it's a touch device
