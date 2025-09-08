@@ -7,35 +7,60 @@ import { GrProjects } from "react-icons/gr";
 
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css"; // core styles
-import "swiper/css/pagination"; // pagination styles
-import "swiper/css/navigation"; // navigation styles
-import "swiper/css/effect-coverflow"; // effect styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import "swiper/css/effect-coverflow";
 
 import { projects } from "@/data";
 import { PinContainer } from "@/components/ui/layouts";
 import { Animate3DDiv } from "@/components/ui/animations";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 
 const Projects = () => {
   const [visible, setVisible] = useState(3);
+  const router = useRouter();
+  const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const updateVisible = () => {
       if (window.innerWidth < 640) {
-        setVisible(2); 
+        setVisible(2);
       } else if (window.innerWidth < 1250) {
-        setVisible(6); 
+        setVisible(6);
       } else {
-        setVisible(8); 
+        setVisible(8);
       }
     };
 
-    updateVisible(); // run on mount
+    updateVisible();
     window.addEventListener("resize", updateVisible);
     return () => window.removeEventListener("resize", updateVisible);
   }, []);
+
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setLoading(true);
+          setTimeout(() => {
+            router.push("/projects");
+          }, 1500); // delay for smooth UX
+        }
+      },
+      { threshold: 0.8 } // trigger when 80% visible
+    );
+
+    if (cardRef.current) observer.observe(cardRef.current);
+
+    return () => {
+      if (cardRef.current) observer.unobserve(cardRef.current);
+    };
+  }, [router]);
 
   return (
     <div className="flex relative justify-center items-center flex-col z-20 sm:p-5 my-10">
@@ -55,7 +80,7 @@ const Projects = () => {
           slidesPerView={1}
           freeMode={true}
         >
-          {projects.slice(0,3).map((item) => (
+          {projects.slice(0, 3).map((item) => (
             <SwiperSlide key={item.id} className="pb-16">
               <div className="h-[25rem] flex items-center justify-center">
                 <PinContainer title={item.link} href={item.link}>
@@ -78,7 +103,6 @@ const Projects = () => {
                   </p>
 
                   <div className="flex items-center justify-between mt-5">
-                    {/* Icons */}
                     <div className="grid grid-cols-5 items-center gap-x-2">
                       {item.iconLists.map((icon, index) => (
                         <div
@@ -109,13 +133,30 @@ const Projects = () => {
 
           {/* Extra slide: "More Projects" button */}
           <SwiperSlide>
-            <div className="h-[25rem] flex items-center justify-center">
-              <button className="flex flex-col justify-center items-center w-full h-full rounded-3xl">
-                <span className="rotate-90 border-1 px-8 py-6 rounded-full text-center text-blue-500 font-bold text-xl animate-pulse whitespace-nowrap flex gap-2 justify-center items-center">
-                  <GrProjects className="text-xl" /> VIEW ALL MY PROJECTS{" "}
-                  <IoIosArrowForward className="text-3xl -rotate-90" />
-                </span>
-              </button>
+            <div
+              ref={cardRef}
+              className="relative flex items-center justify-center w-full h-[28rem] rounded-3xl overflow-hidden group p-8"
+            >
+              <div className="relative z-10 flex flex-col items-center justify-center w-full h-full rounded-4xl p-6 border-2 border-blue-600">
+                {loading ? (
+                  <div className="flex flex-col justify-center items-center text-center">
+                    {/* Loader */}
+                    <div className="w-24 h-24 border-6 border-blue-600 border-y-blue-500 rounded-4xl animate-spin mb-20"></div>
+                    <p className="text-2xl font-semibold animate-pulse text-blue-600">
+                      Taking You To My Projects…
+                    </p>
+                  </div>
+                ) : (
+                  <div className="w-full h-full p-6 flex flex-col justify-between items-center text-5xl text-blue-600 font-semibold text-center">
+                    {/* Default state */}
+                    <GrProjects/>
+                    <p className="text-3xl">
+                      VIEW ALL MY PROJECTS
+                    </p>
+                    <IoIosArrowForward className="border-2 p-2 text-6xl rounded-full -rotate-45" />
+                  </div>
+                )}
+              </div>
             </div>
           </SwiperSlide>
         </Swiper>
