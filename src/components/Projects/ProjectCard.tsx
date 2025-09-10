@@ -10,7 +10,7 @@ export default function ProjectCard({ project }: { project: any }) {
       className="lg:min-h-[28rem] h-[25rem] flex items-center justify-center"
     >
       <PinContainer title={project.live || "#"} href={project.live || "#"}>
-        <div className="relative flex items-center justify-center sm:w-[28vw] xl:w-[20vw] xl:h-[20vh] overflow-hidden h-[20vh] lg:h-[30vh] mb-10 rounded-3xl bg-blue-700 bg-gradient-to-t from-blue-700/38 to-black">
+        <div className="relative flex items-center justify-center w-[80vw] sm:w-[40vw] md:w-[28vw] xl:w-[20vw] xl:h-[20vh] overflow-hidden h-[20vh] lg:h-[30vh] mb-10 rounded-3xl bg-blue-700 bg-gradient-to-t from-blue-700/38 to-black">
           <div className="relative w-full overflow-hidden h-full">
             <img src="/projectThumb/bg.png" alt="bgimg" />
             <img

@@ -157,7 +157,7 @@ export default function ProjectsPage() {
 
         {/* Projects Section */}
         {filteredProjects.length > 0 ? (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
             {filteredProjects.map((item) => (
               <ProjectCard key={item.id} project={item} />
             ))}
