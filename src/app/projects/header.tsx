@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   Rocket,
   Cpu,
@@ -9,8 +9,10 @@ import {
   Briefcase,
   GitCommit,
   Users,
+  Trophy,
 } from "lucide-react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
+import { RiGitRepositoryCommitsLine } from "react-icons/ri";
 
 function Badge({ children, className = "" }: any) {
   return (
@@ -22,14 +24,13 @@ function Badge({ children, className = "" }: any) {
   );
 }
 
-// ✅ Counter Component with animation
 const Counter = ({ end, label, icon: Icon }: any) => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = React.useState(0);
 
-  useEffect(() => {
+  React.useEffect(() => {
     let start = 0;
-    const duration = 2000; // 2s
-    const step = Math.ceil(end / (duration / 30)); // smooth increments
+    const duration = 2000;
+    const step = Math.ceil(end / (duration / 30));
 
     const interval = setInterval(() => {
       start += step;
@@ -45,7 +46,7 @@ const Counter = ({ end, label, icon: Icon }: any) => {
 
   return (
     <motion.div
-      className="flex flex-col items-center justify-center bg-white/10 backdrop-blur-md px-6 py-4 rounded-2xl shadow-md hover:scale-105 transition-transform duration-300"
+      className="flex flex-col items-center justify-center bg-blue-500/10 backdrop-blur-md px-6 py-4 rounded-2xl shadow-md hover:scale-105 transition-transform duration-300"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -60,9 +61,9 @@ const Counter = ({ end, label, icon: Icon }: any) => {
 
 function HeaderCarousel() {
   return (
-    <div className="w-full relative overflow-hidden rounded-3xl border border-blue-600/50 p-8 md:p-12 shadow-xl bg-gradient-to-tr to-blue-600/50 via-blue-900/40 from-black backdrop-blur-2xl mt-12">
+    <div className="w-full relative overflow-hidden rounded-3xl border border-blue-600/30 p-8 md:p-14 shadow-xl bg-gradient-to-tr from-blue-900/40 via-blue-800/20 to-blue-600/30 backdrop-blur-xl mt-12">
       <motion.div
-        className="relative flex flex-col items-start gap-6"
+        className="relative flex flex-col items-start gap-8"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -70,42 +71,38 @@ function HeaderCarousel() {
       >
         {/* Badge */}
         <Badge className="border border-blue-500/30 text-blue-300 bg-blue-600/10">
-          <Rocket className="h-4 w-4" /> Shipping quality builds
+          <Rocket className="h-4 w-4" /> Crafting Impactful Software
         </Badge>
 
         {/* Heading */}
-        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl text-white">
-          Developer Projects{" "}
-          <span className="text-blue-400 drop-shadow-md">that scale</span>
+        <h1 className="text-4xl md:text-8xl font-extrabold tracking-tight text-white leading-tight">
+          Showcasing <span className="text-blue-600">Projects</span> that{" "}
+          <span className="text-blue-700">Scale & Inspire</span>
         </h1>
 
         {/* Subheading */}
-        <p className="max-w-2xl text-sm text-blue-200/70">
-          A curated set of production-grade projects. Solid DX, performance
-          budgets, and architectures that won’t crumble when traffic comes.
+        <p className="max-w-2xl text-base md:text-lg text-blue-200/80 leading-relaxed">
+          Explore production-ready projects built with precision, performance,
+          and creativity. From robust architectures to sleek user experiences,
+          each build is designed to stand the test of real-world demands.
         </p>
 
         {/* Tech Tags */}
-        <div className="flex flex-wrap items-center gap-2 text-xs text-blue-400/70">
+        <div className="flex flex-wrap items-center gap-3 text-sm text-blue-300/80">
           <span className="inline-flex items-center gap-1">
-            <Cpu className="h-4 w-4" />
-            Next.js • TypeScript • Tailwind
+            <Cpu className="h-4 w-4" /> Next.js • TypeScript • Tailwind
           </span>
-          <span>•</span>
           <span className="inline-flex items-center gap-1">
-            <Zap className="h-4 w-4" />
-            SSR, Edge
+            <Zap className="h-4 w-4" /> SSR • Edge Deployments
           </span>
-          <span>•</span>
           <span className="inline-flex items-center gap-1">
-            <Layers className="h-4 w-4" />
-            Clean architecture
+            <Layers className="h-4 w-4" /> Clean Architecture
           </span>
         </div>
 
-        {/* Stats Carousel */}
+        {/* Stats */}
         <motion.div
-          className="grid grid-cols-2 sm:grid-cols-3 gap-6 mt-5 w-full"
+          className="grid grid-cols-2 sm:grid-cols-5 gap-6 mt-6 w-full"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -113,7 +110,9 @@ function HeaderCarousel() {
         >
           <Counter end={50} label="Projects" icon={Briefcase} />
           <Counter end={2200} label="Commits" icon={GitCommit} />
+          <Counter end={85} label="Repositories" icon={RiGitRepositoryCommitsLine} />
           <Counter end={10} label="Clients" icon={Users} />
+          <Counter end={5} label="Awards" icon={Trophy} />
         </motion.div>
       </motion.div>
     </div>
