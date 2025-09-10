@@ -131,8 +131,8 @@ export default function ProjectsPage() {
     <div className="min-h-screen z-10">
       <section className="mx-auto w-full max-w-7xl">
         {/* Filters Section */}
-        <div className="mt-4 grid md:grid-cols-12 gap-4 border-2 border-blue-600 bg-black overflow-hidden rounded-2xl py-2 items-center">
-          <div className="md:col-span-5">
+        <div className="mt-4 grid grid-cols-12 gap-2 sm:gap-4 border-2 border-blue-600 bg-black overflow-hidden rounded-2xl py-2 items-center">
+          <div className="col-span-10 md:col-span-5">
             <Controls
               query={query}
               setQuery={setQuery}
@@ -145,7 +145,7 @@ export default function ProjectsPage() {
               onReset={resetFilters}
             />
           </div>
-          <div className="md:col-span-6">
+          <div className="hidden md:block md:col-span-6">
             <TagRail
               tags={ALL_TAGS}
               selectedTags={selectedTags}
@@ -159,13 +159,27 @@ export default function ProjectsPage() {
               onClear={resetFilters}
             />
           </div>
-          <div className=" right-0 h-full flex justify-center items-center px-4 rounded-l-full bg-blue-600">
+          <div className=" right-0 h-full flex justify-center items-center px-4 rounded-l-full bg-blue-600 col-span-2 md:col-span-1">
             <button
               onClick={resetFilters}
               className="text-sm text-black flex justify-center items-center gap-2"
             >
               Reset
             </button>
+          </div>
+          <div className="w-full flex md:hidden col-span-12 px-4">
+            <TagRail
+              tags={ALL_TAGS}
+              selectedTags={selectedTags}
+              onToggle={(tag: string) =>
+                setSelectedTags((prev) =>
+                  prev.includes(tag)
+                    ? prev.filter((t) => t !== tag)
+                    : [...prev, tag]
+                )
+              }
+              onClear={resetFilters}
+            />
           </div>
         </div>
 
