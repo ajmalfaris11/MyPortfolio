@@ -18,6 +18,7 @@ import { Animate3DDiv } from "@/components/ui/animations";
 
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import ProjectCard from "./ProjectCard";
 
 const Projects = () => {
   const [visible, setVisible] = useState(3);
@@ -83,12 +84,12 @@ const Projects = () => {
           {projects.slice(0, 3).map((item) => (
             <SwiperSlide key={item.id} className="pb-16">
               <div className="h-[25rem] flex items-center justify-center">
-                <PinContainer title={item.link} href={item.link}>
+                <PinContainer title={item.live} href={item.live}>
                   <div className="relative flex items-center justify-center w-[90vw] overflow-hidden h-[50vw] mb-10 rounded-3xl bg-blue-700 bg-gradient-to-t from-blue-700/38 to-black">
                     <div className="relative w-full overflow-hidden h-full">
                       <img src="/projectThumb/bg.png" alt="bgimg" />
                       <img
-                        src={item.img}
+                        src={item.thumbnail}
                         alt="cover"
                         className="z-10 absolute -bottom-16"
                       />
@@ -99,12 +100,12 @@ const Projects = () => {
                     {item.title}
                   </h1>
                   <p className="text-sm font-light line-clamp-2 text-blue-200/80 my-2">
-                    {item.des}
+                    {item.blurb}
                   </p>
 
                   <div className="flex items-center justify-between mt-5">
                     <div className="grid grid-cols-5 items-center gap-x-2">
-                      {item.iconLists.map((icon, index) => (
+                      {item.tech.map((icon, index) => (
                         <div
                           key={index}
                           className="bg-blue-900/50 w-8 h-8 flex justify-center items-center"
@@ -149,10 +150,8 @@ const Projects = () => {
                 ) : (
                   <div className="w-full h-full p-6 flex flex-col justify-between items-center text-5xl text-blue-600 font-semibold text-center">
                     {/* Default state */}
-                    <GrProjects/>
-                    <p className="text-3xl">
-                      VIEW ALL MY PROJECTS
-                    </p>
+                    <GrProjects />
+                    <p className="text-3xl">VIEW ALL MY PROJECTS</p>
                     <IoIosArrowForward className="border-2 p-2 text-6xl rounded-full -rotate-45" />
                   </div>
                 )}
@@ -165,56 +164,7 @@ const Projects = () => {
       {/* ---- DESKTOP GRID ---- */}
       <div className="hidden sm:grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 pb-10 mt-10">
         {projects.slice(0, visible).map((item) => (
-          <div
-            key={item.id}
-            className="lg:min-h-[28rem] h-[25rem] flex items-center justify-center"
-          >
-            <PinContainer title={item.link} href={item.link}>
-              <div className="relative flex items-center justify-center sm:w-[28vw] xl:w-[20vw] xl:h-[20vh] overflow-hidden h-[20vh] lg:h-[30vh] mb-10 rounded-3xl bg-blue-700 bg-gradient-to-t from-blue-700/38 to-black">
-                <div className="relative w-full overflow-hidden h-full">
-                  <img src="/projectThumb/bg.png" alt="bgimg" />
-                  <img
-                    src={item.img}
-                    alt="cover"
-                    className="z-10 absolute -bottom-16"
-                  />
-                </div>
-              </div>
-
-              <h1 className="font-bold lg:text-xl xl:text-2xl md:text-lg text-base line-clamp-1">
-                {item.title}
-              </h1>
-
-              <p className="lg:text-md xl:text-xl lg:font-normal font-light text-sm line-clamp-2 text-blue-200/80 my-2">
-                {item.des}
-              </p>
-
-              <div className="flex items-center justify-between mt-7 mb-3">
-                <div className="grid grid-cols-5 items-center gap-x-2">
-                  {item.iconLists.map((icon, index) => (
-                    <div
-                      key={index}
-                      className="bg-blue-900/50 w-8 h-8 flex justify-center items-center"
-                      style={{
-                        clipPath:
-                          "polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%)",
-                        transform: `translateX(-${5 * index + 2}px)`,
-                      }}
-                    >
-                      <img src={icon} alt="icon" className="p-2" />
-                    </div>
-                  ))}
-                </div>
-
-                <div className="flex justify-center items-center gap-2 mr-2">
-                  <p className="flex lg:text-md md:text-xs text-sm text-purple">
-                    Check Live Site
-                  </p>
-                  <FaLocationArrow className="text-xl text-blue-500" />
-                </div>
-              </div>
-            </PinContainer>
-          </div>
+          <ProjectCard key={item.id} project={item} />
         ))}
       </div>
 
