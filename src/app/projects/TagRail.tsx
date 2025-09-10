@@ -21,7 +21,6 @@ export default function TagRail({
   const allSelected = selectedTags.length === 0; // All is active if no tag is selected
 
   return (
-    <div className="sticky flex items-center h-full rounded- overflow-hidden gap-4">
       <div
         className="w-full overflow-x-scroll rounded-full"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
@@ -59,14 +58,5 @@ export default function TagRail({
           })}
         </div>
       </div>
-      <div className=" right-0 h-full flex justify-center items-center px-4 rounded-l-full bg-blue-600">
-        <button
-          onClick={onClear}
-          className="text-sm text-black flex justify-center items-center gap-2"
-        >
-          <TbZoomReset /> Reset
-        </button>
-      </div>
-    </div>
   );
 }

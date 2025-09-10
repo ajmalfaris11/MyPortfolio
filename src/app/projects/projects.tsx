@@ -49,7 +49,9 @@ export default function ProjectsPage() {
   const [query, setQuery] = useState("");
   const [selectedTech, setSelectedTech] = useState<string[]>([]);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [sort, setSort] = useState<"featured" | "stars" | "recent" | "complexity">("featured");
+  const [sort, setSort] = useState<
+    "featured" | "stars" | "recent" | "complexity"
+  >("featured");
   const [view, setView] = useState<"grid" | "list">("grid");
 
   // Reset filters (memoized to avoid re-renders)
@@ -63,7 +65,9 @@ export default function ProjectsPage() {
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.key === "/") {
-        const el = document.getElementById("project-search") as HTMLInputElement | null;
+        const el = document.getElementById(
+          "project-search"
+        ) as HTMLInputElement | null;
         if (el) {
           e.preventDefault();
           el.focus();
@@ -127,7 +131,7 @@ export default function ProjectsPage() {
     <div className="min-h-screen z-10">
       <section className="mx-auto w-full max-w-7xl">
         {/* Filters Section */}
-        <div className="mt-4 grid md:grid-cols-12 gap-4 border-2 border-blue-600 bg-black overflow-hidden rounded-2xl py-2">
+        <div className="mt-4 grid md:grid-cols-12 gap-4 border-2 border-blue-600 bg-black overflow-hidden rounded-2xl py-2 items-center">
           <div className="md:col-span-5">
             <Controls
               query={query}
@@ -141,17 +145,27 @@ export default function ProjectsPage() {
               onReset={resetFilters}
             />
           </div>
-          <div className="md:col-span-7">
+          <div className="md:col-span-6">
             <TagRail
               tags={ALL_TAGS}
               selectedTags={selectedTags}
               onToggle={(tag: string) =>
                 setSelectedTags((prev) =>
-                  prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
+                  prev.includes(tag)
+                    ? prev.filter((t) => t !== tag)
+                    : [...prev, tag]
                 )
               }
               onClear={resetFilters}
             />
+          </div>
+          <div className=" right-0 h-full flex justify-center items-center px-4 rounded-l-full bg-blue-600">
+            <button
+              onClick={resetFilters}
+              className="text-sm text-black flex justify-center items-center gap-2"
+            >
+              Reset
+            </button>
           </div>
         </div>
 
