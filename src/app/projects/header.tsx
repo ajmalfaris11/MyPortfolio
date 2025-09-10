@@ -111,9 +111,9 @@ function HeaderCarousel() {
           viewport={{ once: true }}
           transition={{ staggerChildren: 0.2, delayChildren: 0.3 }}
         >
-          <Counter end={45} label="Projects" icon={Briefcase} />
-          <Counter end={1200} label="Commits" icon={GitCommit} />
-          <Counter end={30} label="Clients" icon={Users} />
+          <Counter end={50} label="Projects" icon={Briefcase} />
+          <Counter end={2200} label="Commits" icon={GitCommit} />
+          <Counter end={10} label="Clients" icon={Users} />
         </motion.div>
       </motion.div>
     </div>
