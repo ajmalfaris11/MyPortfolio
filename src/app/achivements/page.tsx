@@ -27,21 +27,29 @@ export default function AchievementsPage() {
       </div>
       <section className="w-full">
         <Navbar />
-        <Hero />
+        <section id="hero">
+          <Hero />
+        </section>
 
-        <div id="leetcode">
+        <section id="achievements">
+          <GridSection />
+        </section>
+
+        <section id="leetcode">
           <LeetCode />
-        </div>
+        </section>
 
-        <div id="certificates">
+        <section id="certificates">
           <Certificates />
-        </div>
+        </section>
 
-        <div id="github">
+        <section id="github">
           <Github />
-        </div>
+        </section>
 
-        <Footer />
+        <section id="footer">
+          <Footer />
+        </section>
       </section>
     </main>
   );

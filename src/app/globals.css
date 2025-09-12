@@ -4,6 +4,8 @@
    cursor: none;
 }
 
+html { scroll-behavior: smooth; }
+
 /* ---- Base styles & variables ---- */
 @layer base {
   :root {
