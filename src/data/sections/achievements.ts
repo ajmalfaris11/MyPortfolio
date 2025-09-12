@@ -66,3 +66,28 @@ export const leetCodeBadges = [
     alt: "100 Days Badge 2024"
   },
 ];
+
+
+
+export const githubAchievements = [
+  {
+    id: 1,
+    name: "Pair Extraordinaire",
+    img: "./gitHub/pairExtraordinaire.webp",
+  },
+  {
+    id: 2,
+    name: "YOLO",
+    img: "./gitHub/yolo.webp",
+  },
+  {
+    id: 3,
+    name: "Pull Shark",
+    img: "./gitHub/pullShark.webp",
+  },
+  {
+    id: 4,
+    name: "Quickdraw",
+    img: "./gitHub/quickdraw.webp",
+  },
+];
