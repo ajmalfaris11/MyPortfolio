@@ -10,13 +10,6 @@ import Footer from "@/components/Footer/Footer";
 import Hero from "./hero"
 import GridSection from "./GridSection"
 
-const categoryMeta = {
-  all: { label: "All", color: "bg-blue-600/90" },
-  leetcode: { label: "LeetCode", color: "bg-[#0ea5e9]/90" },
-  github: { label: "GitHub", color: "bg-black/90" },
-  certificate: { label: "Certificates", color: "bg-sky-700/90" },
-  other: { label: "Other", color: "bg-indigo-700/90" },
-};
 
 export default function AchievementsPage() {
 
