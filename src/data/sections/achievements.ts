@@ -42,3 +42,27 @@ export const achievements : Achievement[] = [
     style: "-mb-6 rotate-2 bg-gradient-to-t",
   },
 ];
+
+
+export const leetCodeBadges = [
+  {
+    card: "./leetCode/500days.png",
+    alt: "500 Days Badge"
+  },
+  {
+    card: "./leetCode/365days.png",
+    alt: "365 Days Badge"
+  },
+  {
+    card: "./leetCode/200days.png",
+    alt: "200 Days Badge"
+  },
+  {
+    card: "./leetCode/100days.png",
+    alt: "100 Days Badge"
+  },
+  {
+    card: "./leetCode/100days_2024.png",
+    alt: "100 Days Badge 2024"
+  },
+];
