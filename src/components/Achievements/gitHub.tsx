@@ -17,7 +17,7 @@ export default function gitHub() {
               <img
                 src={img}
                 alt={name}
-                className="rounded-xl w-full  object-contain"
+                className="rounded-3xl w-full object-contain"
               />
             </Animate3DDiv>
           ))}
