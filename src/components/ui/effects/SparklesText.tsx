@@ -6,7 +6,7 @@ export function SparklesText({ text }: { text: string }) {
   return (
     <div className="w-full bg-transparent flex flex-col items-center justify-center overflow-hidden rounded-md">
       <Animate3DText
-        text="Leet Code"
+        text={text}
         className="md:text-7xl text-3xl lg:text-7xl font-bold text-center animate-shine relative z-20"
         rotateDepth={10}
         translateDepth={10}
