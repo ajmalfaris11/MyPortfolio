@@ -4,7 +4,7 @@ import { Animate3DDiv } from "@/components/ui/animations";
 import { GiAchievement } from "react-icons/gi";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { useState } from "react";
-import {achievements} from "@/data"
+import {HomeAchievements} from "@/data"
 
 
 const AchievementsSection = () => {
@@ -23,7 +23,7 @@ const AchievementsSection = () => {
       </p>
 
       <div className="relative flex flex-col pt-10 max-w-2xl">
-        {achievements.map((achievement, idx) => (
+        {HomeAchievements.map((achievement, idx) => (
           <div
             key={idx}
             className={`${achievement.style} relative from-blue-900/30 hover:from-blue-700 via-blue-700 to-blue-600 hover:scale-105 
