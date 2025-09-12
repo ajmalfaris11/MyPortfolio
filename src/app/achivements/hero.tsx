@@ -91,15 +91,37 @@ export default function AchievementHero() {
       </motion.div> */}
 
       <div className="w-auto flex py-1 border-2 border-blue-700 rounded-full mt-10 -mb-14 overflow-hidden gap-2">
-        <span className="bg-blue-600 rounded-r-full px-2 flex justify-center items-center text-black gap-1">Navigate<IoIosArrowForward className="rotate-90" /></span>
+        <span className="bg-blue-600 rounded-r-full px-2 flex justify-center items-center text-black gap-1">
+          Navigate
+          <IoIosArrowForward className="rotate-90" />
+        </span>
         <div className="flex justify-center items-center text-blue-600">
-          <span className="hover:bg-blue-700 hover:text-black py-1 px-4 rounded-full">LeetCode</span>
-          <span className="hover:bg-blue-700 hover:text-black py-1 px-4 rounded-full">GitHub</span>
-          <span className="hover:bg-blue-700 hover:text-black py-1 px-4 rounded-full">Certificates</span>
-          <span className="hover:bg-blue-700 hover:text-black py-1 px-4 rounded-full">Other</span>
+          <a
+            href="#leetcode"
+            className="hover:bg-blue-700 hover:text-black py-1 px-4 rounded-full"
+          >
+            LeetCode
+          </a>
+          <a
+            href="#github"
+            className="hover:bg-blue-700 hover:text-black py-1 px-4 rounded-full"
+          >
+            GitHub
+          </a>
+          <a
+            href="#certificates"
+            className="hover:bg-blue-700 hover:text-black py-1 px-4 rounded-full"
+          >
+            Certificates
+          </a>
+          <a
+            href="#other"
+            className="hover:bg-blue-700 hover:text-black py-1 px-4 rounded-full"
+          >
+            Other
+          </a>
         </div>
       </div>
-      
     </div>
   );
 }

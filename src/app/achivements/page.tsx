@@ -7,12 +7,10 @@ import Certificates from "@/components/Achievements/Certificates";
 import Github from "@/components/Achievements/gitHub";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
-import Hero from "./hero"
-import GridSection from "./GridSection"
-
+import Hero from "./hero";
+import GridSection from "./GridSection";
 
 export default function AchievementsPage() {
-
   return (
     <main className="h-full relative w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md">
       <CustomCursor />
@@ -28,13 +26,22 @@ export default function AchievementsPage() {
         />
       </div>
       <section className="w-full">
-        <Navbar/>
-        <Hero/>
-        <GridSection/>
-        <LeetCode />
-        <Certificates />
-        <Github />
-        <Footer/>
+        <Navbar />
+        <Hero />
+
+        <div id="leetcode">
+          <LeetCode />
+        </div>
+
+        <div id="certificates">
+          <Certificates />
+        </div>
+
+        <div id="github">
+          <Github />
+        </div>
+
+        <Footer />
       </section>
     </main>
   );
