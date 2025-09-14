@@ -4,11 +4,11 @@ import { Animate3DDiv } from "@/components/ui/animations";
 import { GiAchievement } from "react-icons/gi";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { useState } from "react";
-import {HomeAchievements} from "@/data"
-
+import { HomeAchievements } from "@/data";
+import Link from "next/link";
 
 const AchievementsSection = () => {
-  const [onClick, setOnClick] = useState(false);
+  const [hover, setHover] = useState(false);
 
   return (
     <div className="flex flex-col items-center p-10 text-white z-10">
@@ -31,7 +31,7 @@ const AchievementsSection = () => {
             hover:rotate-0 flex flex-col md:flex-row gap-4`}
           >
             <div className="flex items-center space-x-6 md:w-[40%] text-5xl">
-              <achievement.icon/>
+              <achievement.icon />
               <h3 className="text-xl font-semibold">{achievement.title}</h3>
             </div>
             <span className="md:w-[60%]">
@@ -40,26 +40,27 @@ const AchievementsSection = () => {
           </div>
         ))}
 
-        <div
-          className="relative bg-gradient-to-t from-blue-700 hover:from-blue-700 via-blue-800 to-blue-600
-            duration-500 text-white rounded-full p-4 
-            flex justify-between items-center transition-all mt-5"
-          onMouseEnter={() => setOnClick(true)}
-          onMouseLeave={() => setOnClick(false)}
+        <Link
+          href="/achievements"
+          className="relative w-full bg-gradient-to-t from-blue-700 hover:from-blue-700 via-blue-800 to-blue-600 
+          duration-500 text-white rounded-full px-4 py-3 sm:px-6 sm:py-4 
+          flex justify-between items-center transition-all mt-5"
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
         >
-          <GiAchievement className="sm:text-4xl" />
-          <span className="flex items-center gap-0 transition-all duration-500">
-            <h3 className="text-md text-center sm:text-lg font-semibold transition-all duration-500">
+          <GiAchievement className="text-2xl sm:text-3xl md:text-4xl flex-shrink-0" />
+          <span className="flex items-center transition-all duration-500">
+            <h3 className="text-sm sm:text-base md:text-lg font-semibold text-center transition-all duration-500">
               VIEW ALL MY ACHIEVEMENTS
             </h3>
             <MdKeyboardDoubleArrowRight
-              className={`text-3xl -ml-2 opacity-0 transition-all duration-500 ${
-                onClick ? "opacity-100 ml-3 animate-pulse" : ""
+              className={`hidden sm:block text-2xl sm:text-3xl -ml-1 opacity-0 transition-all duration-500 ${
+                hover ? "opacity-100 ml-2 animate-pulse" : ""
               }`}
             />
           </span>
-          <GiAchievement className="sm:text-4xl" />
-        </div>
+          <GiAchievement className="text-2xl sm:text-3xl md:text-4xl flex-shrink-0" />
+        </Link>
       </div>
     </div>
   );
