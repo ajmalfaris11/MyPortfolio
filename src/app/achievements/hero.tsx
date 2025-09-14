@@ -29,7 +29,7 @@ export default function AchievementHero() {
             initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
-            className="text-5xl sm:text-7xl font-extrabold tracking-tight text-blue-600"
+            className="text-5xl sm:text-7xl font-extrabold tracking-tight text-blue-600 text-nowrap"
           >
             My Achievements
           </motion.h1>
