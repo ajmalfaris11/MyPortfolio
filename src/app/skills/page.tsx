@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import { motion } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 import SkillCard from "@/components/Skills/SkillCard";
+import Footer from "@/components/Footer/Footer";
 
 import {
   FaHtml5,
@@ -47,7 +48,7 @@ const sectionData: Section[] = [
       {
         icon: <SiTailwindcss className="text-cyan-400" />,
         label: "TailwindCSS",
-      }, 
+      },
     ],
   },
   {
@@ -86,7 +87,6 @@ const sectionData: Section[] = [
     skills: [{ icon: <FaGithub className="text-gray-300" />, label: "GitHub" }],
   },
 ];
-
 
 export default function SkillsPage() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -173,7 +173,7 @@ export default function SkillsPage() {
       )}
 
       {/* Side Navigation */}
-        <div className="fixed right-0  flex-col gap-4  top-0 z-20 h-[100vh] w-[10%] flex justify-center items-center">
+      <div className="fixed right-0  flex-col gap-4  top-0 z-20 h-[100vh] w-[10%] flex justify-center items-center">
         {sectionData.map((s, idx) => (
           <span
             key={s.id}
@@ -224,6 +224,7 @@ export default function SkillsPage() {
           </div>
         ))}
       </section>
+      <Footer />
     </main>
   );
 }
