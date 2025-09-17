@@ -5,6 +5,8 @@ import { SparklesCore } from "@/components/ui/effects/sparkles";
 import Navbar from "@/components/Navbar/Navbar";
 import { motion } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
+import SkillCard from "@/components/Skills/SkillCard";
+
 import {
   FaHtml5,
   FaCss3Alt,
@@ -84,6 +86,7 @@ const sectionData: Section[] = [
     skills: [{ icon: <FaGithub className="text-gray-300" />, label: "GitHub" }],
   },
 ];
+
 
 export default function SkillsPage() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -222,18 +225,5 @@ export default function SkillsPage() {
         ))}
       </section>
     </main>
-  );
-}
-
-// Skill Card Component
-function SkillCard({ icon, label }: { icon: React.ReactNode; label: string }) {
-  return (
-    <motion.div
-      whileHover={{ scale: 1.1 }}
-      className="flex flex-col items-center justify-center bg-gradient-to-br from-blue-900/30 to-blue-600/10 p-6 rounded-3xl shadow-lg border border-blue-800 hover:border-blue-500 transition-all duration-300"
-    >
-      <div className="text-5xl mb-3">{icon}</div>
-      <p className="text-lg font-medium text-gray-200">{label}</p>
-    </motion.div>
   );
 }
