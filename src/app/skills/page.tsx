@@ -45,8 +45,7 @@ const sectionData: Section[] = [
       {
         icon: <SiTailwindcss className="text-cyan-400" />,
         label: "TailwindCSS",
-      },
-      { icon: <SiTypescript className="text-blue-500" />, label: "TypeScript" },
+      }, 
     ],
   },
   {
@@ -171,7 +170,7 @@ export default function SkillsPage() {
       )}
 
       {/* Side Navigation */}
-      <div className="fixed right-6 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-20">
+        <div className="fixed right-0  flex-col gap-4  top-0 z-20 h-[100vh] w-[10%] flex justify-center items-center">
         {sectionData.map((s, idx) => (
           <span
             key={s.id}
@@ -206,10 +205,10 @@ export default function SkillsPage() {
             ref={(el) => {
               sectionRefs.current[section.id] = el;
             }}
-            className="flex justify-start items-center h-[100vh]"
+            className="flex justify-start items-center min-h-screen"
           >
             <div className="flex justify-center items-center w-[90%] mx-auto">
-              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
                 {section.skills.map((skill) => (
                   <SkillCard
                     key={skill.label}
@@ -231,7 +230,7 @@ function SkillCard({ icon, label }: { icon: React.ReactNode; label: string }) {
   return (
     <motion.div
       whileHover={{ scale: 1.1 }}
-      className="flex flex-col items-center justify-center bg-gradient-to-br from-blue-900/30 to-blue-600/10 p-6 rounded-2xl shadow-lg border border-blue-800 hover:border-blue-500 transition-all duration-300"
+      className="flex flex-col items-center justify-center bg-gradient-to-br from-blue-900/30 to-blue-600/10 p-6 rounded-3xl shadow-lg border border-blue-800 hover:border-blue-500 transition-all duration-300"
     >
       <div className="text-5xl mb-3">{icon}</div>
       <p className="text-lg font-medium text-gray-200">{label}</p>
