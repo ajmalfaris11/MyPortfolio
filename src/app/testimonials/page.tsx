@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import { FaQuoteRight } from "react-icons/fa";
 import { BiSolidQuoteSingleRight } from "react-icons/bi";
 import Link from "next/link";
+import Footer from "@/components/Footer/Footer";
 
 export default function Testimonials() {
   const testimonials = [
@@ -189,6 +190,8 @@ export default function Testimonials() {
           </button>
         </div>
       </section>
+
+      <Footer/>
     </main>
   );
 }
