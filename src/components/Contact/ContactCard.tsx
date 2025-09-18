@@ -40,8 +40,8 @@ const socials = [
   },
   {
     name: "Discord",
-    url: "https://discord.com/users/yourdiscordid",
-    handle: "yourdiscord#1234",
+    url: "https://discord.com/users/ajmalfaris_38234",
+    handle: "ajmalfaris_38234",
     icon: <FaDiscord />,
     bgColor: "bg-indigo-600",
   },
