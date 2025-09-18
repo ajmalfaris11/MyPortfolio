@@ -13,6 +13,7 @@ import { GoArrowUpRight } from "react-icons/go";
 import CustomCursor from "@/components/Common/CustomCursor";
 import { SparklesCore } from "@/components/ui/effects/sparkles";
 import Navbar from "@/components/Navbar/Navbar";
+import Footer from "@/components/Footer/Footer";
 import Link from "next/link";
 import { TbIcons } from "react-icons/tb";
 
@@ -206,6 +207,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      <Footer />
     </main>
   );
 }
