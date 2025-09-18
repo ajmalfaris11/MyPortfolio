@@ -5,6 +5,7 @@ import Contact from "@/components/Contact/ContactSection";
 import CustomCursor from "@/components/Common/CustomCursor";
 import { SparklesCore } from "@/components/ui/effects/sparkles";
 import ContactCard from "@/components/Contact/ContactCard";
+import Footer from "@/components/Footer/Footer";
 
 export default function ContactPage() {
   return (
@@ -47,6 +48,7 @@ export default function ContactPage() {
       <section className="w-full flex flex-col justify-center items-center">
         <Contact />
         <ContactCard />
+        <Footer />
       </section>
     </main>
   );
