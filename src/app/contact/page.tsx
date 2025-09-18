@@ -6,6 +6,8 @@ import CustomCursor from "@/components/Common/CustomCursor";
 import { SparklesCore } from "@/components/ui/effects/sparkles";
 import ContactCard from "@/components/Contact/ContactCard";
 import Footer from "@/components/Footer/Footer";
+import Navbar from "@/components/Navbar/Navbar";
+
 
 export default function ContactPage() {
   return (
@@ -25,6 +27,7 @@ export default function ContactPage() {
 
       {/* Hero Section */}
       <section className="w-full h-[100vh] flex flex-col justify-center items-center text-center px-6">
+        <Navbar/>
         <motion.h1
           initial={{ opacity: 0, y: -40 }}
           animate={{ opacity: 1, y: 0 }}
