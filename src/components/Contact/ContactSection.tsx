@@ -79,7 +79,7 @@ export default function Contact() {
         </form>
       </div>
       {/* Contact Info Section */}
-      <div className="flex flex-col md:flex-row justify-center gap-4">
+      <div className="flex flex-col md:flex-row justify-center gap-4 px-6">
         <div className="flex items-center gap-3 rounded-full backdrop-blur-md bg-transparent border border-blue-700/50 p-1 pr-2">
           <span className="flex justify-center items-center text-black rounded-full w-10 h-10 bg-blue-700">
             <FiMail />
