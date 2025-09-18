@@ -7,74 +7,9 @@ import { FaQuoteRight } from "react-icons/fa";
 import { BiSolidQuoteSingleRight } from "react-icons/bi";
 import Link from "next/link";
 import Footer from "@/components/Footer/Footer";
+import {testimonials} from "@/data"
 
 export default function Testimonials() {
-  const testimonials = [
-    {
-      name: "Leslie Alexander",
-      role: "CEO, CodeCraft Software",
-      rating: 5,
-      text:
-        "Working with Aj was a game changer — his ability to ship scalable, high-performing solutions saved us months of dev time.",
-      image: "/peopleProfiles/profile1.jpg",
-    },
-    {
-      name: "Dianne Russell",
-      role: "Founder, EventEase",
-      rating: 5,
-      text:
-        "His frontend and backend expertise gave our app a seamless user experience. Clients love how smooth everything feels.",
-      image: "/peopleProfiles/profile2.jpg",
-    },
-    {
-      name: "Kathryn Murphy",
-      role: "CTO, BrewHouse Coffee",
-      rating: 5,
-      text:
-        "From UI design to backend APIs, everything was delivered with precision. Couldn’t have asked for a better partner.",
-      image: "/peopleProfiles/profile3.jpg",
-    },
-    {
-      name: "Robert Fox",
-      role: "CEO, PetPal",
-      rating: 5,
-      text:
-        "Aj built our MVP in record time — and it’s still running flawlessly today. True full-stack mastery.",
-      image: "/peopleProfiles/profile4.jpg",
-    },
-    {
-      name: "Sophia Anderson",
-      role: "Founder, Bloomify",
-      rating: 5,
-      text:
-        "He’s not just a developer, he’s a problem solver. Every challenge we faced, he turned into a growth opportunity.",
-      image: "/peopleProfiles/profile5.jpg",
-    },
-    {
-      name: "Olivia Miller",
-      role: "Owner, Sparkle Jewelry",
-      rating: 5,
-      text:
-        "The ecommerce system he created for us is beautiful, functional, and built for scale. Sales doubled in 3 months.",
-      image: "/peopleProfiles/profile6.jpg",
-    },
-    {
-      name: "Evelyn Clark",
-      role: "CEO, Learnify",
-      rating: 5,
-      text:
-        "Aj has an incredible eye for design systems. Our learning platform is now smoother, faster, and future-proof.",
-      image: "/peopleProfiles/profile7.jpg",
-    },
-    {
-      name: "Ava Wilson",
-      role: "Founder, StyleHub",
-      rating: 5,
-      text:
-        "His ability to merge creativity with code blew us away. Our fashion app is not only stylish but super reliable.",
-      image: "/peopleProfiles/profile8.jpg",
-    },
-  ];
 
   return (
     <main className="relative w-full bg-black flex flex-col items-center justify-center overflow-hidden">
@@ -139,8 +74,8 @@ export default function Testimonials() {
               {/* Card Header */}
               <div className="flex items-center gap-4">
                 <img
-                  src={t.image}
-                  alt={t.name}
+                  src={t.profile}
+                  alt={t.name[0]}
                   className="w-12 h-12 rounded-full object-cover brightness-75"
                 />
                 <div className="flex-1">
@@ -161,7 +96,7 @@ export default function Testimonials() {
 
               {/* Testimonial Text */}
               <p className="mt-4 text-gray-300 text-sm leading-relaxed">
-                {t.text}
+                {t.quote}
               </p>
             </article>
           ))}
