@@ -7,12 +7,13 @@ import { FaQuoteRight } from "react-icons/fa";
 import { BiSolidQuoteSingleRight } from "react-icons/bi";
 import Link from "next/link";
 import Footer from "@/components/Footer/Footer";
-import {testimonials} from "@/data"
+import { testimonials } from "@/data";
+import ScrollProgress from "@/components/Common/ScrollProgress";
 
 export default function Testimonials() {
-
   return (
     <main className="relative w-full bg-black flex flex-col items-center justify-center overflow-hidden">
+      <ScrollProgress />
       <CustomCursor />
       <div className="absolute inset-0 w-full h-full">
         <SparklesCore
@@ -111,8 +112,8 @@ export default function Testimonials() {
           <span className="text-blue-600">Amazing Project Together!</span>
         </h2>
         <p className="text-gray-300 mt-6 max-w-2xl mx-auto">
-          Have an idea or product problem? I’ll help you design, build, and
-          ship it faster with less risk.
+          Have an idea or product problem? I’ll help you design, build, and ship
+          it faster with less risk.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
           <Link href="/contact">
@@ -126,7 +127,7 @@ export default function Testimonials() {
         </div>
       </section>
 
-      <Footer/>
+      <Footer />
     </main>
   );
 }
