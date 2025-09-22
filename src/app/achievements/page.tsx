@@ -9,10 +9,12 @@ import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import Hero from "./hero";
 import GridSection from "./GridSection";
+import ScrollProgress from "@/components/Common/ScrollProgress";
 
 export default function AchievementsPage() {
   return (
     <main className="h-full relative w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md">
+      <ScrollProgress />
       <CustomCursor />
       <div className="w-full h-full absolute inset-0">
         <SparklesCore
