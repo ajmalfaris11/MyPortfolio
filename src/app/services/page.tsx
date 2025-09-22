@@ -16,6 +16,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import Link from "next/link";
 import { TbIcons } from "react-icons/tb";
+import ScrollProgress from "@/components/Common/ScrollProgress";
 
 type Service = {
   title: string;
@@ -84,6 +85,7 @@ export default function ServicesPage() {
   return (
     <main className="h-full relative w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md scroll-smooth">
       <CustomCursor />
+      <ScrollProgress />
       <div className="w-full h-full absolute inset-0">
         <SparklesCore
           id="tsparticlesfullpage"
