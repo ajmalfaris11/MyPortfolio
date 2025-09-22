@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import Header from "./header";
 import Footer from "@/components/Footer/Footer";
 import { SparklesCore } from "@/components/ui/effects/sparkles";
+import ScrollProgress from "@/components/Common/ScrollProgress";
 
 function page() {
   return (
@@ -20,6 +21,7 @@ function page() {
           particleColor="#2563eb"
         />
       </div>
+      <ScrollProgress />
       <CustomCursor />
       <Navbar />
       <section className="p-10">
