@@ -28,6 +28,7 @@ import {
   SiPostgresql,
   SiTailwindcss,
 } from "react-icons/si";
+import ScrollProgress from "@/components/Common/ScrollProgress";
 
 type Skill = { icon: React.ReactNode; label: string };
 type Section = { id: string; title: string; skills: Skill[] };
@@ -125,6 +126,7 @@ export default function SkillsPage() {
   return (
     <main className="h-full relative w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md scroll-smooth">
       <CustomCursor />
+      <ScrollProgress />
       <div className="w-full h-full absolute inset-0">
         <SparklesCore
           id="tsparticlesfullpage"
