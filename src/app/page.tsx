@@ -10,6 +10,7 @@ import AchievementsSection from "@/components/Achievements/AchievementsSection";
 import ApproachSection from "@/components/Approach/ApproachSection";
 import ContactSection from "@/components/Contact/ContactSection";
 import Footer from "@/components/Footer/Footer";
+import ScrollProgress from "@/components/Common/ScrollProgress";
 
 const sections = [
   { id: "hero", Component: HeroSection },
@@ -28,6 +29,7 @@ export default function Home() {
   return (
     <main className="relative w-full bg-black text-white flex flex-col items-center justify-center overflow-hidden mx-auto select-none before:absolute before:inset-0 before:[background-size:20px_20px] before:[background-image:radial-gradient(#404040_1px,transparent_1px)]">
       <CustomCursor />
+      <ScrollProgress />
       {sections.map(({ id, Component }) => (
         <section id={id} key={id} className="w-full">
           <Component />
