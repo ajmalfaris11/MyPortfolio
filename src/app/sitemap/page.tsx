@@ -19,6 +19,7 @@ import {
   FaSitemap,
   FaBriefcase,
 } from "react-icons/fa";
+import ScrollProgress from "@/components/Common/ScrollProgress";
 
 type SiteLink = {
   title: string;
@@ -71,6 +72,7 @@ export default function SiteMapPage() {
   return (
     <main className="h-full relative w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md scroll-smooth">
       <CustomCursor />
+      <ScrollProgress />
       <div className="w-full h-full absolute inset-0">
         <SparklesCore
           id="tsparticles-sitemap"
