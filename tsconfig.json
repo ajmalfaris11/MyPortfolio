@@ -2,15 +2,8 @@
   "compilerOptions": {
     "target": "ES2017",
     "jsx": "preserve",
-    "types": [
-      "react",
-      "react-dom"
-    ],
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "types": ["react", "react-dom"],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -20,7 +13,6 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    // "jsx": "preserve",
     "incremental": true,
     "plugins": [
       {
@@ -28,18 +20,17 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
-    }
+      "@/*": ["./src/*"]
+    },
+    "typeRoots": ["./node_modules/@types", "./src/types"]
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
-, "src/components/ui/hover-border-gradient.jsx"  ],
-  "exclude": [
-    "node_modules"
-  ]
+    ".next/types/**/*.ts",
+    "src/components/ui/hover-border-gradient.jsx",
+    "src/types/**/*.d.ts"
+  ],
+  "exclude": ["node_modules"]
 }
