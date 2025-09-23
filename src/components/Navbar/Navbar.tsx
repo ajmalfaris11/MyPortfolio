@@ -22,6 +22,7 @@ import { SiLeetcode } from "react-icons/si";
 const navLinks = [
   { name: "Home", link: "/" },
   { name: "About", link: "/about" },
+  { name: "Projects", link: "/projects" },
   { name: "Services", link: "/services" },
   { name: "Contact", link: "/contact" },
 ];
