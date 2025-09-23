@@ -24,10 +24,8 @@ export default function Contact() {
 
   return (
     <div className="w-full flex flex-col items-center justify-center relative overflow-hidden py-10 bg-transparent">
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-transparent" />
-
-      <div className="relative z-10 w-full max-w-xl px-6 py-8 text-center bg-transparent">
+      {/* Content Wrapper */}
+      <div className="relative z-10 w-full max-w-xl px-6 py-8 text-center">
         {/* Heading */}
         <Animate3DDiv rotateDepth={10} translateDepth={10}>
           <h1 className="text-5xl sm:text-6xl font-semibold">
@@ -49,22 +47,19 @@ export default function Contact() {
             type="text"
             placeholder="Name"
             {...register("name", { required: true })}
-            className="w-full p-3 rounded-full bg-blue-700/15 text-blue-200/90
-                       focus:outline-none focus:ring-1 focus:ring-blue-700"
+            className="w-full p-3 rounded-full bg-blue-700/15 text-blue-200/90 focus:outline-none focus:ring-1 focus:ring-blue-700"
           />
           <input
             type="email"
             placeholder="Email"
             {...register("email", { required: true })}
-            className="w-full p-3 rounded-full bg-blue-700/15 text-blue-200/90
-                       focus:outline-none focus:ring-1 focus:ring-blue-700"
+            className="w-full p-3 rounded-full bg-blue-700/15 text-blue-200/90 focus:outline-none focus:ring-1 focus:ring-blue-700"
           />
           <textarea
             placeholder="Message"
             rows={4}
             {...register("message", { required: true })}
-            className="w-full p-3 rounded-3xl bg-blue-700/15 text-blue-200/90
-                       focus:outline-none focus:ring-1 focus:ring-blue-700"
+            className="w-full p-3 rounded-3xl bg-blue-700/15 text-blue-200/90 focus:outline-none focus:ring-1 focus:ring-blue-700"
           />
           <button
             type="submit"
@@ -78,13 +73,20 @@ export default function Contact() {
           </button>
         </form>
       </div>
+
       {/* Contact Info Section */}
       <div className="flex flex-col md:flex-row justify-center gap-4 px-6">
-        <div className="flex items-center gap-3 rounded-full backdrop-blur-md bg-transparent border border-blue-700/50 p-1 pr-2">
+        {/* Email */}
+        <button
+          onClick={() =>
+            (window.location.href = "mailto:ajmalfaris.me@gmail.com")
+          }
+          className="flex items-center gap-3 rounded-full backdrop-blur-md bg-transparent border border-blue-700/50 p-1 pr-2"
+        >
           <span className="flex justify-center items-center text-black rounded-full w-10 h-10 bg-blue-700">
             <FiMail />
           </span>
-          <div className="flex flex-col mr-10">
+          <div className="flex flex-col mr-10 text-left">
             <span className="text-gray-200 text-[12px]">Email address</span>
             <span className="text-gray-400 text-[11px] font-extralight">
               ajmalfaris.me@gmail.com
@@ -93,39 +95,52 @@ export default function Contact() {
           <span className="flex justify-center items-center text-white rounded-full w-8 h-8 bg-blue-700/25">
             <GoArrowUpRight />
           </span>
-        </div>
+        </button>
 
-        <div className="flex items-center justify-between gap-3 rounded-full backdrop-blur-md bg-transparent border border-blue-700/50 p-1 pr-2">
+        {/* Phone */}
+        <button
+          onClick={() => (window.location.href = "tel:+917558969093")}
+          className="flex items-center justify-between gap-3 rounded-full backdrop-blur-md bg-transparent border border-blue-700/50 p-1 pr-2"
+        >
           <div className="flex items-center gap-3">
             <span className="flex justify-center items-center text-black rounded-full w-10 h-10 bg-blue-700">
-            <VscCallOutgoing />
-          </span>
-          <div className="flex flex-col mr-10">
-            <span className="text-gray-200 text-[12px]">Contact number</span>
-            <span className="text-gray-400 text-[11px] font-extralight">
-              +91 755 896 9093
+              <VscCallOutgoing />
             </span>
-          </div>{" "}
+            <div className="flex flex-col mr-10 text-left">
+              <span className="text-gray-200 text-[12px]">Contact number</span>
+              <span className="text-gray-400 text-[11px] font-extralight">
+                +91 755 896 9093
+              </span>
+            </div>
           </div>
           <span className="flex justify-center items-center text-white rounded-full w-8 h-8 bg-blue-700/25">
             <GoArrowUpRight />
           </span>
-        </div>
+        </button>
 
-        <div className="flex items-center gap-3 rounded-full backdrop-blur-md bg-transparent border border-blue-700/50 p-1 pr-2">
+        {/* Location */}
+        <button
+          onClick={() =>
+            window.open(
+              "https://www.google.com/maps/place/Malappuram,+Kerala,+India/",
+              "_blank"
+            )
+          }
+          className="flex items-center gap-3 rounded-full backdrop-blur-md bg-transparent border border-blue-700/50 p-1 pr-2"
+        >
           <span className="flex justify-center items-center text-black rounded-full w-10 h-10 bg-blue-700">
             <SlLocationPin />
           </span>
-          <div className="flex flex-col mr-10">
+          <div className="flex flex-col mr-10 text-left">
             <span className="text-gray-200 text-[12px]">Location</span>
             <span className="text-gray-400 text-[11px] font-extralight">
               Malappuram, Kerala, India
             </span>
-          </div>{" "}
+          </div>
           <span className="flex justify-center items-center text-white rounded-full w-8 h-8 bg-blue-700/25">
             <GoArrowUpRight />
           </span>
-        </div>
+        </button>
       </div>
     </div>
   );
