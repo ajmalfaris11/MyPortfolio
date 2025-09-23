@@ -8,14 +8,14 @@ import PlayCard from "@/components/Approach/PlayCard";
 
 export default function Approach() {
   return (
-    <section className="w-full p-10">
+    <section className="w-full p-6 sm:p-10">
       <Animate3DDiv>
-        <h1 className="text-5xl sm:text-6xl font-semibold">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold">
           My <span className="text-purple animate-shine">approach</span>
         </h1>
       </Animate3DDiv>
 
-      <div className="my-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-4 w-full">
+      <div className="my-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-2 sm:p-4 w-full">
         {ApproachSteps.map((step, i) => (
           <Card
             key={i}
@@ -53,7 +53,7 @@ const Card = ({
 
   return (
     <div
-      className="relative w-full h-[28rem] sm:h-[22rem]"
+      className="relative w-full aspect-[2.8/4] sm:aspect-[3.8/5] md:aspect-[2.8/4] lg:aspect-[2.8/4]"
       style={{ perspective: "1000px" }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -102,12 +102,12 @@ const Card = ({
           </AnimatePresence>
 
           {/* Foreground Content */}
-          <div className="relative z-10 flex flex-col items-center justify-center h-full">
-            <h2 className="dark:text-white text-center text-3xl font-bold mt-4">
+          <div className="relative z-10 flex flex-col items-center justify-center h-full px-3">
+            <h2 className="dark:text-white text-center text-2xl sm:text-3xl font-bold mt-4">
               {title}
             </h2>
             <p
-              className="text-sm text-center mt-4"
+              className="text-xs sm:text-sm text-center mt-3"
               style={{ color: "#E4ECFF" }}
             >
               {des}
