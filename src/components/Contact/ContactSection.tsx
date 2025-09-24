@@ -1,4 +1,5 @@
 "use client";
+
 import { useForm, SubmitHandler } from "react-hook-form";
 import { GoArrowUpRight } from "react-icons/go";
 import { VscCallOutgoing } from "react-icons/vsc";
@@ -10,16 +11,31 @@ import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 type FormInputs = {
   name: string;
   email: string;
+  subject: string;
   message: string;
 };
 
 export default function Contact() {
   const { register, handleSubmit, reset } = useForm<FormInputs>();
 
-  const onSubmit: SubmitHandler<FormInputs> = (data) => {
-    console.log("Form Data:", data);
-    alert("Message sent successfully!");
-    reset();
+  const onSubmit: SubmitHandler<FormInputs> = async (data) => {
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        alert("✅ Message sent successfully!");
+        reset();
+      } else {
+        alert("❌ Failed to send message. Try again later.");
+      }
+    } catch (err) {
+      console.error("Error:", err);
+      alert("⚠️ Something went wrong!");
+    }
   };
 
   return (
@@ -55,6 +71,12 @@ export default function Contact() {
             {...register("email", { required: true })}
             className="w-full p-3 rounded-full bg-blue-700/15 text-blue-200/90 focus:outline-none focus:ring-1 focus:ring-blue-700"
           />
+          <input
+            type="text"
+            placeholder="Subject"
+            {...register("subject", { required: true })}
+            className="w-full p-3 rounded-full bg-blue-700/15 text-blue-200/90 focus:outline-none focus:ring-1 focus:ring-blue-700"
+          />
           <textarea
             placeholder="Message"
             rows={4}
@@ -64,9 +86,9 @@ export default function Contact() {
           <button
             type="submit"
             className="bg-gradient-to-r from-blue-700 via-blue-500 to-blue-700 
-             hover:bg-blue-600 text-black font-semibold py-3 px-6 
-             rounded-full flex justify-center items-center 
-             gap-0 hover:gap-2 transition-all duration-300"
+            hover:bg-blue-600 text-black font-semibold py-3 px-6 
+            rounded-full flex justify-center items-center 
+            gap-0 hover:gap-2 transition-all duration-300"
           >
             Submit
             <MdKeyboardDoubleArrowRight className="text-2xl" />
@@ -77,10 +99,8 @@ export default function Contact() {
       {/* Contact Info Section */}
       <div className="flex flex-col md:flex-row justify-center gap-4 px-6">
         {/* Email */}
-        <button
-          onClick={() =>
-            (window.location.href = "mailto:ajmalfaris.me@gmail.com")
-          }
+        <a
+          href="mailto:ajmalfaris.me@gmail.com"
           className="flex items-center gap-3 rounded-full backdrop-blur-md bg-transparent border border-blue-700/50 p-1 pr-2"
         >
           <span className="flex justify-center items-center text-black rounded-full w-10 h-10 bg-blue-700">
@@ -95,11 +115,11 @@ export default function Contact() {
           <span className="flex justify-center items-center text-white rounded-full w-8 h-8 bg-blue-700/25">
             <GoArrowUpRight />
           </span>
-        </button>
+        </a>
 
         {/* Phone */}
-        <button
-          onClick={() => (window.location.href = "tel:+917558969093")}
+        <a
+          href="tel:+917558969093"
           className="flex items-center justify-between gap-3 rounded-full backdrop-blur-md bg-transparent border border-blue-700/50 p-1 pr-2"
         >
           <div className="flex items-center gap-3">
@@ -116,16 +136,12 @@ export default function Contact() {
           <span className="flex justify-center items-center text-white rounded-full w-8 h-8 bg-blue-700/25">
             <GoArrowUpRight />
           </span>
-        </button>
+        </a>
 
         {/* Location */}
-        <button
-          onClick={() =>
-            window.open(
-              "https://www.google.com/maps/place/Malappuram,+Kerala,+India/",
-              "_blank"
-            )
-          }
+        <a
+          href="https://www.google.com/maps/place/Malappuram,+Kerala,+India/"
+          target="_blank"
           className="flex items-center gap-3 rounded-full backdrop-blur-md bg-transparent border border-blue-700/50 p-1 pr-2"
         >
           <span className="flex justify-center items-center text-black rounded-full w-10 h-10 bg-blue-700">
@@ -140,7 +156,7 @@ export default function Contact() {
           <span className="flex justify-center items-center text-white rounded-full w-8 h-8 bg-blue-700/25">
             <GoArrowUpRight />
           </span>
-        </button>
+        </a>
       </div>
     </div>
   );
