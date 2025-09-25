@@ -15,9 +15,12 @@ import {
   NavbarLogo,
 } from "@/components/ui/layouts/resizable-navbar";
 
+import { FloatingDock } from "@/components/ui/layouts";
+import { IconBrandGithub, IconBrandX, IconHome } from "@tabler/icons-react";
+import { SiLeetcode } from "react-icons/si";
+import { SlSocialLinkedin } from "react-icons/sl";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
-import { SiLeetcode } from "react-icons/si";
 
 import {
   FaHome,
@@ -32,6 +35,34 @@ import {
   FaEnvelope,
   FaSitemap,
 } from "react-icons/fa";
+
+const items = [
+  {
+    title: "Twitter",
+    icon: <IconBrandX className="h-full w-full text-blue-600" />,
+    href: "#",
+  },
+  {
+    title: "LinkedIn",
+    icon: <SlSocialLinkedin className="h-full w-full text-blue-600" />,
+    href: "https://www.linkedin.com/in/ajmal-faris11/",
+  },
+  {
+    title: "Home",
+    icon: <IconHome className="h-full w-full text-blue-600" />,
+    href: "/",
+  },
+  {
+    title: "GitHub",
+    icon: <IconBrandGithub className="h-full w-full text-blue-600" />,
+    href: "https://github.com/ajmalfaris11",
+  },
+  {
+    title: "Leetcode ",
+    icon: <SiLeetcode className="h-full w-full text-blue-600" />,
+    href: "#",
+  },
+];
 
 const navLinks = [
   { name: "Home", link: "/", icon: <FaHome /> },
@@ -106,7 +137,7 @@ export default function Page() {
 
               {/* Bottom popup */}
               <motion.div
-                className="fixed bottom-0 left-0 w-full max-h-[70vh] bg-gradient-to-b from-neutral-900 to-black rounded-t-4xl shadow-xl z-50 pb-6 overflow-y-auto"
+                className="fixed bottom-0 left-0 w-full max-h-[75vh] bg-gradient-to-b from-neutral-900 to-black rounded-t-[50px] border-t-3 border-blue-600 shadow-xl z-50 overflow-y-auto"
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 exit={{ y: "100%" }}
@@ -117,17 +148,17 @@ export default function Page() {
                 dragConstraints={{ top: 0, bottom: 0 }}
                 dragElastic={0.2}
                 onDragEnd={(e, info) => {
-                  if (info.offset.y > 100 || info.velocity.y > 500) {
+                  if (info.offset.y > 0 || info.velocity.y > 500) {
                     setMenuOpen(false);
                   }
                 }}
               >
                 {/* Handle that activates dragging */}
                 <div
-                  className="flex justify-center w-full sticky top-0 z-50 bg-neutral-900 backdrop-blur-md rounded-t-4xl p-4 cursor-grab active:cursor-grabbing"
+                  className="flex justify-center w-full sticky top-0 z-50 bg-neutral-900 backdrop-blur-md rounded-t-full p-4 cursor-grab active:cursor-grabbing"
                   onPointerDown={(e) => controls.start(e)}
                 >
-                  <button className="w-24 h-1 rounded-full bg-blue-800 transition-colors" />
+                  <button className="w-24 h-1 rounded-full bg-blue-600 transition-colors" />
                 </div>
 
                 {/* Scrollable content */}
@@ -140,7 +171,7 @@ export default function Page() {
                       className={`text-xl font-medium text-start border-b py-2 transition-colors flex justify-between items-center ${
                         pathname === item.link
                           ? "text-blue-700 font-semibold border-blue-700"
-                          : "text-white/50 hover:bg-white/10 border-neutral-800"
+                          : "text-slate-300  border-neutral-800"
                       }`}
                     >
                       {item.name}
@@ -148,6 +179,28 @@ export default function Page() {
                     </Link>
                   ))}
                 </nav>
+                <div className="sticky bottom-0 bg-black w-full flex flex-col md:hidden gap-2 justify-center py-4 rounded-t-4xl">
+                  <div className="flex gap-3 justify-center">
+                    {items.map((item) => (
+                      <motion.a
+                        key={item.title}
+                        href={item.href}
+                        title={item.title}
+                        className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-50 dark:bg-blue-900/30"
+                        style={{
+                          clipPath:
+                            "polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%)",
+                        }}
+                      >
+                        <div className="h-4 w-4">{item.icon}</div>
+                      </motion.a>
+                    ))}
+                  </div>
+                  <div className="w-full text-center text-xs text-blue-200/50">
+                    © {new Date().getFullYear()} Ajmal Faris. All rights
+                    reserved.
+                  </div>
+                </div>
               </motion.div>
             </>
           )}
