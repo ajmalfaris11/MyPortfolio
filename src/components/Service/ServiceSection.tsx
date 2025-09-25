@@ -46,8 +46,7 @@ export default function Services() {
             My <span className="text-purple animate-shine">Services</span>
           </h1>
         </Animate3DDiv>
-
-        <p className="mb-12 mt-5 text-neutral-400 max-w-3xl mx-auto">
+        <p className="relative z-10 mb-12 mt-5 text-neutral-400 max-w-3xl mx-auto">
           I provide end-to-end web solutions—scalable web apps, intuitive UI/UX,
           APIs, databases, SEO, and cloud deployment—to help startups grow
           smarter and faster.
