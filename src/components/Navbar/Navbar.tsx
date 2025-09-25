@@ -32,7 +32,7 @@ export default function Page() {
   const pathname = usePathname();
 
   return (
-    <Navbar className="absolute top-2 flex justify-center bg-transparent justify-self-center px-8 z-40">
+    <Navbar className="absolute top-2 flex justify-center bg-transparent justify-self-center sm:px-8 z-40">
       {/* Desktop Navbar */}
       <NavBody>
         <NavbarLogo />
@@ -91,7 +91,7 @@ export default function Page() {
               className={`text-lg font-medium ${
                 pathname === item.link
                   ? "text-blue-600 font-semibold"
-                  : "text-black dark:text-white"
+                  : "text-white"
               }`}
             >
               {item.name}
