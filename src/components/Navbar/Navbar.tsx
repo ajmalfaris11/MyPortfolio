@@ -107,7 +107,7 @@ export default function Page() {
 
               {/* Bottom popup */}
               <motion.div
-                className="fixed bottom-0 left-0 w-full max-h-[70vh] bg-gradient-to-b from-neutral-800 to-black rounded-t-3xl shadow-xl z-50 p-6 overflow-y-auto"
+                className="fixed bottom-0 left-0 w-full max-h-[70vh] bg-gradient-to-b from-neutral-900 to-black rounded-t-4xl shadow-xl z-50 p-6 overflow-y-auto"
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 exit={{ y: "100%" }}
@@ -117,7 +117,7 @@ export default function Page() {
                 <div className="flex  justify-center top-0">
                   <button
                     onClick={() => setMenuOpen(false)}
-                    className="w-30 h-1.5 rounded-full text-2xl font-bold bg-blue-800 transition-colors"
+                    className="w-30 h-1 rounded-full text-2xl font-bold bg-blue-800 transition-colors"
                   ></button>
                 </div>
 
@@ -128,7 +128,7 @@ export default function Page() {
                       key={idx}
                       href={item.link}
                       onClick={() => setMenuOpen(false)}
-                      className={`text-lg font-medium text-center py-2 transition-colors border-b-1 border-blue-800/30 ${
+                      className={`text-lg font-medium text-center py-2 transition-colors ${
                         pathname === item.link
                           ? "text-blue-700 font-semibold  scale-150"
                           : "text-white hover:bg-white/10"
