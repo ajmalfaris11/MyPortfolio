@@ -13,7 +13,7 @@ const AchievementsSection = () => {
   return (
     <div className="flex flex-col items-center p-10 text-white z-10">
       <Animate3DDiv rotateDepth={10} translateDepth={10}>
-        <h1 className="text-4xl sm:text-6xl font-semibold">
+        <h1 className="text-4xl text-center sm:text-6xl font-semibold">
           My <span className="text-purple animate-shine">Achievements</span>
         </h1>
       </Animate3DDiv>
