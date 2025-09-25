@@ -9,7 +9,7 @@ export function FooterFloatingDock() {
     {
       title: "Twitter",
       icon: <IconBrandX className="h-full w-full text-blue-600" />,
-      href: "#",
+      href: "https://twitter.com/ajmalfaris11",
     },
     {
       title: "LinkedIn",
@@ -29,7 +29,7 @@ export function FooterFloatingDock() {
     {
       title: "Leetcode ",
       icon: <SiLeetcode className="h-full w-full text-blue-600" />,
-      href: "#",
+      href: "https://leetcode.com/u/AjmalFaris/",
     },
   ];
   return (

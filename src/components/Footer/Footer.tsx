@@ -18,7 +18,7 @@ export default function Footer() {
           translateDepth={5}
         >
           <a
-            href="#"
+            href="/"
             className="relative z-20 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black justify-center"
           >
             <img src="./images/ca_white_logo.webp" alt="logo" width={55} />
@@ -27,37 +27,37 @@ export default function Footer() {
 
         {/* Navigation Links */}
         <nav className="flex flex-wrap justify-center text-sm">
-          <Link href="#about" className={linkStyle}>
+          <Link href="/about" className={linkStyle}>
             About
           </Link>
-          <Link href="#skills" className={linkStyle}>
+          <Link href="/skills" className={linkStyle}>
             Skills
           </Link>
-          <Link href="#projects" className={linkStyle}>
+          <Link href="/projects" className={linkStyle}>
             Projects
           </Link>
-          <Link href="#experience" className={linkStyle}>
+          <Link href="/experience" className={linkStyle}>
             Experience
           </Link>
-          <Link href="#company" className={linkStyle}>
+          <Link href="/company" className={linkStyle}>
             Company
           </Link>
-          <Link href="/resume.pdf" target="_blank" className={linkStyle}>
+          <Link href="/resume" target="_blank" className={linkStyle}>
             Resume
           </Link>
-          <Link href="#startups" className={linkStyle}>
+          <Link href="/startups" className={linkStyle}>
             Startups
           </Link>
-          <Link href="#education" className={linkStyle}>
+          <Link href="/education" className={linkStyle}>
             Education
           </Link>
-          <Link href="#contact" className={linkStyle}>
+          <Link href="/contact" className={linkStyle}>
             Contact
           </Link>
-          <Link href="#testimonials" className={linkStyle}>
+          <Link href="/testimonials" className={linkStyle}>
             Testimonials
           </Link>
-          <Link href="#sitemap" className={linkStyle}>
+          <Link href="/sitemap" className={linkStyle}>
             Site Map
           </Link>
         </nav>
