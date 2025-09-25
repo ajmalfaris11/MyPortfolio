@@ -125,62 +125,57 @@ export default function Page() {
         {/* Mobile menu popup */}
         <AnimatePresence>
           {menuOpen && (
-            <>
-              {/* Overlay */}
-              <motion.div
-                className="fixed inset-0 bg-black/70 z-40"
-                onClick={() => setMenuOpen(false)}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-              />
-
+            <div className="absolute z-50 h-screen w-screen bg-black/50 backdrop-blur-xs">
               {/* Bottom popup */}
               <motion.div
-                className="fixed bottom-0 left-0 w-full max-h-[75vh] bg-gradient-to-b from-neutral-900 to-black rounded-t-[50px] border-t-3 border-blue-600 shadow-xl z-50 overflow-y-auto"
+                className="fixed bottom-0 left-0 z-50 w-full max-h-[75vh] overflow-y-auto rounded-t-[50px] border-t-3 border-blue-600 bg-gradient-to-b from-neutral-900 to-black shadow-xl"
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 exit={{ y: "100%" }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 drag="y"
                 dragControls={controls}
-                dragListener={false} // prevents accidental drags anywhere
+                dragListener={false}
                 dragConstraints={{ top: 0, bottom: 0 }}
                 dragElastic={0.2}
                 onDragEnd={(e, info) => {
-                  if (info.offset.y > 0 || info.velocity.y > 500) {
+                  if (info.offset.y > 0 || info.velocity.y > 500)
                     setMenuOpen(false);
-                  }
                 }}
               >
-                {/* Handle that activates dragging */}
+                {/* Drag handle */}
                 <div
-                  className="flex justify-center w-full sticky top-0 z-50 bg-neutral-900 backdrop-blur-md rounded-t-full p-4 cursor-grab active:cursor-grabbing"
+                  className="sticky top-0 z-50 flex w-full cursor-grab justify-center rounded-t-full bg-neutral-900 p-4 backdrop-blur-md active:cursor-grabbing"
                   onPointerDown={(e) => controls.start(e)}
                 >
-                  <button className="w-24 h-1 rounded-full bg-blue-600 transition-colors" />
+                  <button className="h-1 w-24 rounded-full bg-blue-600 transition-colors" />
                 </div>
 
-                {/* Scrollable content */}
-                <nav className="flex w-full relative overflow-hidden flex-col text-start gap-5 mt-6 px-6 justify-center">
-                  {navLinks.map((item, idx) => (
-                    <Link
-                      key={idx}
-                      href={item.link}
-                      onClick={() => setMenuOpen(false)}
-                      className={`text-xl font-medium text-start border-b py-2 transition-colors flex justify-between items-center ${
-                        pathname === item.link
-                          ? "text-blue-700 font-semibold border-blue-700"
-                          : "text-slate-300  border-neutral-800"
-                      }`}
-                    >
-                      {item.name}
-                      <span className="text-xl">{item.icon}</span>
-                    </Link>
-                  ))}
+                {/* Nav links */}
+                <nav className="relative mt-6 flex w-full flex-col gap-5 px-6 text-start">
+                  {navLinks.map((item, idx) => {
+                    const active = pathname === item.link;
+                    return (
+                      <Link
+                        key={idx}
+                        href={item.link}
+                        onClick={() => setMenuOpen(false)}
+                        className={`flex items-center justify-between border-b py-2 text-xl font-medium transition-colors ${
+                          active
+                            ? "border-blue-700 font-semibold text-blue-700"
+                            : "border-neutral-800 text-slate-300"
+                        }`}
+                      >
+                        {item.name}
+                        <span className="text-xl">{item.icon}</span>
+                      </Link>
+                    );
+                  })}
                 </nav>
-                <div className="sticky bottom-0 bg-black w-full flex flex-col md:hidden gap-2 justify-center py-4 rounded-t-4xl">
-                  <div className="flex gap-3 justify-center">
+
+                {/* Footer icons + copyright */}
+                <div className="sticky bottom-0 flex flex-col gap-2 rounded-t-4xl bg-black py-4 md:hidden">
+                  <div className="flex justify-center gap-3">
                     {items.map((item) => (
                       <motion.a
                         key={item.title}
@@ -202,7 +197,7 @@ export default function Page() {
                   </div>
                 </div>
               </motion.div>
-            </>
+            </div>
           )}
         </AnimatePresence>
       </MobileNav>
