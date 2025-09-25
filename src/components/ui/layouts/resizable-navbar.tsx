@@ -10,6 +10,10 @@ import {
 
 import React, { useRef, useState } from "react";
 
+interface VisibleComponentProps {
+  visible?: boolean;
+}
+
 interface NavbarProps {
   children: React.ReactNode;
   className?: string;
@@ -68,15 +72,12 @@ export const Navbar = ({ children, className }: NavbarProps) => {
   return (
     <motion.div
       ref={ref}
-      // IMPORTANT: Change this to class of `fixed` if you want the navbar to be fixed
       className={cn("sticky inset-x-0 top-20 z-50 w-full", className)}
     >
       {React.Children.map(children, (child) =>
-        React.isValidElement(child)
-          ? React.cloneElement(
-              child as React.ReactElement<{ visible?: boolean }>,
-              { visible }
-            )
+        React.isValidElement<VisibleComponentProps>(child) &&
+        "visible" in child.props 
+          ? React.cloneElement(child, { visible })
           : child
       )}
     </motion.div>
