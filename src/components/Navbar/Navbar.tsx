@@ -22,9 +22,15 @@ import { SiLeetcode } from "react-icons/si";
 const navLinks = [
   { name: "Home", link: "/" },
   { name: "About", link: "/about" },
+  { name: "Skills", link: "/skills" },
+  { name: "Experience", link: "/experience" },
   { name: "Projects", link: "/projects" },
   { name: "Services", link: "/services" },
+  { name: "Achievements", link: "/achievements" },
+  { name: "Testimonials", link: "/testimonials" },
+  { name: "Resume", link: "/resume" },
   { name: "Contact", link: "/contact" },
+  { name: "Site Map", link: "/sitemap" },
 ];
 
 export default function Page() {
@@ -45,7 +51,7 @@ export default function Page() {
       {/* Desktop Navbar */}
       <NavBody>
         <NavbarLogo />
-        <NavItems items={navLinks} />
+        <NavItems items={navLinks.slice(0, 5)} />
         <div className="flex gap-6 text-xl z-10 border-1 hover:border-blue-700 rounded-full p-2 px-4">
           <a
             href="https://github.com/ajmalfaris11"
