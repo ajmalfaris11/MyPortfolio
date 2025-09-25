@@ -5,22 +5,19 @@ import { FaLocationArrow } from "react-icons/fa6";
 
 export default function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
-
-  // initialize with 0, update later in useEffect
   const pos = useRef({ x: 0, y: 0 });
   const mouse = useRef({ x: 0, y: 0 });
-  const [isTouch, setIsTouch] = useState(false);
+  const [showCursor, setShowCursor] = useState(false); // ✅ default hidden
 
   useEffect(() => {
-    // safe: window only runs here (client)
+    // detect if it's a desktop device (fine pointer)
+    const isDesktop = window.matchMedia("(pointer: fine)").matches;
+    if (!isDesktop) return; // don’t show at all on touch devices
+
+    setShowCursor(true); // ✅ only show on desktop
+
     pos.current = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
     mouse.current = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-
-    // detect if it's a touch device
-    if (window.matchMedia("(pointer: coarse)").matches) {
-      setIsTouch(true);
-      return;
-    }
 
     const moveMouse = (e: MouseEvent) => {
       mouse.current.x = e.clientX;
@@ -30,7 +27,6 @@ export default function CustomCursor() {
     window.addEventListener("mousemove", moveMouse);
 
     let animationFrame: number;
-
     const animate = () => {
       pos.current.x += (mouse.current.x - pos.current.x) * 0.5;
       pos.current.y += (mouse.current.y - pos.current.y) * 0.5;
@@ -50,7 +46,7 @@ export default function CustomCursor() {
     };
   }, []);
 
-  if (isTouch) return null; // don’t render cursor on touch screens
+  if (!showCursor) return null; // ✅ don’t render until confirmed desktop
 
   return (
     <div
