@@ -19,18 +19,18 @@ import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import { SiLeetcode } from "react-icons/si";
 
-import { 
-  FaHome, 
-  FaUserAlt, 
-  FaTools, 
-  FaBriefcase, 
-  FaProjectDiagram, 
-  FaCogs, 
-  FaTrophy, 
-  FaRegComments, 
-  FaFileAlt, 
-  FaEnvelope, 
-  FaSitemap 
+import {
+  FaHome,
+  FaUserAlt,
+  FaTools,
+  FaBriefcase,
+  FaProjectDiagram,
+  FaCogs,
+  FaTrophy,
+  FaRegComments,
+  FaFileAlt,
+  FaEnvelope,
+  FaSitemap,
 } from "react-icons/fa";
 
 const navLinks = [
@@ -109,8 +109,17 @@ export default function Page() {
                 animate={{ y: 0 }}
                 exit={{ y: "100%" }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                drag="y"
+                dragConstraints={{ top: 0, bottom: 0 }}
+                dragElastic={0.2}
+                onDragEnd={(e, info) => {
+                  if (info.offset.y > 100) {
+                    // if user swipes down enough
+                    setMenuOpen(false);
+                  }
+                }}
               >
-                {/* Close button */}
+                {/* Close handle */}
                 <div
                   className="flex justify-center w-full sticky top-0 z-50 bg-neutral-900 backdrop-blur-md rounded-t-4xl p-4"
                   onClick={() => setMenuOpen(false)}
@@ -127,12 +136,11 @@ export default function Page() {
                       onClick={() => setMenuOpen(false)}
                       className={`text-xl font-medium text-start border-b py-2 transition-colors flex justify-between items-center ${
                         pathname === item.link
-                          ? "text-blue-700 font-semibold  border-blue-700"
+                          ? "text-blue-700 font-semibold border-blue-700"
                           : "text-white/50 hover:bg-white/10 border-neutral-800"
                       }`}
                     >
                       {item.name}
-
                       <span className="text-xl">{item.icon}</span>
                     </Link>
                   ))}
