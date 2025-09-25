@@ -44,16 +44,16 @@ const Projects = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    let triggered = false;
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting) {
+        if (!triggered && entries[0].isIntersecting) {
+          triggered = true;
           setLoading(true);
-          setTimeout(() => {
-            router.push("/projects");
-          }, 1500); // delay for smooth UX
+          setTimeout(() => router.push("/projects"), 1500);
         }
       },
-      { threshold: 0.8 } // trigger when 80% visible
+      { threshold: 0.8 }
     );
 
     if (cardRef.current) observer.observe(cardRef.current);
@@ -91,6 +91,7 @@ const Projects = () => {
                       <img
                         src={item.thumbnail}
                         alt="cover"
+                        loading="lazy"
                         className="z-10 absolute -bottom-16"
                       />
                     </div>
