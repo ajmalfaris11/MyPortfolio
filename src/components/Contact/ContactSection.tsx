@@ -7,6 +7,7 @@ import { SlLocationPin } from "react-icons/sl";
 import { Animate3DDiv } from "@/components/ui/animations";
 import { FiMail } from "react-icons/fi";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
+import { AiOutlineExclamationCircle } from "react-icons/ai";
 
 type FormInputs = {
   name: string;
@@ -16,7 +17,14 @@ type FormInputs = {
 };
 
 export default function Contact() {
-  const { register, handleSubmit, reset } = useForm<FormInputs>();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<FormInputs>({
+    mode: "onChange", // live validation while typing
+  });
 
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
     try {
@@ -38,6 +46,9 @@ export default function Contact() {
     }
   };
 
+  const inputClass =
+    "w-full p-3 rounded-full bg-blue-700/15 text-blue-200/90 focus:outline-none focus:ring-1 focus:ring-blue-700";
+
   return (
     <div className="w-full flex flex-col items-center justify-center relative overflow-hidden py-10 bg-transparent">
       {/* Content Wrapper */}
@@ -48,6 +59,7 @@ export default function Contact() {
             My <span className="text-purple animate-shine">Contact</span>
           </h1>
         </Animate3DDiv>
+
         <p className="text-gray-300 max-w-xl mx-auto my-8">
           If you're interested in working together, have a project in mind, or
           simply want to connect, reach out through the form below or via the
@@ -57,38 +69,99 @@ export default function Contact() {
         {/* Contact Form */}
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="bg-black p-6 rounded-3xl shadow-lg flex flex-col gap-4 border border-blue-700/30"
+          className="bg-black p-6 rounded-3xl shadow-lg flex flex-col gap-6 border border-blue-700/30 relative"
         >
-          <input
-            type="text"
-            placeholder="Name"
-            {...register("name", { required: true })}
-            className="w-full p-3 rounded-full bg-blue-700/15 text-blue-200/90 focus:outline-none focus:ring-1 focus:ring-blue-700"
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            {...register("email", { required: true })}
-            className="w-full p-3 rounded-full bg-blue-700/15 text-blue-200/90 focus:outline-none focus:ring-1 focus:ring-blue-700"
-          />
-          <input
-            type="text"
-            placeholder="Subject"
-            {...register("subject", { required: true })}
-            className="w-full p-3 rounded-full bg-blue-700/15 text-blue-200/90 focus:outline-none focus:ring-1 focus:ring-blue-700"
-          />
-          <textarea
-            placeholder="Message"
-            rows={4}
-            {...register("message", { required: true })}
-            className="w-full p-3 rounded-3xl bg-blue-700/15 text-blue-200/90 focus:outline-none focus:ring-1 focus:ring-blue-700"
-          />
+          {/* Name Field */}
+          <div className="relative w-full">
+            <input
+              type="text"
+              placeholder="Name"
+              {...register("name", {
+                required: "Name is required",
+                minLength: { value: 4, message: "Minimum 4 letters required" },
+                pattern: {
+                  value: /^[A-Za-z\s]+$/,
+                  message: "Numbers are not allowed",
+                },
+              })}
+              className={`${inputClass} ${
+                errors.name ? "border border-red-500" : ""
+              }`}
+            />
+            {errors.name && (
+              <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1 text-red-500 text-sm whitespace-nowrap">
+                <AiOutlineExclamationCircle className="text-lg" />
+                {errors.name.message}
+              </div>
+            )}
+          </div>
+
+          {/* Email Field */}
+          <div className="relative w-full">
+            <input
+              type="email"
+              placeholder="Email"
+              {...register("email", {
+                required: "Email is required",
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: "Invalid email address",
+                },
+              })}
+              className={`${inputClass} ${
+                errors.email ? "border border-red-500" : ""
+              }`}
+            />
+            {errors.email && (
+              <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1 text-red-500 text-sm whitespace-nowrap">
+                <AiOutlineExclamationCircle className="text-lg" />
+                {errors.email.message}
+              </div>
+            )}
+          </div>
+
+          {/* Subject Field */}
+          <div className="relative w-full">
+            <input
+              type="text"
+              placeholder="Subject"
+              {...register("subject", { required: "Subject is required" })}
+              className={`${inputClass} ${
+                errors.subject ? "border border-red-500" : ""
+              }`}
+            />
+            {errors.subject && (
+              <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1 text-red-500 text-sm whitespace-nowrap">
+                <AiOutlineExclamationCircle className="text-lg" />
+                {errors.subject.message}
+              </div>
+            )}
+          </div>
+
+          {/* Message Field */}
+          <div className="relative w-full">
+            <textarea
+              placeholder="Message"
+              rows={4}
+              {...register("message", { required: "Message is required" })}
+              className={`${inputClass} rounded-xl ${
+                errors.message ? "border border-red-500" : ""
+              }`}
+            />
+            {errors.message && (
+              <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1 text-red-500 text-sm whitespace-nowrap">
+                <AiOutlineExclamationCircle className="text-lg" />
+                {errors.message.message}
+              </div>
+            )}
+          </div>
+
           <button
             type="submit"
             className="bg-gradient-to-r from-blue-700 via-blue-500 to-blue-700 
-            hover:bg-blue-600 text-black font-semibold py-3 px-6 
-            rounded-full flex justify-center items-center 
-            gap-0 hover:gap-2 transition-all duration-300"
+               hover:bg-blue-600 text-black font-semibold py-3 px-6 
+               rounded-full flex justify-center items-center 
+               gap-0 hover:gap-2 transition-all duration-300"
           >
             Submit
             <MdKeyboardDoubleArrowRight className="text-2xl" />
@@ -97,7 +170,7 @@ export default function Contact() {
       </div>
 
       {/* Contact Info Section */}
-      <div className="flex flex-col md:flex-row justify-center gap-4 px-6">
+      <div className="flex flex-col md:flex-row justify-center gap-4 px-6 mt-10">
         {/* Email */}
         <a
           href="mailto:ajmalfaris.me@gmail.com"
