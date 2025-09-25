@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useDragControls } from "framer-motion";
 
 import {
   Navbar,
@@ -60,6 +60,8 @@ export default function Page() {
     }
   }, [menuOpen]);
 
+  const controls = useDragControls();
+
   return (
     <Navbar className="absolute top-2 flex justify-center bg-transparent justify-self-center sm:px-8 z-40">
       {/* Desktop Navbar */}
@@ -110,25 +112,26 @@ export default function Page() {
                 exit={{ y: "100%" }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 drag="y"
+                dragControls={controls}
+                dragListener={false} // prevents accidental drags anywhere
                 dragConstraints={{ top: 0, bottom: 0 }}
                 dragElastic={0.2}
                 onDragEnd={(e, info) => {
-                  if (info.offset.y > 100) {
-                    // if user swipes down enough
+                  if (info.offset.y > 100 || info.velocity.y > 500) {
                     setMenuOpen(false);
                   }
                 }}
               >
-                {/* Close handle */}
+                {/* Handle that activates dragging */}
                 <div
-                  className="flex justify-center w-full sticky top-0 z-50 bg-neutral-900 backdrop-blur-md rounded-t-4xl p-4"
-                  onClick={() => setMenuOpen(false)}
+                  className="flex justify-center w-full sticky top-0 z-50 bg-neutral-900 backdrop-blur-md rounded-t-4xl p-4 cursor-grab active:cursor-grabbing"
+                  onPointerDown={(e) => controls.start(e)}
                 >
                   <button className="w-24 h-1 rounded-full bg-blue-800 transition-colors" />
                 </div>
 
-                {/* Menu links */}
-                <nav className="flex w-full relative overflow-hidden flex-col text-start gap-5 mt-6 px-6 justify-center ">
+                {/* Scrollable content */}
+                <nav className="flex w-full relative overflow-hidden flex-col text-start gap-5 mt-6 px-6 justify-center">
                   {navLinks.map((item, idx) => (
                     <Link
                       key={idx}
