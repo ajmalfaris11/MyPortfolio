@@ -25,35 +25,37 @@ function AnimatedText({
 }: AnimatedTextProps) {
   const controls = useAnimation();
   const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false); // pause on touch
+  const [paused, setPaused] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
 
+  // Animate visible text whenever index changes
   useEffect(() => {
-    if (paused) return; // skip animation when paused
-    let timeout: NodeJS.Timeout;
+    controls.start("visible");
+  }, [index, controls]);
 
-    const animateText = () => {
-      controls.start("visible");
-      timeout = setTimeout(async () => {
-        await controls.start("hidden");
-        setIndex((prev) => (prev + 1) % text.length);
-        controls.start("visible");
-      }, repeatDelay);
-    };
+  // Main loop: hide current text, update index
+  useEffect(() => {
+    if (paused) return;
 
-    animateText();
+    const timeout = setTimeout(async () => {
+      await controls.start("hidden");
+      setIndex((prev) => (prev + 1) % text.length);
+    }, repeatDelay);
+
     return () => clearTimeout(timeout);
-  }, [controls, repeatDelay, index, text.length, paused]);
+  }, [index, paused, repeatDelay, controls, text.length]);
 
   const currentText = text[index];
 
   return (
     <Wrapper
       className={className}
-      onTouchStart={() => setPaused(true)}   // pause when finger down
-      onTouchEnd={() => setPaused(false)}   // resume when released
+      onTouchStart={() => setPaused(true)}
+      onTouchEnd={() => setPaused(false)}
     >
+      {/* Accessibility */}
       <span className="sr-only">{currentText}</span>
+
       <motion.span
         ref={ref}
         initial="hidden"
