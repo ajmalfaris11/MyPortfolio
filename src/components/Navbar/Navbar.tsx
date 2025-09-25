@@ -34,11 +34,31 @@ import {
 } from "react-icons/fa";
 
 const items = [
-  { title: "Twitter", icon: <IconBrandX className="h-full w-full text-blue-600" />, href: "#" },
-  { title: "LinkedIn", icon: <SlSocialLinkedin className="h-full w-full text-blue-600" />, href: "https://www.linkedin.com/in/ajmal-faris11/" },
-  { title: "Home", icon: <IconHome className="h-full w-full text-blue-600" />, href: "/" },
-  { title: "GitHub", icon: <IconBrandGithub className="h-full w-full text-blue-600" />, href: "https://github.com/ajmalfaris11" },
-  { title: "Leetcode", icon: <SiLeetcode className="h-full w-full text-blue-600" />, href: "#" },
+  {
+    title: "Twitter",
+    icon: <IconBrandX className="h-full w-full text-blue-600" />,
+    href: "#",
+  },
+  {
+    title: "LinkedIn",
+    icon: <SlSocialLinkedin className="h-full w-full text-blue-600" />,
+    href: "https://www.linkedin.com/in/ajmal-faris11/",
+  },
+  {
+    title: "Home",
+    icon: <IconHome className="h-full w-full text-blue-600" />,
+    href: "/",
+  },
+  {
+    title: "GitHub",
+    icon: <IconBrandGithub className="h-full w-full text-blue-600" />,
+    href: "https://github.com/ajmalfaris11",
+  },
+  {
+    title: "Leetcode",
+    icon: <SiLeetcode className="h-full w-full text-blue-600" />,
+    href: "#",
+  },
 ];
 
 const navLinks = [
@@ -72,7 +92,10 @@ export default function Page() {
         <NavItems items={navLinks.slice(0, 5)} />
       </NavBody>
 
-      <Link href="/contact" className="hidden lg:flex justify-center items-center">
+      <Link
+        href="/contact"
+        className="hidden lg:flex justify-center items-center"
+      >
         <span className="bg-transparent border-[1.5px] text-white px-6 py-2 rounded-full font-medium hover:bg-blue-700 hover:border-blue-700 transition-colors duration-300 text-nowrap flex justify-center items-center">
           Contact Me
         </span>
@@ -82,7 +105,10 @@ export default function Page() {
       <MobileNav>
         <MobileNavHeader>
           <NavbarLogo />
-          <MobileNavToggle isOpen={menuOpen} onClick={() => setMenuOpen(!menuOpen)} />
+          <MobileNavToggle
+            isOpen={menuOpen}
+            onClick={() => setMenuOpen(!menuOpen)}
+          />
         </MobileNavHeader>
 
         {/* Mobile menu popup */}
@@ -100,7 +126,8 @@ export default function Page() {
                 dragListener={false}
                 dragElastic={0.2}
                 onDragEnd={(e, info) => {
-                  if (info.offset.y > 0 || info.velocity.y > 500) setMenuOpen(false);
+                  if (info.offset.y > 0 || info.velocity.y > 500)
+                    setMenuOpen(false);
                 }}
               >
                 {/* Drag handle */}
@@ -122,7 +149,9 @@ export default function Page() {
                           href={item.link}
                           onClick={() => setMenuOpen(false)}
                           className={`flex items-center justify-between border-b py-2 text-lg font-medium transition-colors ${
-                            active ? "border-blue-700 font-semibold text-blue-700" : "border-neutral-800 text-slate-300"
+                            active
+                              ? "border-blue-700 font-semibold text-blue-700"
+                              : "border-neutral-800 text-slate-300"
                           }`}
                         >
                           {item.name}
@@ -141,15 +170,19 @@ export default function Page() {
                         key={item.title}
                         href={item.href}
                         title={item.title}
-                        className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-50 dark:bg-blue-900/30"
-                        style={{ clipPath: "polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%)" }}
+                        className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-900/30"
+                        style={{
+                          clipPath:
+                            "polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%)",
+                        }}
                       >
                         <div className="h-4 w-4">{item.icon}</div>
                       </a>
                     ))}
                   </div>
                   <div className="w-full text-center text-xs text-blue-200/50">
-                    © {new Date().getFullYear()} Ajmal Faris. All rights reserved.
+                    © {new Date().getFullYear()} Ajmal Faris. All rights
+                    reserved.
                   </div>
                 </div>
               </motion.div>
