@@ -52,41 +52,16 @@ export default function Page() {
       <NavBody>
         <NavbarLogo />
         <NavItems items={navLinks.slice(0, 5)} />
-        <div className="flex gap-6 text-xl z-10 border-1 hover:border-blue-700 rounded-full p-2 px-4">
-          <a
-            href="https://github.com/ajmalfaris11"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transform transition-transform duration-300 hover:scale-90 hover:text-blue-700"
-          >
-            <FaGithub />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/ajmal-faris11/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transform transition-transform duration-300 hover:scale-90 hover:text-blue-700"
-          >
-            <FaLinkedinIn />
-          </a>
-          <a
-            href="https://instagram.com/ajmal_faris11"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transform transition-transform duration-300 hover:scale-90 hover:text-blue-700"
-          >
-            <AiFillInstagram />
-          </a>
-          <a
-            href="https://leetcode.com/u/AjmalFaris/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transform transition-transform duration-300 hover:scale-90 hover:text-blue-700"
-          >
-            <SiLeetcode />
-          </a>
-        </div>
       </NavBody>
+      <Link href="/contact"
+      className="flex justify-center items-center">
+        <span
+          className="bg-transparent border-[1.5px] text-white px-6 py-2 rounded-full font-medium 
+             hover:bg-blue-700 hover:border-blue-700 transition-colors duration-300 text-nowrap flex justify-center items-center"
+        >
+          Contact Me
+        </span>
+      </Link>
 
       {/* Mobile Navbar */}
       <MobileNav>
