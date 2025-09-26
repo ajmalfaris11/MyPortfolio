@@ -39,20 +39,20 @@ const ServiceCard: React.FC<Service> = ({ title, description, icon: Icon }) => {
 
 export default function Services() {
   return (
-    <section className="w-full px-5 py-10 text-white z-10">
-      <div className="mx-auto max-w-5xl px-4 sm:px-6 text-center">
+    <section className="w-full px-4 sm:p-6 md:p-10 py-10 text-white z-10">
+      <div className="mx-auto max-w-5xl  text-center">
         <Animate3DDiv rotateDepth={5} translateDepth={5}>
           <h1 className="text-4xl  md:text-5xl lg:text-6xl font-semibold">
             My <span className="text-purple animate-shine">Services</span>
           </h1>
         </Animate3DDiv>
         <p className="relative z-10 mb-12 mt-5 text-neutral-400 max-w-3xl mx-auto">
-          I provide end-to-end web solutions—scalable web apps, intuitive UI/UX,
+          I deliver end-to-end web solutions—scalable apps, intuitive UI/UX,
           APIs, databases, SEO, and cloud deployment—to help startups grow
-          smarter and faster.
+          faster.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 px-4 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
           {services.map((service, idx) => (
             <ServiceCard key={idx} {...service} />
           ))}

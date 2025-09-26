@@ -11,7 +11,7 @@ const AchievementsSection = () => {
   const [hover, setHover] = useState(false);
 
   return (
-    <div className="flex flex-col items-center p-10 text-white z-10">
+    <div className="flex flex-col items-center p-4 sm:p-6 md:p-10 text-white z-10">
       <Animate3DDiv rotateDepth={10} translateDepth={10}>
         <h1 className="text-4xl text-center sm:text-6xl font-semibold">
           My <span className="text-purple animate-shine">Achievements</span>

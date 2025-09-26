@@ -47,7 +47,7 @@ export default function SkillsSection() {
 
   return (
     <div className="relative w-full flex flex-col justify-center items-center text-white overflow-hidden my-5">
-      <div className="flex flex-col md:flex-row w-full h-full px-10 justify-between items-center">
+      <div className="flex flex-col md:flex-row w-full h-full p-4 sm:p-6 md:p-10 justify-between items-center">
         {/* Left-side content */}
         <div className="flex-1 flex flex-col justify-center  md:items-start gap-6">
           <Animate3DDiv rotateDepth={10} translateDepth={10}>

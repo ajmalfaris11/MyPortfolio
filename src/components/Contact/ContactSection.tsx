@@ -52,7 +52,7 @@ export default function Contact() {
   return (
     <div className="w-full flex flex-col items-center justify-center relative overflow-hidden py-10 bg-transparent">
       {/* Content Wrapper */}
-      <div className="relative z-10 w-full max-w-xl px-6 py-8 text-center">
+      <div className="relative z-10 w-full max-w-xl p-4 sm:p-6 md:p-10 py-8 text-center">
         {/* Heading */}
         <Animate3DDiv rotateDepth={10} translateDepth={10}>
           <h1 className="text-5xl sm:text-6xl font-semibold">
@@ -170,7 +170,7 @@ export default function Contact() {
       </div>
 
       {/* Contact Info Section */}
-      <div className="flex flex-col md:flex-row justify-center gap-4 px-6 mt-10">
+      <div className="flex flex-col md:flex-row justify-center gap-4 mt-10">
         {/* Email */}
         <a
           href="mailto:ajmalfaris.me@gmail.com"
