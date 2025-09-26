@@ -115,9 +115,9 @@ export default function Page() {
         {/* Mobile menu popup */}
         <AnimatePresence>
           {menuOpen && (
-            <div className="absolute h-screen w-screen bg-black/50 backdrop-blur-sm">
+            <div className="absolute h-screen w-screen bg-black/80 backdrop-blur-sm">
               <motion.div
-                className="absolute bottom-0 left-0 w-full max-h-[80vh] overflow-hidden rounded-t-[50px] border-t-2 border-blue-600 bg-black from-neutral-900 to-black shadow-xl will-change-transform"
+                className="absolute bottom-0 left-0 w-full max-h-[80vh] overflow-hidden rounded-t-[50px] border-t-2 border-blue-600 bg-black "
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 exit={{ y: "100%" }}
@@ -136,11 +136,11 @@ export default function Page() {
                   className="sticky top-0 z-50 flex w-full cursor-grab justify-center rounded-t-full bg-black p-4 backdrop-blur-sm active:cursor-grabbing"
                   onPointerDown={(e) => controls.start(e)}
                 >
-                  <button className="h-1 w-24 rounded-full bg-blue-600 transition-colors" />
+                  <button className="h-1 w-24 rounded-full bg-blue-600" />
                 </div>
 
                 {/* Scrollable nav links */}
-                <div className="overflow-y-auto max-h-[calc(75vh-64px)] px-6 py-4">
+                <div className="overflow-y-auto max-h-[calc(75vh-64px)] px-2 py-4">
                   <nav className="flex flex-col gap-0 pb-20">
                     {navLinks.map((item, idx) => {
                       const active = pathname === item.link;
@@ -153,7 +153,7 @@ export default function Page() {
                         >
                           {/* Left Circle with Number */}
                           <div
-                            className={`flex items-center justify-center p-3 rounded-full text-xl font-medium border-2 border-blue-600 ${
+                            className={`flex items-center justify-center h-12 w-12 rounded-full text-lg font-medium border-1 border-blue-600 ${
                               active
                                 ? "bg-blue-600 text-black"
                                 : "bg-transparent text-blue-600 "
@@ -164,18 +164,24 @@ export default function Page() {
 
                           {/* Middle Text */}
                           <div
-                            className={`flex-1 text-center py-2 text-2xl font-medium tracking-wide rounded-full border-2 border-blue-600 ${
+                            className={`flex-1 h-12 flex text-2xl font-medium tracking-wide rounded-full border-1 border-blue-600 justify-center items-center ${
                               active
-                                ? "bg-blue-600 text-black"
-                                : "bg-transparent text-blue-600 "
+                                ? "bg-blue-600"
+                                : "bg-black"
                             }`}
                           >
-                            {item.name}
+                            <span className={`
+                              ${active ? "bg-gradient-to-r px-6 from-blue-600 via-black to-blue-600 text-transparent bg-clip-text"
+                                : "bg-gradient-to-r px-10 from-black via-blue-600 to-black text-transparent bg-clip-text "
+                            }
+                              `}>
+                              {item.name}
+                            </span>
                           </div>
 
                           {/* Right Circle with Arrow */}
                           <div
-                            className={`flex items-center justify-center p-2.5 rounded-full text-2xl font-medium border-2 border-blue-600 ${
+                            className={`flex items-center justify-center h-12 w-12 rounded-full text-2xl font-medium border-1 border-blue-600 ${
                               active
                                 ? "bg-blue-600 text-black"
                                 : "bg-transparent text-blue-600 "
