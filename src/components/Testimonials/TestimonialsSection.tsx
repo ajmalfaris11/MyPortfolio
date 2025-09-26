@@ -20,12 +20,12 @@ const Testimonials = () => {
 
       <div className="flex flex-col items-center ">
         <div className="rounded-md flex flex-col antialiased items-center justify-center relative overflow-hidden">
-          <InfiniteCards items={testimonials} direction="right" speed="slow" />
+          <InfiniteCards items={testimonials} direction="left" speed="slow" />
         </div>
       </div>
 
       <div className="flex flex-wrap items-center justify-center gap-4 md:gap-16">
-        <FlowCards direction="left" speed="slow">
+        <FlowCards direction="right" speed="slow">
           {companies.map((c, idx) => (
             <CompanyCardItem
               key={idx}
