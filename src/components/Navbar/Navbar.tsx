@@ -115,20 +115,22 @@ export default function Page() {
         {/* Mobile menu popup */}
         <AnimatePresence>
           {menuOpen && (
-            <div className="absolute h-screen w-screen bg-black/80 backdrop-blur-sm">
+            <div className="absolute h-screen w-screen bg-black/80 backdrop-blur-sm"
+            onClick={() => setMenuOpen(false)}>
               <motion.div
-                className="absolute bottom-0 left-0 w-full max-h-[80vh] overflow-hidden rounded-t-[50px] border-t-2 border-blue-600 bg-black "
-                initial={{ y: "100%" }}
+                className="absolute bottom-0 left-0 w-full max-h-[80vh] overflow-hidden rounded-t-[50px] border-t-2 border-blue-600 bg-black"
+                initial={false} 
                 animate={{ y: 0 }}
                 exit={{ y: "100%" }}
-                transition={{ type: "spring", stiffness: 200, damping: 25 }}
+                transition={{ type: "tween", duration: 0.5 }}
                 drag="y"
                 dragControls={controls}
                 dragListener={false}
-                dragElastic={0.2}
+                dragElastic={0} 
                 onDragEnd={(e, info) => {
-                  if (info.offset.y > 0 || info.velocity.y > 500)
+                  if (info.offset.y > 0 || info.velocity.y > 0) {
                     setMenuOpen(false);
+                  }
                 }}
               >
                 {/* Drag handle */}
@@ -165,16 +167,18 @@ export default function Page() {
                           {/* Middle Text */}
                           <div
                             className={`flex-1 h-12 flex text-2xl font-medium tracking-wide rounded-full border-1 border-blue-600 justify-center items-center ${
-                              active
-                                ? "bg-blue-600"
-                                : "bg-black"
+                              active ? "bg-blue-600" : "bg-black"
                             }`}
                           >
-                            <span className={`
-                              ${active ? "bg-gradient-to-r px-6 from-blue-600 via-black to-blue-600 text-transparent bg-clip-text"
-                                : "bg-gradient-to-r px-10 from-black via-blue-600 to-black text-transparent bg-clip-text "
-                            }
-                              `}>
+                            <span
+                              className={`
+                              ${
+                                active
+                                  ? "bg-gradient-to-r px-6 from-blue-600 via-black to-blue-600 text-transparent bg-clip-text"
+                                  : "bg-gradient-to-r px-10 from-black via-blue-600 to-black text-transparent bg-clip-text "
+                              }
+                              `}
+                            >
                               {item.name}
                             </span>
                           </div>
