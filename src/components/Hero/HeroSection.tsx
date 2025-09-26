@@ -5,14 +5,8 @@ import dynamic from "next/dynamic";
 import HeroText from "./HeroText";
 import HeroSocialIcons from "./HeroSocialIcons";
 import DownloadCVButton from "./DownloadCVButton";
+import {AnimatedHeroImage} from "@/components/Hero/AnimatedHeroImage"
 
-const AnimatedHeroImage = dynamic(
-  () =>
-    import("@/components/Hero/AnimatedHeroImage").then(
-      (mod) => mod.AnimatedHeroImage
-    ),
-  { ssr: false }
-);
 
 export default function Hero() {
   return (
