@@ -18,6 +18,7 @@ import {
 import { IconBrandGithub, IconBrandX, IconHome } from "@tabler/icons-react";
 import { SiLeetcode } from "react-icons/si";
 import { SlSocialLinkedin } from "react-icons/sl";
+import { FiArrowDownLeft, FiArrowUpRight } from "react-icons/fi";
 
 import {
   FaHome,
@@ -116,7 +117,7 @@ export default function Page() {
           {menuOpen && (
             <div className="absolute h-screen w-screen bg-black/50 backdrop-blur-sm">
               <motion.div
-                className="absolute bottom-0 left-0 w-full max-h-[75vh] overflow-hidden rounded-t-[50px] border-t-2 border-blue-600 bg-gradient-to-b from-neutral-900 to-black shadow-xl will-change-transform"
+                className="absolute bottom-0 left-0 w-full max-h-[80vh] overflow-hidden rounded-t-[50px] border-t-2 border-blue-600 bg-black from-neutral-900 to-black shadow-xl will-change-transform"
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 exit={{ y: "100%" }}
@@ -132,7 +133,7 @@ export default function Page() {
               >
                 {/* Drag handle */}
                 <div
-                  className="sticky top-0 z-50 flex w-full cursor-grab justify-center rounded-t-full bg-neutral-900 p-4 backdrop-blur-sm active:cursor-grabbing"
+                  className="sticky top-0 z-50 flex w-full cursor-grab justify-center rounded-t-full bg-black p-4 backdrop-blur-sm active:cursor-grabbing"
                   onPointerDown={(e) => controls.start(e)}
                 >
                   <button className="h-1 w-24 rounded-full bg-blue-600 transition-colors" />
@@ -140,22 +141,48 @@ export default function Page() {
 
                 {/* Scrollable nav links */}
                 <div className="overflow-y-auto max-h-[calc(75vh-64px)] px-6 py-4">
-                  <nav className="flex flex-col gap-5">
+                  <nav className="flex flex-col gap-0 pb-20">
                     {navLinks.map((item, idx) => {
                       const active = pathname === item.link;
+
                       return (
                         <Link
                           key={idx}
                           href={item.link}
-                          onClick={() => setMenuOpen(false)}
-                          className={`flex items-center justify-between border-b py-2 text-lg font-medium transition-colors ${
-                            active
-                              ? "border-blue-700 font-semibold text-blue-700"
-                              : "border-neutral-800 text-slate-300"
-                          }`}
+                          className="flex items-center justify-between rounded-full overflow-hidden gap-0"
                         >
-                          {item.name}
-                          <span>{item.icon}</span>
+                          {/* Left Circle with Number */}
+                          <div
+                            className={`flex items-center justify-center p-3 rounded-full text-xl font-medium border-2 border-blue-600 ${
+                              active
+                                ? "bg-blue-600 text-black"
+                                : "bg-transparent text-blue-600 "
+                            }`}
+                          >
+                            {item.icon}
+                          </div>
+
+                          {/* Middle Text */}
+                          <div
+                            className={`flex-1 text-center py-2 text-2xl font-medium tracking-wide rounded-full border-2 border-blue-600 ${
+                              active
+                                ? "bg-blue-600 text-black"
+                                : "bg-transparent text-blue-600 "
+                            }`}
+                          >
+                            {item.name}
+                          </div>
+
+                          {/* Right Circle with Arrow */}
+                          <div
+                            className={`flex items-center justify-center p-2.5 rounded-full text-2xl font-medium border-2 border-blue-600 ${
+                              active
+                                ? "bg-blue-600 text-black"
+                                : "bg-transparent text-blue-600 "
+                            }`}
+                          >
+                            {active ? <FiArrowDownLeft /> : <FiArrowUpRight />}
+                          </div>
                         </Link>
                       );
                     })}
