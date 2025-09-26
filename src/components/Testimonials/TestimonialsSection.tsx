@@ -20,7 +20,7 @@ const Testimonials = () => {
 
       <div className="flex flex-col items-center ">
         <div className="rounded-md flex flex-col antialiased items-center justify-center relative overflow-hidden">
-          <InfiniteCards items={testimonials} direction="left" speed="slow" />
+          <InfiniteCards items={testimonials} direction="left" speed={80} />
         </div>
       </div>
 
