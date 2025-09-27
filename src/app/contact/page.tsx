@@ -113,7 +113,7 @@ export default function ContactPage() {
       </div>
 
       {/* Contact Section */}
-      <section className="w-full flex flex-col items-center gap-10 px-6 py-16">
+      <section className="w-full flex flex-col items-center gap-10 sm:px-6 py-16">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
