@@ -180,7 +180,7 @@ export default function AboutPage() {
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
         variants={fadeUp}
-        className="max-w-5xl mx-auto px-6 text-center pt-10 sm:pt-28 pb-20"
+        className="max-w-5xl mx-auto px-6 text-center pt-10 sm:pt-28 pb-10 sm:pb-20"
       >
         <div className="flex flex-col md:flex-row items-center gap-10">
           <img
@@ -189,8 +189,10 @@ export default function AboutPage() {
             className="w-72 shadow-lg"
           />
           <div className="text-center sm:text-left">
-            <h1 className="text-6xl font-bold bg-gradient-to-r from-blue-400 via-blue-600 to-blue-700 bg-clip-text text-transparent text-nowrap9037
-            ">
+            <h1
+              className="text-6xl font-bold bg-gradient-to-r from-blue-400 via-blue-600 to-blue-700 bg-clip-text text-transparent text-nowrap
+            "
+            >
               Ajmal Faris
             </h1>
             <p className="mt-4 text-base md:text-lg text-neutral-300 leading-relaxed">
@@ -213,35 +215,58 @@ export default function AboutPage() {
       </motion.div>
 
       {/* Ribbon */}
-      <motion.nav
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={containerVariant}
-        aria-label="expertise ribbon"
-        className="w-full bg-blue-600 text-black font-semibold py-3 flex gap-6 justify-center items-center overflow-x-auto px-4"
-      >
-        {["Web Design", "App Development", "Dashboards", "UI/UX", "APIs"].map(
-          (item, idx) => (
-            <motion.span
-              key={item}
-              variants={ribbonItemVariant}
-              className="flex items-center gap-2 whitespace-nowrap text-sm md:text-base"
-            >
-              {item} <BiSolidQuoteSingleRight />
-            </motion.span>
-          )
-        )}
-      </motion.nav>
+      <div className="w-full overflow-hidden bg-blue-600 py-2">
+        <motion.div
+          className="flex gap-6"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{
+            x: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 10,
+              ease: "linear",
+            },
+          }}
+        >
+          {[
+            "Web Design",
+            "App Development",
+            "Dashboards",
+            "UI/UX",
+            "APIs",
+            "Web Design",
+          ]
+            .concat([
+              "Web Design",
+              "App Development",
+              "Dashboards",
+              "UI/UX",
+              "APIs",
+              "Web Design",
+              "App Development",
+              "Dashboards",
+              "UI/UX",
+              "APIs",
+            ]) // duplicate for seamless loop
+            .map((item, idx) => (
+              <div
+                key={idx}
+                className="flex items-center gap-2 whitespace-nowrap text-sm md:text-base font-semibold text-black"
+              >
+                {item} <BiSolidQuoteSingleRight />
+              </div>
+            ))}
+        </motion.div>
+      </div>
 
       {/* TIMELINE */}
       <section
-        className="max-w-6xl mx-auto py-20 px-6"
+        className="max-w-6xl mx-auto py-10 sm:py-20 px-6"
         aria-labelledby="timeline-heading"
       >
         <motion.h2
           id="timeline-heading"
-          className="text-2xl md:text-3xl font-bold text-center mb-8"
+          className="text-4xl md:text-5xl font-bold text-center"
           variants={fadeUp}
           initial={prefersReduced ? "show" : "hidden"}
           whileInView="show"
