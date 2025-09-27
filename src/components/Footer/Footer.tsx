@@ -9,7 +9,7 @@ const linkStyle =
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-blue-200/50 z-10 w-full border-t border-blue-700/50">
+    <footer className="text-blue-200/50 z-10 w-full ">
       <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col justify-center items-center">
         {/* Logo + Name */}
         <Animate3DDiv
