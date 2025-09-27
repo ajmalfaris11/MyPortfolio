@@ -9,48 +9,58 @@ import Footer from "@/components/Footer/Footer";
 import Navbar from "@/components/Navbar/Navbar";
 import { BiSolidQuoteSingleRight } from "react-icons/bi";
 import ScrollProgress from "@/components/Common/ScrollProgress";
+import { GrContact } from "react-icons/gr";
 
 export default function ContactPage() {
   return (
-    <main className="h-full relative w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md scroll-smooth">
+    <main className="relative w-full h-full bg-black flex flex-col items-center justify-center overflow-x-hidden overflow-y-auto scroll-smooth">
+      {/* Custom Elements */}
       <CustomCursor />
       <ScrollProgress />
-      <div className="w-full h-full absolute inset-0">
+
+      {/* Background Particles */}
+      <div className="absolute inset-0 w-full h-full">
         <SparklesCore
-          id="tsparticlesfullpage"
+          id="tsparticles-contact"
           background="transparent"
           minSize={0.6}
           maxSize={1.4}
           particleDensity={100}
-          className="w-full h-full"
           particleColor="#2563eb"
+          className="w-full h-full"
         />
       </div>
+      <Navbar />
 
       {/* Hero Section */}
-      <section className="w-full pt-20 flex flex-col justify-center items-center text-center px-6">
-        <Navbar />
-        <span className="relative text-sm text-blue-600 tracking-widest border border-blue-700/50 p-2 px-4 mb-5">
-          My Contacts
-          <span className="w-3 h-2 bg-blue-600 absolute -top-1 -left-1.5"></span>
-          <span className="w-3 h-2 bg-blue-600 absolute -top-1 -right-1.5"></span>
-          <span className="w-3 h-2 bg-blue-600 absolute -bottom-1 -left-1.5"></span>
-          <span className="w-3 h-2 bg-blue-600 absolute -bottom-1 -right-1.5"></span>
-        </span>
+      <section className="relative w-full h-screen pt-24 pb-16 flex flex-col items-center justify-center text-center px-6">
+        <motion.span
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          className="relative text-xs sm:text-sm md:text-base text-blue-600 tracking-widest border border-blue-700/50 px-6 py-2 mb-6 flex items-center gap-2 rounded-lg"
+        >
+          <GrContact className="h-4 w-4" /> My Contacts
+          <span className="absolute w-2 h-2 bg-blue-600 -top-1 -left-1"></span>
+          <span className="absolute w-2 h-2 bg-blue-600 -top-1 -right-1"></span>
+          <span className="absolute w-2 h-2 bg-blue-600 -bottom-1 -left-1"></span>
+          <span className="absolute w-2 h-2 bg-blue-600 -bottom-1 -right-1"></span>
+        </motion.span>
+
         <motion.h1
           initial={{ opacity: 0, y: -40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-5xl md:text-6xl font-bold"
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white"
         >
           Get in <span className="text-blue-500">Touch</span>
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          className="text-gray-400 mt-4 max-w-xl"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
+          className="text-gray-400 mt-4 max-w-xl text-sm sm:text-base"
         >
           Whether it’s a collaboration, freelance work, or just saying hi —
           let’s connect and make things happen.
@@ -58,24 +68,81 @@ export default function ContactPage() {
       </section>
 
       {/* Ribbon */}
-      <div className="w-full bg-blue-600/10 relative z-10 mt-10">
-        <div className="max-w-6xl mx-auto py-3 overflow-hidden">
-          <div className="w-full bg-blue-600 text-black font-semibold py-2 inline-flex gap-8 justify-center items-center text-lg">
-            <span>Web Design</span> <BiSolidQuoteSingleRight />
-            <span>App Development</span> <BiSolidQuoteSingleRight />
-            <span>Dashboards</span> <BiSolidQuoteSingleRight />
-            <span>Wireframes</span> <BiSolidQuoteSingleRight />
-            <span>UI/UX</span> <BiSolidQuoteSingleRight />
-            <span>APIs</span>
-          </div>
-        </div>
+      <div className="w-full overflow-hidden bg-blue-600 py-2 top-[80vh] absolute sm:top-[90vh] left-0">
+        <motion.div
+          className="flex gap-6"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{
+            x: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 10,
+              ease: "linear",
+            },
+          }}
+        >
+          {[
+            "Web Design",
+            "App Development",
+            "Dashboards",
+            "UI/UX",
+            "APIs",
+            "Web Design",
+          ]
+            .concat([
+              "Web Design",
+              "App Development",
+              "Dashboards",
+              "UI/UX",
+              "APIs",
+              "Web Design",
+              "App Development",
+              "Dashboards",
+              "UI/UX",
+              "APIs",
+            ]) // duplicate for seamless loop
+            .map((item, idx) => (
+              <div
+                key={idx}
+                className="flex items-center gap-2 whitespace-nowrap text-sm md:text-base font-semibold text-black"
+              >
+                {item} <BiSolidQuoteSingleRight />
+              </div>
+            ))}
+        </motion.div>
       </div>
 
-      {/* Contact Form Section */}
-      <section className="w-full flex flex-col justify-center items-center">
-        <Contact />
-        <ContactCard />
-        <Footer />
+      {/* Contact Section */}
+      <section className="w-full flex flex-col items-center gap-10 px-6 py-16">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="w-full max-w-4xl"
+        >
+          <Contact />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.7, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="w-full max-w-4xl"
+        >
+          <ContactCard />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.7 }}
+          viewport={{ once: true }}
+          className="w-full"
+        >
+          <Footer />
+        </motion.div>
       </section>
     </main>
   );
