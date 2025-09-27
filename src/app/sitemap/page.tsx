@@ -158,7 +158,7 @@ export default function SiteMapPage() {
                         {link.icon}
                       </span>
                       <div className="flex flex-col mr-10">
-                        <span className="text-gray-200 text-[18px] sm:text-[12px] truncate">
+                        <span className="text-blue-600 text-[16px]">
                           {link.title}
                         </span>
                       </div>
