@@ -50,11 +50,13 @@ export default function Footer() {
         </nav>
 
         {/* Name Big Gradient */}
-        <Animate3DDiv rotateDepth={2} translateDepth={2} className="max-sm:mt-6">
+        <div className="flex w-full overflow-hidden justify-center items-center">
+          <Animate3DDiv rotateDepth={2} translateDepth={2} className="max-sm:mt-6">
           <h1 className="text-[15vw] font-extrabold bg-gradient-to-r from-black via-blue-700 to-blue-black bg-clip-text px-50 text-transparent animate-gradient-x whitespace-nowrap">
             Ajmal Faris
           </h1>
         </Animate3DDiv>
+        </div>
 
         {/* Social Links */}
         <FooterFloatingDock />
