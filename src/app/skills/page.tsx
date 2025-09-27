@@ -3,10 +3,12 @@
 import CustomCursor from "@/components/Common/CustomCursor";
 import { SparklesCore } from "@/components/ui/effects/sparkles";
 import Navbar from "@/components/Navbar/Navbar";
-import { motion } from "framer-motion";
+import { motion, useAnimation, useInView, Variants } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 import SkillCard from "@/components/Skills/SkillCard";
 import Footer from "@/components/Footer/Footer";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { BiSolidQuoteSingleRight } from "react-icons/bi";
 
 import {
   FaHtml5,
@@ -65,7 +67,7 @@ const sectionData: Section[] = [
   },
   {
     id: "languages",
-    title: "Languages",
+    title: "Programming Languages",
     skills: [
       { icon: <SiTypescript className="text-blue-500" />, label: "TypeScript" },
       { icon: <SiPython className="text-yellow-300" />, label: "Python" },
@@ -89,16 +91,34 @@ const sectionData: Section[] = [
   },
 ];
 
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 50 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { staggerChildren: 0.15, duration: 0.6 },
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 20, scale: 0.85 },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { type: "spring", stiffness: 120 },
+  },
+};
+
 export default function SkillsPage() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [activeSection, setActiveSection] = useState<string>("hero");
   const sectionRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const handleClick = (id: string) => {
     sectionRefs.current[id]?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // Track active section on scroll
   useEffect(() => {
     const handleScroll = () => {
       let found = false;
@@ -116,7 +136,7 @@ export default function SkillsPage() {
           }
         }
       }
-      if (!found) setActiveSection("hero"); // default to hero when no section is active
+      if (!found) setActiveSection("hero");
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -124,108 +144,233 @@ export default function SkillsPage() {
   }, []);
 
   return (
-    <main className="h-full relative w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md scroll-smooth">
+    <main className="h-full relative w-full bg-black flex flex-col items-center justify-center overflow-hidden scroll-smooth">
       <CustomCursor />
       <ScrollProgress />
-      <div className="w-full h-full absolute inset-0">
+      {/* Full-page background sparkles */}
+      <div className="fixed inset-0 w-screen h-screen pointer-events-none z-0">
         <SparklesCore
-          id="tsparticlesfullpage"
+          id="tsparticles-fullpage"
           background="transparent"
           minSize={0.6}
-          maxSize={1.4}
-          particleDensity={100}
+          maxSize={1.2}
+          particleDensity={60}
           className="w-full h-full"
           particleColor="#2563eb"
         />
       </div>
+      <Navbar />
 
-      {/* Hero Section */}
-      <section
-        id="hero"
-        className="w-full flex flex-col items-center justify-center h-screen text-center px-6 bg-gradient-to-b from-black via-blue-900/40 to-black"
+      {/* Header Section */}
+      <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={fadeUp}
+        ref={(el) => {
+          sectionRefs.current["hero"] = el;
+        }}
+        className="max-w-5xl mx-auto px-6 text-center h-screen flex justify-center flex-col items-center"
       >
-        <Navbar />
+         <span className="relative text-sm text-blue-600 tracking-widest border border-blue-700/50 p-2 px-4 mb-10">
+          tech & non-tech Skills
+          <span className="w-3 h-2 bg-blue-600 absolute -top-1 -left-1.5"></span>
+          <span className="w-3 h-2 bg-blue-600 absolute -top-1 -right-1.5"></span>
+          <span className="w-3 h-2 bg-blue-600 absolute -bottom-1 -left-1.5"></span>
+          <span className="w-3 h-2 bg-blue-600 absolute -bottom-1 -right-1.5"></span>
+        </span>
 
-        <motion.h1
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-5xl md:text-6xl font-extrabold text-blue-500 drop-shadow-lg"
-        >
-          My Skillset
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 1 }}
-          className="mt-4 text-lg md:text-xl max-w-2xl text-gray-300"
-        >
-          A showcase of my abilities across frontend, backend, programming
-          languages, and more.
-        </motion.p>
-      </section>
+        <div className="flex flex-col md:flex-row items-center gap-10 md:gap-20">
+          <div className="text-center sm:text-center">
+            <h1 className="text-5xl sm:text-6xl font-bold bg-gradient-to-r from-blue-400 via-blue-600 to-blue-700 bg-clip-text text-transparent">
+              <span className="text-white">Explore My</span> Skills
+            </h1>
+            <p className="mt-4 text-base md:text-lg text-neutral-300 leading-relaxed max-w-xl">
+              A showcase of my abilities across frontend, backend, programming
+              languages, and essential tools. Each skill is animated when it
+              comes into view for a sleek and interactive experience.
+            </p>
+          </div>
+        </div>
+      </motion.div>
 
-      {/* Sticky Left Section Title (hidden in hero) */}
+      {/* Ribbon */}
+      <div className="w-full overflow-hidden bg-blue-600 py-2 top-[80vh] absolute sm:top-[90vh] left-0">
+        <motion.div
+          className="flex gap-6"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{
+            x: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 10,
+              ease: "linear",
+            },
+          }}
+        >
+          {[
+            "Web Design",
+            "App Development",
+            "Dashboards",
+            "UI/UX",
+            "APIs",
+            "Web Design",
+          ]
+            .concat([
+              "Web Design",
+              "App Development",
+              "Dashboards",
+              "UI/UX",
+              "APIs",
+              "Web Design",
+              "App Development",
+              "Dashboards",
+              "UI/UX",
+              "APIs",
+            ]) // duplicate for seamless loop
+            .map((item, idx) => (
+              <div
+                key={idx}
+                className="flex items-center gap-2 whitespace-nowrap text-sm md:text-base font-semibold text-black"
+              >
+                {item} <BiSolidQuoteSingleRight />
+              </div>
+            ))}
+        </motion.div>
+      </div>
+
+      {/* Mobile Bottom Nav */}
       {activeSection !== "hero" && (
-        <div className="fixed left-0 top-0 z-20 h-[100vh] w-[10%] flex justify-center items-center">
-          <h2 className="text-3xl font-bold text-blue-400 tracking-wide rotate-[-90deg] text-nowrap transition-opacity duration-500">
+        <div className="fixed left-0 bottom-5 w-full sm:hidden bg-black/80 flex items-center z-50 px-2">
+          {/* Up = previous */}
+          <button
+            onClick={() => {
+              const currentIndex = sectionData.findIndex(
+                (s) => s.id === activeSection
+              );
+              if (currentIndex > 0) {
+                const prevSection = sectionData[currentIndex - 1];
+                sectionRefs.current[prevSection.id]?.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }
+            }}
+            className="w-12 h-12 flex justify-center items-center rounded-full border border-blue-600 text-blue-600"
+          >
+            <IoIosArrowUp size={22} />
+          </button>
+
+          {/* Title */}
+          <div className="flex-1 h-12 text-center border-2 border-blue-600 rounded-full flex justify-center items-center mx-2">
+            <h2 className="text-lg font-bold text-blue-600 tracking-wide truncate">
+              {sectionData.find((s) => s.id === activeSection)?.title}
+            </h2>
+          </div>
+
+          {/* Down = next */}
+          <button
+            onClick={() => {
+              const currentIndex = sectionData.findIndex(
+                (s) => s.id === activeSection
+              );
+              if (currentIndex < sectionData.length - 1) {
+                const nextSection = sectionData[currentIndex + 1];
+                sectionRefs.current[nextSection.id]?.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }
+            }}
+            className="w-12 h-12 flex justify-center items-center rounded-full border border-blue-600 text-blue-600"
+          >
+            <IoIosArrowDown size={22} />
+          </button>
+        </div>
+      )}
+
+      {/* Left Section Title (desktop) */}
+      {activeSection !== "hero" && (
+        <div className="hidden fixed left-0 top-0 z-20 h-[100vh] w-[10%] sm:flex justify-center items-center">
+          <h2 className="text-3xl font-bold text-blue-600 tracking-wide rotate-[-90deg] text-nowrap transition-opacity duration-500">
             {sectionData.find((s) => s.id === activeSection)?.title}
           </h2>
         </div>
       )}
 
-      {/* Side Navigation */}
-      <div className="fixed right-0  flex-col gap-4  top-0 z-20 h-[100vh] w-[10%] flex justify-center items-center">
-        {sectionData.map((s, idx) => (
-          <span
-            key={s.id}
-            className={`relative w-1 h-10 rounded-full cursor-pointer transition-transform ${
-              activeSection === s.id
-                ? "bg-blue-500 scale-125"
-                : "bg-blue-600 hover:scale-110"
-            }`}
-            onClick={() => handleClick(s.id)}
-            onMouseEnter={() => setHoveredIndex(idx)}
-            onMouseLeave={() => setHoveredIndex(null)}
-          >
+      {/* Right Dot Nav (desktop) */}
+      {activeSection !== "hero" && (
+        <div className="fixed right-0 flex-col gap-4 top-0 z-20 h-[100vh] w-[10%] hidden sm:flex justify-center items-center">
+          {sectionData.map((s, idx) => (
             <span
-              className={`absolute right-6 bg-black text-white text-sm p-1 rounded-full border border-blue-600 px-4 whitespace-nowrap transition-all ${
-                hoveredIndex === idx
-                  ? "opacity-100"
-                  : "opacity-0 pointer-events-none"
+              key={s.id}
+              className={`relative w-1 h-10 rounded-full cursor-pointer transition-transform ${
+                activeSection === s.id
+                  ? "bg-blue-500 scale-125"
+                  : "bg-blue-600 hover:scale-110"
               }`}
+              onClick={() => handleClick(s.id)}
+              onMouseEnter={() => setHoveredIndex(idx)}
+              onMouseLeave={() => setHoveredIndex(null)}
             >
-              {s.title}
+              <span
+                className={`absolute right-6 bg-black text-white text-sm p-1 rounded-full border-2 border-blue-600 px-4 whitespace-nowrap transition-all ${
+                  hoveredIndex === idx
+                    ? "opacity-100"
+                    : "opacity-0 pointer-events-none"
+                }`}
+              >
+                {s.title}
+              </span>
             </span>
-          </span>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
 
       {/* Skills Sections */}
-      <section className="px-8 max-w-6xl mx-auto z-10 relative">
-        {sectionData.map((section) => (
-          <div
-            key={section.id}
-            id={section.id}
-            ref={(el) => {
-              sectionRefs.current[section.id] = el;
-            }}
-            className="flex justify-start items-center min-h-screen"
-          >
-            <div className="flex justify-center items-center w-[90%] mx-auto">
-              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-                {section.skills.map((skill) => (
-                  <SkillCard
+      <section className="px-4 md:px-8 max-w-6xl mx-auto z-10 relative flex flex-col">
+        {sectionData.map((section) => {
+          const ref = useRef<HTMLDivElement | null>(null);
+          const inView = useInView(ref, { once: true, margin: "-100px" });
+          const controls = useAnimation();
+
+          useEffect(() => {
+            if (inView) controls.start("show");
+          }, [inView, controls]);
+
+          return (
+            <motion.div
+              key={section.id}
+              id={section.id}
+              ref={(el) => {
+                sectionRefs.current[section.id] = el;
+                ref.current = el;
+              }}
+              initial="hidden"
+              animate={controls}
+              variants={fadeUp}
+              className="flex flex-col gap-10 h-screen py-10 justify-center"
+            >
+              <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 md:gap-10">
+                {section.skills.map((skill, i) => (
+                  <motion.div
                     key={skill.label}
-                    icon={skill.icon}
-                    label={skill.label}
-                  />
+                    custom={i}
+                    initial="hidden"
+                    animate={controls}
+                    variants={cardVariants}
+                  >
+                    <SkillCard
+                      key={skill.label}
+                      icon={skill.icon}
+                      label={skill.label}
+                    />
+                  </motion.div>
                 ))}
               </div>
-            </div>
-          </div>
-        ))}
+            </motion.div>
+          );
+        })}
       </section>
+
       <Footer />
     </main>
   );
