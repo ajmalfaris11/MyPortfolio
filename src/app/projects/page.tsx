@@ -9,7 +9,7 @@ import ScrollProgress from "@/components/Common/ScrollProgress";
 
 function page() {
   return (
-    <main className="h-full relative w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md scroll-smooth">
+    <main className="h-full relative w-[100vw] bg-black flex flex-col items-center justify-center  rounded-md scroll-smooth">
       <div className="w-full h-full absolute inset-0">
         <SparklesCore
           id="tsparticlesfullpage"
@@ -24,10 +24,8 @@ function page() {
       <ScrollProgress />
       <CustomCursor />
       <Navbar />
-      <section className="p-10">
         <Header />
       <Projects />
-      </section>
       <Footer />
     </main>
   );
