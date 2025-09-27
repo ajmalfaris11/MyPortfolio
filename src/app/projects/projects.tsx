@@ -6,11 +6,11 @@ import ProjectCard from "@/components/Projects/ProjectCard";
 import Controls from "@/components/Projects/Controls";
 import EmptyState from "./EmptyState";
 import TagRail from "./TagRail";
+import { motion } from "framer-motion";
 
 // ---------------------------------------------
 // Types
 // ---------------------------------------------
-
 type Complexity = "beginner" | "intermediate" | "advanced" | "expert";
 
 export interface Project {
@@ -30,7 +30,6 @@ export interface Project {
 // ---------------------------------------------
 // Constants
 // ---------------------------------------------
-
 const ALL_TECH = [...new Set(projects.flatMap((p) => p.tech))].sort();
 const ALL_TAGS = [...new Set(projects.flatMap((p) => p.tags))].sort();
 
@@ -44,30 +43,26 @@ const COMPLEXITY_ORDER: Record<Complexity, number> = {
 // ---------------------------------------------
 // Component
 // ---------------------------------------------
-
 export default function ProjectsPage() {
   const [query, setQuery] = useState("");
   const [selectedTech, setSelectedTech] = useState<string[]>([]);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [sort, setSort] = useState<
-    "featured" | "stars" | "recent" | "complexity"
-  >("featured");
+  const [sort, setSort] = useState<"featured" | "stars" | "recent" | "complexity">(
+    "featured"
+  );
   const [view, setView] = useState<"grid" | "list">("grid");
 
-  // Reset filters (memoized to avoid re-renders)
   const resetFilters = useCallback(() => {
     setQuery("");
     setSelectedTech([]);
     setSelectedTags([]);
   }, []);
 
-  // Keyboard shortcut for quick search focus
+  // Keyboard shortcut for search focus
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.key === "/") {
-        const el = document.getElementById(
-          "project-search"
-        ) as HTMLInputElement | null;
+        const el = document.getElementById("project-search") as HTMLInputElement | null;
         if (el) {
           e.preventDefault();
           el.focus();
@@ -82,7 +77,6 @@ export default function ProjectsPage() {
   const filteredProjects = useMemo(() => {
     let out = [...projects];
 
-    // Apply query filter
     if (query.trim()) {
       const q = query.toLowerCase();
       out = out.filter((p) =>
@@ -92,17 +86,14 @@ export default function ProjectsPage() {
       );
     }
 
-    // Apply tech filter
     if (selectedTech.length) {
       out = out.filter((p) => selectedTech.every((t) => p.tech.includes(t)));
     }
 
-    // Apply tags filter
     if (selectedTags.length) {
       out = out.filter((p) => selectedTags.every((t) => p.tags.includes(t)));
     }
 
-    // Apply sorting
     switch (sort) {
       case "stars":
         out.sort((a, b) => b.stars - a.stars);
@@ -117,21 +108,18 @@ export default function ProjectsPage() {
             COMPLEXITY_ORDER[a.complexity as Complexity]
         );
         break;
-      // "featured" keeps default order
+      // featured keeps original order
     }
 
     return out;
   }, [query, selectedTech, selectedTags, sort]);
 
-  // ---------------------------------------------
-  // Render
-  // ---------------------------------------------
-
   return (
-    <div className="min-h-screen z-10">
-      <section className="mx-auto w-full max-w-7xl">
-        {/* Filters Section */}
-        <div className="mt-4 grid grid-cols-12 gap-2 sm:gap-4 border-2 border-blue-600 bg-black overflow-hidden rounded-2xl py-2 items-center">
+    <div className="min-h-screen overflow-hidden w-[100vw]">
+      <section className="mx-auto w-full max-w-7xl flex justify-center items-center flex-col">
+        {/* Filters Section      */}
+        <div className="sticky top-4 z-20 mt-4 w-[98vw] grid grid-cols-12 gap-2 sm:gap-4 border-2 border-blue-600 bg-black overflow-visible rounded-2xl py-2 items-center">
+          {/* Controls Section */}
           <div className="col-span-10 md:col-span-5">
             <Controls
               query={query}
@@ -145,21 +133,27 @@ export default function ProjectsPage() {
               onReset={resetFilters}
             />
           </div>
+
+          {/* Desktop TagRail */}
           <div className="hidden md:block md:col-span-6">
             <TagRail
               tags={ALL_TAGS}
               selectedTags={selectedTags}
-              onToggle={(tag: string) =>
-                setSelectedTags((prev) =>
-                  prev.includes(tag)
-                    ? prev.filter((t) => t !== tag)
-                    : [...prev, tag]
-                )
-              }
+              onToggle={React.useCallback(
+                (tag: string) =>
+                  setSelectedTags((prev) =>
+                    prev.includes(tag)
+                      ? prev.filter((t) => t !== tag)
+                      : [...prev, tag]
+                  ),
+                []
+              )}
               onClear={resetFilters}
             />
           </div>
-          <div className=" right-0 h-full flex justify-center items-center px-4 rounded-l-full bg-blue-600 col-span-2 md:col-span-1">
+
+          {/* Reset Button */}
+          <div className="right-0 h-full flex justify-center items-center px-4 rounded-l-full bg-blue-600 col-span-2 md:col-span-1">
             <button
               onClick={resetFilters}
               className="text-sm text-black flex justify-center items-center gap-2"
@@ -167,17 +161,21 @@ export default function ProjectsPage() {
               Reset
             </button>
           </div>
+
+          {/* Mobile TagRail */}
           <div className="w-full flex md:hidden col-span-12 px-2">
             <TagRail
               tags={ALL_TAGS}
               selectedTags={selectedTags}
-              onToggle={(tag: string) =>
-                setSelectedTags((prev) =>
-                  prev.includes(tag)
-                    ? prev.filter((t) => t !== tag)
-                    : [...prev, tag]
-                )
-              }
+              onToggle={React.useCallback(
+                (tag: string) =>
+                  setSelectedTags((prev) =>
+                    prev.includes(tag)
+                      ? prev.filter((t) => t !== tag)
+                      : [...prev, tag]
+                  ),
+                []
+              )}
               onClear={resetFilters}
             />
           </div>
@@ -185,11 +183,32 @@ export default function ProjectsPage() {
 
         {/* Projects Section */}
         {filteredProjects.length > 0 ? (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+          <motion.div
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8 z-10"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: {},
+              visible: {
+                transition: {
+                  staggerChildren: 0.1,
+                },
+              },
+            }}
+          >
             {filteredProjects.map((item) => (
-              <ProjectCard key={item.id} project={item} />
+              <motion.div
+                key={item.id}
+                className="w-full"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              >
+                <ProjectCard project={item} />
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         ) : (
           <EmptyState onReset={resetFilters} />
         )}
