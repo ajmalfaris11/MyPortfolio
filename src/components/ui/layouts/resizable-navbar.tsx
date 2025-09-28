@@ -4,7 +4,8 @@ import { cn } from "@/lib/utils";
 import { IconMenu, IconX } from "@tabler/icons-react";
 import { motion, AnimatePresence } from "motion/react";
 import React, { useRef, useState, useEffect } from "react";
-
+import { FiArrowUpRight } from "react-icons/fi";
+import { HiMap } from "react-icons/hi";
 // Types
 interface NavbarProps {
   children: React.ReactNode;
@@ -105,7 +106,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
     <div
       onMouseLeave={() => setHovered(null)}
       className={cn(
-        "absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-2 text-sm font-medium lg:flex",
+        "absolute inset-0 hidden flex-1 flex-row items-center justify-center text-sm font-medium lg:flex",
         className
       )}
     >
@@ -115,17 +116,27 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
           onMouseEnter={() => !isMobile && setHovered(idx)}
           onClick={onItemClick}
           href={item.link}
-          className="relative px-4 py-2 text-white hover:text-blue-700"
+          className="relative px-6 py-2 text-white hover:text-blue-700 "
         >
           {!isMobile && hovered === idx && (
             <motion.div
               layoutId="hovered"
-              className="absolute inset-0 h-full w-full rounded-full bg-blue-900/30 backdrop-blur-2xl"
+              className="absolute inset-0 h-full w-full rounded-full border-[1.5px]  backdrop-blur-2xl"
             />
           )}
           <span className="relative z-20">{item.name}</span>
         </a>
       ))}
+      <a
+        href="/sitemap"
+        className="relative py-2 px-6 text-white hover:text-blue-700"
+      >
+        <span className="relative z-20 flex items-center justify-center">
+          <HiMap className="rotate-90" />
+          ite Map
+          <FiArrowUpRight className="ml-1" />
+        </span>
+      </a>
     </div>
   );
 };
