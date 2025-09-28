@@ -9,6 +9,7 @@ import SkillCard from "@/components/Skills/SkillCard";
 import Footer from "@/components/Footer/Footer";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { BiSolidQuoteSingleRight } from "react-icons/bi";
+import { GrTechnology } from "react-icons/gr";
 
 import {
   FaHtml5,
@@ -170,10 +171,10 @@ export default function SkillsPage() {
         ref={(el) => {
           sectionRefs.current["hero"] = el;
         }}
-        className="max-w-5xl mx-auto px-6 text-center h-screen flex justify-center flex-col items-center"
+        className="relative w-full text-center h-screen flex justify-center flex-col items-center"
       >
-         <span className="relative text-sm text-blue-600 tracking-widest border border-blue-700/50 p-2 px-4 mb-10">
-          tech & non-tech Skills
+        <span className="absolute top-30 sm:top-24 text-sm text-blue-600 tracking-widest border border-blue-700/50 p-2 px-4 mb-10 flex items-center gap-2">
+          <GrTechnology /> tech & non-tech Skills
           <span className="w-3 h-2 bg-blue-600 absolute -top-1 -left-1.5"></span>
           <span className="w-3 h-2 bg-blue-600 absolute -top-1 -right-1.5"></span>
           <span className="w-3 h-2 bg-blue-600 absolute -bottom-1 -left-1.5"></span>
@@ -185,59 +186,59 @@ export default function SkillsPage() {
             <h1 className="text-5xl sm:text-6xl font-bold bg-gradient-to-r from-blue-400 via-blue-600 to-blue-700 bg-clip-text text-transparent">
               <span className="text-white">Explore My</span> Skills
             </h1>
-            <p className="mt-4 text-base md:text-lg text-neutral-300 leading-relaxed max-w-xl">
+            <p className="px-4 mt-4 text-base md:text-lg text-neutral-300 leading-relaxed max-w-xl">
               A showcase of my abilities across frontend, backend, programming
               languages, and essential tools. Each skill is animated when it
               comes into view for a sleek and interactive experience.
             </p>
           </div>
         </div>
-      </motion.div>
 
-      {/* Ribbon */}
-      <div className="w-full overflow-hidden bg-blue-600 py-2 top-[80vh] absolute sm:top-[90vh] left-0">
-        <motion.div
-          className="flex gap-6"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{
-            x: {
-              repeat: Infinity,
-              repeatType: "loop",
-              duration: 10,
-              ease: "linear",
-            },
-          }}
-        >
-          {[
-            "Web Design",
-            "App Development",
-            "Dashboards",
-            "UI/UX",
-            "APIs",
-            "Web Design",
-          ]
-            .concat([
+        {/* Ribbon */}
+        <div className="w-full overflow-hidden bg-blue-600 py-2 bottom-20 sm:bottom-10 absolute left-0">
+          <motion.div
+            className="flex gap-6"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{
+              x: {
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 10,
+                ease: "linear",
+              },
+            }}
+          >
+            {[
               "Web Design",
               "App Development",
               "Dashboards",
               "UI/UX",
               "APIs",
               "Web Design",
-              "App Development",
-              "Dashboards",
-              "UI/UX",
-              "APIs",
-            ]) // duplicate for seamless loop
-            .map((item, idx) => (
-              <div
-                key={idx}
-                className="flex items-center gap-2 whitespace-nowrap text-sm md:text-base font-semibold text-black"
-              >
-                {item} <BiSolidQuoteSingleRight />
-              </div>
-            ))}
-        </motion.div>
-      </div>
+            ]
+              .concat([
+                "Web Design",
+                "App Development",
+                "Dashboards",
+                "UI/UX",
+                "APIs",
+                "Web Design",
+                "App Development",
+                "Dashboards",
+                "UI/UX",
+                "APIs",
+              ]) // duplicate for seamless loop
+              .map((item, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center gap-2 whitespace-nowrap text-sm md:text-base font-semibold text-black"
+                >
+                  {item} <BiSolidQuoteSingleRight />
+                </div>
+              ))}
+          </motion.div>
+        </div>
+      </motion.div>
 
       {/* Mobile Bottom Nav */}
       {activeSection !== "hero" && (
