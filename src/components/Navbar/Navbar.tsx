@@ -63,10 +63,11 @@ const items = [
 ];
 
 const navLinks = [
+  { name: "Home", link: "/", icon: <FaUserAlt /> },
   { name: "About", link: "/about", icon: <FaUserAlt /> },
   { name: "Skills", link: "/skills", icon: <FaTools /> },
-  { name: "Experience", link: "/experience", icon: <FaBriefcase /> },
   { name: "Projects", link: "/projects", icon: <FaProjectDiagram /> },
+  { name: "Experience", link: "/experience", icon: <FaBriefcase /> },
   { name: "Services", link: "/services", icon: <FaCogs /> },
   { name: "Achievements", link: "/achievements", icon: <FaTrophy /> },
   { name: "Testimonials", link: "/testimonials", icon: <FaRegComments /> },
@@ -86,7 +87,7 @@ export default function Page() {
   }, [menuOpen]);
 
   return (
-    <Navbar className="absolute top-2 flex justify-center bg-transparent justify-self-center sm:px-8 z-40">
+    <Navbar className="absolute top-4 flex justify-center bg-transparent justify-self-center sm:px-8 z-40">
       {/* Desktop Navbar */}
       <NavBody>
         <NavbarLogo />
@@ -115,18 +116,20 @@ export default function Page() {
         {/* Mobile menu popup */}
         <AnimatePresence>
           {menuOpen && (
-            <div className="absolute h-screen w-screen bg-black/80 backdrop-blur-sm"
-            onClick={() => setMenuOpen(false)}>
+            <div
+              className="absolute h-screen w-screen bg-black/80 backdrop-blur-sm"
+              onClick={() => setMenuOpen(false)}
+            >
               <motion.div
                 className="absolute bottom-0 left-0 w-full max-h-[80vh] overflow-hidden rounded-t-[50px] border-t-2 border-blue-600 bg-black"
-                initial={false} 
+                initial={false}
                 animate={{ y: 0 }}
                 exit={{ y: "100%" }}
                 transition={{ type: "tween", duration: 0.5 }}
                 drag="y"
                 dragControls={controls}
                 dragListener={false}
-                dragElastic={0} 
+                dragElastic={0}
                 onDragEnd={(e, info) => {
                   if (info.offset.y > 0 || info.velocity.y > 0) {
                     setMenuOpen(false);
