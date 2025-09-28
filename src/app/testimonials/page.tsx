@@ -84,11 +84,22 @@ export default function Testimonials() {
             className="flex gap-6"
             animate={{ x: ["0%", "-50%"] }}
             transition={{
-              x: { repeat: Infinity, repeatType: "loop", duration: 12, ease: "linear" },
+              x: {
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 12,
+                ease: "linear",
+              },
             }}
           >
             {["Web Design", "App Development", "Dashboards", "UI/UX", "APIs"]
-              .concat(["Web Design", "App Development", "Dashboards", "UI/UX", "APIs"])
+              .concat([
+                "Web Design",
+                "App Development",
+                "Dashboards",
+                "UI/UX",
+                "APIs",
+              ])
               .map((item, idx) => (
                 <div
                   key={idx}
@@ -128,18 +139,20 @@ export default function Testimonials() {
             <motion.article
               key={idx}
               variants={fadeInUp}
-              className="relative bg-zinc-900 rounded-3xl p-6 shadow-lg hover:shadow-[0_0_25px_rgba(37,99,235,0.5)] border border-blue-600/20 transition-all duration-300 hover:-translate-y-2"
+              className="relative bg-gradient-to-br from-slate-950 to-blue-950 rounded-2xl p-6 shadow-[0_6px_18px_rgba(2,6,23,0.6)] border border-[#172733]/30"
             >
               {/* Neon strip */}
               <div className="absolute -left-1.5 top-6 h-16 w-1.5 rounded-l-xl bg-blue-600 shadow-[0_0_15px_rgba(37,99,235,0.8)]" />
 
               {/* Card Header */}
               <div className="flex items-center gap-4">
-                <img
-                  src={t.profile}
-                  alt={t.name[0]}
-                  className="w-12 h-12 rounded-full object-cover brightness-75"
-                />
+                <div className="w-12 h-12 rounded-full bg-blue-900/20 shadow-2xl shadow-black">
+                  <img
+                    src={t.profile}
+                    alt={t.name[0]}
+                    className="w-12 h-12 rounded-full object-cover brightness-75"
+                  />
+                </div>
                 <div className="flex-1">
                   <h3 className="font-semibold text-sm">{t.name}</h3>
                   <p className="text-xs text-gray-400">{t.role}</p>
@@ -157,7 +170,9 @@ export default function Testimonials() {
               </div>
 
               {/* Testimonial Text */}
-              <p className="mt-4 text-gray-300 text-sm leading-relaxed">{t.quote}</p>
+              <p className="mt-4 text-gray-300 text-sm leading-relaxed">
+                {t.quote}
+              </p>
             </motion.article>
           ))}
         </motion.div>
@@ -203,10 +218,10 @@ export default function Testimonials() {
           className="mt-8 flex flex-col sm:flex-row gap-4 justify-center"
         >
           <Link href="/contact" className="inline-block">
-          <button className="inline-block px-10 py-3 bg-transparent border border-blue-600 text-blue-600 font-semibold rounded-full shadow-md hover:bg-blue-600 hover:text-black transition-all">
-            Contact Me
-          </button>
-        </Link>
+            <button className="inline-block px-10 py-3 bg-transparent border border-blue-600 text-blue-600 font-semibold rounded-full shadow-md hover:bg-blue-600 hover:text-black transition-all">
+              Contact Me
+            </button>
+          </Link>
         </motion.div>
       </section>
 
