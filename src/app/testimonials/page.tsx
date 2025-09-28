@@ -1,20 +1,42 @@
 "use client";
 
+import React from "react";
+import { motion, Variants } from "framer-motion";
 import CustomCursor from "@/components/Common/CustomCursor";
 import { SparklesCore } from "@/components/ui/effects/sparkles";
 import Navbar from "@/components/Navbar/Navbar";
+import Footer from "@/components/Footer/Footer";
+import Link from "next/link";
+import ScrollProgress from "@/components/Common/ScrollProgress";
+import { testimonials } from "@/data";
 import { FaQuoteRight } from "react-icons/fa";
 import { BiSolidQuoteSingleRight } from "react-icons/bi";
-import Link from "next/link";
-import Footer from "@/components/Footer/Footer";
-import { testimonials } from "@/data";
-import ScrollProgress from "@/components/Common/ScrollProgress";
+import { MdOutlineReviews } from "react-icons/md";
+
+// Use TS-safe easing
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: [0.42, 0, 0.58, 1] }, // cubic-bezier easing
+  },
+};
+
+const staggerContainer: Variants = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.2 },
+  },
+};
 
 export default function Testimonials() {
   return (
     <main className="relative w-full bg-black flex flex-col items-center justify-center overflow-hidden">
       <ScrollProgress />
       <CustomCursor />
+
+      {/* Sparkles */}
       <div className="absolute inset-0 w-full h-full">
         <SparklesCore
           id="tsparticles-testimonials"
@@ -31,42 +53,81 @@ export default function Testimonials() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="text-center py-20 relative z-10">
-        <h1 className="text-5xl font-extrabold">Testimonials</h1>
-        <p className="mt-2 text-blue-600">Home / Testimonials</p>
-      </section>
+      <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+        className="relative w-full mx-auto text-center h-screen flex justify-center flex-col items-center px-4"
+      >
+        <span className="absolute top-30 text-sm text-blue-600 tracking-widest border border-blue-700/50 p-2 px-4 mb-10 flex items-center gap-2">
+          <MdOutlineReviews /> Testimonials
+          <span className="w-3 h-2 bg-blue-600 absolute -top-1 -left-1.5"></span>
+          <span className="w-3 h-2 bg-blue-600 absolute -top-1 -right-1.5"></span>
+          <span className="w-3 h-2 bg-blue-600 absolute -bottom-1 -left-1.5"></span>
+          <span className="w-3 h-2 bg-blue-600 absolute -bottom-1 -right-1.5"></span>
+        </span>
 
-      {/* Ribbon */}
-      <div className="w-full bg-blue-600/10 relative z-10">
-        <div className="max-w-6xl mx-auto py-3 overflow-hidden">
-          <div className="w-full bg-blue-600 text-black font-semibold py-2 inline-flex gap-8 justify-center items-center text-lg">
-            <span>Web Design</span> <BiSolidQuoteSingleRight />
-            <span>App Development</span> <BiSolidQuoteSingleRight />
-            <span>Dashboards</span> <BiSolidQuoteSingleRight />
-            <span>Wireframes</span> <BiSolidQuoteSingleRight />
-            <span>UI/UX</span> <BiSolidQuoteSingleRight />
-            <span>APIs</span>
-          </div>
+        <motion.div variants={fadeInUp} className="z-10 max-w-xl">
+          <h1 className="text-5xl sm:text-6xl font-bold bg-gradient-to-r from-blue-400 via-blue-600 to-blue-700 bg-clip-text text-transparent">
+            Testimonials
+          </h1>
+          <p className="mt-4 text-base md:text-lg leading-relaxed max-w-xl mx-auto bg-gradient-to-r from-gray-600 via-white to-gray-600 text-transparent bg-clip-text">
+            Hear directly from my clients and collaborators. Their experiences
+            highlight the impact, quality, and efficiency of the projects I
+            deliver.
+          </p>
+        </motion.div>
+
+        {/* Ribbon */}
+        <div className="w-full overflow-hidden bg-blue-600 py-2 bottom-10 absolute left-0">
+          <motion.div
+            className="flex gap-6"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{
+              x: { repeat: Infinity, repeatType: "loop", duration: 12, ease: "linear" },
+            }}
+          >
+            {["Web Design", "App Development", "Dashboards", "UI/UX", "APIs"]
+              .concat(["Web Design", "App Development", "Dashboards", "UI/UX", "APIs"])
+              .map((item, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center gap-2 whitespace-nowrap text-sm md:text-base font-semibold text-black px-3"
+                >
+                  {item} <BiSolidQuoteSingleRight />
+                </div>
+              ))}
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Section Title */}
-      <section className="text-center py-16 relative z-10">
-        <span className="text-sm uppercase tracking-wide bg-blue-600 px-4 py-1 rounded-md">
-          Client Testimonials
-        </span>
-        <h2 className="text-4xl font-bold mt-6">
+      <section className="text-center py-16 relative z-10 px-4">
+        <motion.h2
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          className="text-4xl md:text-5xl font-bold"
+        >
           Testimonials that <br />
           <span className="text-blue-600">Speak to My Results</span>
-        </h2>
+        </motion.h2>
       </section>
 
       {/* Testimonials Grid */}
-      <section className="max-w-6xl mx-auto px-6 pb-16 relative z-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
+      <section className="max-w-6xl mx-auto px-4 pb-16 relative z-10">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6"
+        >
           {testimonials.map((t, idx) => (
-            <article
+            <motion.article
               key={idx}
+              variants={fadeInUp}
               className="relative bg-zinc-900 rounded-3xl p-6 shadow-lg hover:shadow-[0_0_25px_rgba(37,99,235,0.5)] border border-blue-600/20 transition-all duration-300 hover:-translate-y-2"
             >
               {/* Neon strip */}
@@ -96,35 +157,57 @@ export default function Testimonials() {
               </div>
 
               {/* Testimonial Text */}
-              <p className="mt-4 text-gray-300 text-sm leading-relaxed">
-                {t.quote}
-              </p>
-            </article>
+              <p className="mt-4 text-gray-300 text-sm leading-relaxed">{t.quote}</p>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* CTA */}
       <section className="max-w-6xl mx-auto px-6 py-24 text-center relative z-10">
-        <p className="text-sm text-blue-600">Contact Me</p>
-        <h2 className="text-3xl font-bold">
+        <motion.p
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          className="text-sm text-blue-600"
+        >
+          Contact Me
+        </motion.p>
+        <motion.h2
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          className="text-3xl md:text-4xl font-bold mt-4"
+        >
           Let’s Create an{" "}
           <span className="text-blue-600">Amazing Project Together!</span>
-        </h2>
-        <p className="text-gray-300 mt-6 max-w-2xl mx-auto">
+        </motion.h2>
+        <motion.p
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          className="text-gray-300 mt-6 max-w-2xl mx-auto"
+        >
           Have an idea or product problem? I’ll help you design, build, and ship
           it faster with less risk.
-        </p>
-        <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href="/contact">
-            <span className="inline-block px-6 py-3 bg-blue-600 text-black font-semibold rounded-full shadow-md hover:bg-blue-700 transition-all">
-              Go to Contact Page
-            </span>
-          </Link>
-          <button className="px-6 py-3 bg-transparent border border-blue-600 text-blue-600 font-semibold rounded-full shadow-md hover:bg-blue-600 hover:text-black transition-all">
+        </motion.p>
+
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          className="mt-8 flex flex-col sm:flex-row gap-4 justify-center"
+        >
+          <Link href="/contact" className="inline-block">
+          <button className="inline-block px-10 py-3 bg-transparent border border-blue-600 text-blue-600 font-semibold rounded-full shadow-md hover:bg-blue-600 hover:text-black transition-all">
             Contact Me
           </button>
-        </div>
+        </Link>
+        </motion.div>
       </section>
 
       <Footer />
