@@ -38,7 +38,7 @@ export default function AchievementHero() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="mt-6 text-lg sm:text-xl text-slate-300 max-w-2xl"
+            className="mt-4 text-base md:text-lg leading-relaxed max-w-xl mx-auto bg-gradient-to-r from-gray-600 via-white to-gray-600 text-transparent bg-clip-text"
           >
             Celebrating milestones that define my coding journey from{" "}
             <span className="text-blue-600 font-semibold">

@@ -138,7 +138,7 @@ export default function ServicesPage() {
             <h1 className="text-4xl md:text-5xl font-extrabold">
               <span className="text-blue-600">Services</span> | Provide
             </h1>
-            <p className="mt-4 px-4 max-w-2xl mx-auto text-gray-300">
+            <p className="mt-4 text-base md:text-lg leading-relaxed max-w-xl mx-auto bg-gradient-to-r from-gray-600 via-white to-gray-600 text-transparent bg-clip-text">
               I build robust, maintainable, and scalable web applications. I
               turn product goals into technical reality.
             </p>

@@ -76,7 +76,7 @@ export default function StartupPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="mt-6 text-lg md:text-xl text-gray-300 max-w-2xl"
+          className="mt-4 text-base md:text-lg leading-relaxed max-w-xl mx-auto bg-gradient-to-r from-gray-600 via-white to-gray-600 text-transparent bg-clip-text"
         >
           A collection of ventures I’m building — each tackling unique problems
           with creative solutions.

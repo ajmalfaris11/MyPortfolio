@@ -189,25 +189,22 @@ export default function AboutPage() {
             className="w-72 shadow-lg"
           />
           <div className="text-center sm:text-left">
-            <h1
-              className="text-6xl font-bold bg-gradient-to-r from-blue-400 via-blue-600 to-blue-700 bg-clip-text text-transparent text-nowrap
-            "
-            >
+            <h1 className="text-6xl font-bold bg-gradient-to-r from-blue-400 via-blue-600 to-blue-700 bg-clip-text text-transparent text-nowrap">
               Ajmal Faris
             </h1>
-            <p className="mt-4 text-base md:text-lg text-neutral-300 leading-relaxed">
+            <p className="mt-4 text-base md:text-lg leading-relaxed max-w-xl mx-auto bg-gradient-to-r from-gray-600 via-white to-gray-600 text-transparent bg-clip-text">
               Software Engineer & Entrepreneur passionate about building
               scalable, impactful products blending{" "}
-              <span className="text-blue-500 font-semibold">
+              <span className="bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent">
                 aesthetic design
               </span>{" "}
               and{" "}
-              <span className="text-blue-500 font-semibold">
+              <span className="bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent">
                 efficient engineering
               </span>
               .
             </p>
-            <p className="mt-2 text-sm text-neutral-400">
+            <p className="mt-4 text-sm leading-relaxed max-w-xl mx-auto bg-gradient-to-r from-gray-600 via-white to-gray-600 text-transparent bg-clip-text">
               Software Engineer | Full-Stack Developer | Startup Builder
             </p>
           </div>

@@ -51,7 +51,7 @@ export default function ResumePage() {
           My <span className="text-blue-600">Resume</span>
         </motion.h1>
         <p className="mt-2 text-blue-600">Home / Resume</p>
-        <p className="text-gray-400 max-w-2xl mx-auto mt-2">
+        <p className="mt-4 text-base md:text-lg leading-relaxed max-w-xl mx-auto bg-gradient-to-r from-gray-600 via-white to-gray-600 text-transparent bg-clip-text">
           A quick overview of my skills, experience, projects, and achievements
           as a software developer.
         </p>

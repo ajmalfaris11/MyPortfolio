@@ -60,7 +60,7 @@ export default function ContactPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
-          className="text-gray-400 mt-4 max-w-xl text-sm sm:text-base"
+          className="mt-4 text-base md:text-lg leading-relaxed max-w-xl mx-auto bg-gradient-to-r from-gray-600 via-white to-gray-600 text-transparent bg-clip-text"
         >
           Whether it’s a collaboration, freelance work, or just saying hi —
           let’s connect and make things happen.

@@ -1,16 +1,10 @@
 "use client";
 
 import React from "react";
-import {
-  Rocket,
-  Briefcase,
-  GitCommit,
-  Users,
-} from "lucide-react";
+import { Rocket, Briefcase, GitCommit, Users } from "lucide-react";
 import { motion, useAnimation } from "framer-motion";
 import { RiGitRepositoryCommitsLine } from "react-icons/ri";
 import { useInView } from "react-intersection-observer";
-
 
 // Optimized Counter using requestAnimationFrame
 const Counter = ({ end, label, icon: Icon }: any) => {
@@ -72,7 +66,7 @@ function HeaderCarousel() {
           Showcasing <span className="text-blue-600">Projects</span>
         </h1>
 
-        <p className="max-w-2xl text-base md:text-md text-blue-200/80 leading-relaxed">
+        <p className="mt-4 text-base md:text-lg leading-relaxed max-w-xl mx-auto bg-gradient-to-r from-gray-600 via-white to-gray-600 text-transparent bg-clip-text">
           Explore production-ready projects built with precision, performance,
           and creativity. From robust architectures to sleek user experiences,
           each build is designed to stand the test of real-world demands.
@@ -87,7 +81,11 @@ function HeaderCarousel() {
         >
           <Counter end={50} label="Projects" icon={Briefcase} />
           <Counter end={3000} label="Commits" icon={GitCommit} />
-          <Counter end={85} label="Repositories" icon={RiGitRepositoryCommitsLine} />
+          <Counter
+            end={85}
+            label="Repositories"
+            icon={RiGitRepositoryCommitsLine}
+          />
           <Counter end={10} label="Clients" icon={Users} />
         </motion.div>
       </motion.div>

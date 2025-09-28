@@ -186,7 +186,7 @@ export default function SkillsPage() {
             <h1 className="text-5xl sm:text-6xl font-bold bg-gradient-to-r from-blue-400 via-blue-600 to-blue-700 bg-clip-text text-transparent">
               <span className="text-white">Explore My</span> Skills
             </h1>
-            <p className="px-4 mt-4 text-base md:text-lg text-neutral-300 leading-relaxed max-w-xl">
+            <p className="mt-4 text-base md:text-lg leading-relaxed max-w-xl mx-auto bg-gradient-to-r from-gray-600 via-white to-gray-600 text-transparent bg-clip-text">
               A showcase of my abilities across frontend, backend, programming
               languages, and essential tools. Each skill is animated when it
               comes into view for a sleek and interactive experience.

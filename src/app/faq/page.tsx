@@ -79,7 +79,7 @@ export default function FAQPage() {
             <span>Questions</span>
           </div>
         </div>
-        <p className="mt-4 text-gray-400 max-w-2xl mx-auto">
+        <p className="mt-4 text-base md:text-lg leading-relaxed max-w-xl mx-auto bg-gradient-to-r from-gray-600 via-white to-gray-600 text-transparent bg-clip-text">
           Answers to common questions about my skills, experience, and services.
         </p>
       </section>

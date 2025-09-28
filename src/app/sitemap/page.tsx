@@ -45,31 +45,93 @@ const useSiteSections = () =>
       {
         title: "Core",
         links: [
-          { title: "Home", description: "Start here & explore my work.", href: "/", icon: <FaHome /> },
-          { title: "About", description: "Learn about my journey & values.", href: "/about", icon: <FaInfoCircle /> },
-          { title: "Contact", description: "Let's collaborate or say hi!", href: "/contact", icon: <FaEnvelope /> },
+          {
+            title: "Home",
+            description: "Start here & explore my work.",
+            href: "/",
+            icon: <FaHome />,
+          },
+          {
+            title: "About",
+            description: "Learn about my journey & values.",
+            href: "/about",
+            icon: <FaInfoCircle />,
+          },
+          {
+            title: "Contact",
+            description: "Let's collaborate or say hi!",
+            href: "/contact",
+            icon: <FaEnvelope />,
+          },
         ],
       },
       {
         title: "Showcase",
         links: [
-          { title: "Skills", description: "Tech stack & tools I work with.", href: "/skills", icon: <FaLaptopCode /> },
-          { title: "Services", description: "Web dev, design systems & more.", href: "/services", icon: <FaLaptopCode /> },
-          { title: "Projects", description: "Portfolio projects & experiments.", href: "/projects", icon: <FaProjectDiagram /> },
-          { title: "Experience", description: "Work history & achievements.", href: "/experience", icon: <FaBriefcase /> },
-          { title: "Achievements", description: "Certifications, awards & badges.", href: "/achievements", icon: <FaAward /> },
-          { title: "Testimonials", description: "Clients & peers feedback.", href: "/testimonials", icon: <FaUsers /> },
+          {
+            title: "Skills",
+            description: "Tech stack & tools I work with.",
+            href: "/skills",
+            icon: <FaLaptopCode />,
+          },
+          {
+            title: "Services",
+            description: "Web dev, design systems & more.",
+            href: "/services",
+            icon: <FaLaptopCode />,
+          },
+          {
+            title: "Projects",
+            description: "Portfolio projects & experiments.",
+            href: "/projects",
+            icon: <FaProjectDiagram />,
+          },
+          {
+            title: "Experience",
+            description: "Work history & achievements.",
+            href: "/experience",
+            icon: <FaBriefcase />,
+          },
+          {
+            title: "Achievements",
+            description: "Certifications, awards & badges.",
+            href: "/achievements",
+            icon: <FaAward />,
+          },
+          {
+            title: "Testimonials",
+            description: "Clients & peers feedback.",
+            href: "/testimonials",
+            icon: <FaUsers />,
+          },
         ],
       },
       {
         title: "Content",
-        links: [{ title: "Resume", description: "Download my CV & career summary.", href: "/resume", icon: <FaFileAlt /> }],
+        links: [
+          {
+            title: "Resume",
+            description: "Download my CV & career summary.",
+            href: "/resume",
+            icon: <FaFileAlt />,
+          },
+        ],
       },
       {
         title: "Utility",
         links: [
-          { title: "Support", description: "Need help? Reach out anytime.", href: "/support", icon: <FaPhoneAlt /> },
-          { title: "Site Map", description: "Full site structure overview.", href: "/sitemap", icon: <FaSitemap /> },
+          {
+            title: "Support",
+            description: "Need help? Reach out anytime.",
+            href: "/support",
+            icon: <FaPhoneAlt />,
+          },
+          {
+            title: "Site Map",
+            description: "Full site structure overview.",
+            href: "/sitemap",
+            icon: <FaSitemap />,
+          },
         ],
       },
     ],
@@ -91,7 +153,9 @@ export default function SiteMapPage() {
   const siteSections = useSiteSections();
 
   return (
-    <main className={`relative w-full h-full bg-black flex flex-col items-center justify-start overflow-x-hidden scroll-smooth ${inter.className}`}>
+    <main
+      className={`relative w-full h-full bg-black flex flex-col items-center justify-start overflow-x-hidden scroll-smooth ${inter.className}`}
+    >
       <CustomCursor />
 
       {/* Scroll Progress */}
@@ -129,8 +193,9 @@ export default function SiteMapPage() {
         <h1 className="mt-6 text-4xl md:text-5xl font-extrabold text-white">
           <span className="text-blue-600">Portfolio</span> Map
         </h1>
-        <p className="mt-4 text-gray-300 max-w-2xl mx-auto">
-          Navigate through my work, skills, and achievements. Every section is mapped for smooth exploration.
+        <p className="mt-4 text-base md:text-lg leading-relaxed max-w-xl mx-auto bg-gradient-to-r from-gray-600 via-white to-gray-600 text-transparent bg-clip-text">
+          Navigate through my work, skills, and achievements. Every section is
+          mapped for smooth exploration.
         </p>
       </motion.header>
 
@@ -184,10 +249,12 @@ export default function SiteMapPage() {
         custom={siteSections.length + 1}
       >
         <h2 className="text-3xl md:text-4xl font-extrabold text-white">
-          Let’s build something <span className="text-blue-600">awesome together.</span>
+          Let’s build something{" "}
+          <span className="text-blue-600">awesome together.</span>
         </h2>
         <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-          Connect, collaborate, or just say hi! Check out my projects, resume, and everything in between.
+          Connect, collaborate, or just say hi! Check out my projects, resume,
+          and everything in between.
         </p>
         <Link href="/contact">
           <button className="mt-6 px-10 py-3 border-2 border-blue-600 text-blue-600 hover:text-black rounded-full hover:bg-blue-600 transition-colors duration-300">

@@ -193,7 +193,7 @@ export default function ExperiencePage() {
               <span className="text-white">My</span> Experience
             </h1>
 
-            <p className="mt-4 text-base md:text-lg text-neutral-300 leading-relaxed max-w-xl px-4">
+          <p className="mt-4 text-base md:text-lg leading-relaxed max-w-xl mx-auto bg-gradient-to-r from-gray-600 via-white to-gray-600 text-transparent bg-clip-text">
               A timeline of my journey as a software engineer, entrepreneur, and
               problem solver — showcasing milestones, projects, and skills
               gained along the way.
