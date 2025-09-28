@@ -63,7 +63,11 @@ const items = [
 ];
 
 const navLinks = [
+<<<<<<< HEAD
   { name: "Home", link: "/", icon: <FaUserAlt /> },
+=======
+  { name: "Home", link: "/home", icon: <FaUserAlt /> },
+>>>>>>> 2136560ccd0795cc9e55abb0b68945cfb762f32f
   { name: "About", link: "/about", icon: <FaUserAlt /> },
   { name: "Skills", link: "/skills", icon: <FaTools /> },
   { name: "Projects", link: "/projects", icon: <FaProjectDiagram /> },
