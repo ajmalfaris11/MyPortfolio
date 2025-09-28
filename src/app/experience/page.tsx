@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { SparklesCore } from "@/components/ui/effects/sparkles";
 import { BiSolidQuoteSingleRight } from "react-icons/bi";
 import { GiSevenPointedStar } from "react-icons/gi";
@@ -12,78 +12,138 @@ import Footer from "@/components/Footer/Footer";
 import CustomCursor from "@/components/Common/CustomCursor";
 import ScrollProgress from "@/components/Common/ScrollProgress";
 import { Timeline } from "@/components/ui/layouts/timeline";
+import { FaStarOfLife } from "react-icons/fa";
+
+/**
+ * Notes:
+ * - Animations use `whileInView` so they fire only when sections enter viewport.
+ * - All `ease` values are cubic-bezier arrays (TS-friendly).
+ * - Ribbon returned and animated with a typed `ease` array.
+ */
+
+/* Easing helpers (cubic bezier arrays) */
+const easeInOut = [0.42, 0, 0.58, 1] as const;
+const easeOut = [0, 0, 0.2, 1] as const;
+const linear = [0, 0, 1, 1] as const;
+
+/* Variants */
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: easeInOut },
+  },
+};
+
+const staggerContainer: Variants = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.14 },
+  },
+};
 
 export default function ExperiencePage() {
   const experienceData = [
     {
       title: "2025",
       content: (
-        <p className="text-sm md:text-base font-medium text-neutral-700 dark:text-neutral-300">
+        <motion.p
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.25 }}
+          className="text-sm md:text-base font-medium text-neutral-700 dark:text-neutral-300"
+        >
           Leading multiple full-stack projects and scaling my startups. Focused
           on building impactful products with React, Next.js, Node.js, and
           TailwindCSS while mentoring junior developers.
-        </p>
+        </motion.p>
       ),
     },
     {
       title: "2024",
       content: (
-        <div>
-          <p className="text-sm md:text-base font-medium text-neutral-700 dark:text-neutral-300 mb-4">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.25 }}
+        >
+          <motion.p
+            variants={fadeInUp}
+            className="text-sm md:text-base font-medium text-neutral-700 dark:text-neutral-300 mb-4"
+          >
             Key achievements this year:
-          </p>
+          </motion.p>
+
           <ul className="space-y-2 text-xs md:text-sm text-neutral-600 dark:text-neutral-400">
-            <li className="flex items-center gap-2">
-              <GiSevenPointedStar className="text-blue-600" /> Launched{" "}
-              <span className="font-semibold">Fashion Friday</span>, a
-              streetwear e-commerce brand
-            </li>
-            <li className="flex items-center gap-2">
-              <GiSevenPointedStar className="text-blue-600" /> Built multiple
-              React & Node.js portfolio apps, including{" "}
-              <span className="font-semibold">Smart Wristy</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <GiSevenPointedStar className="text-blue-600" /> Completed 250+
-              problems on <span className="font-semibold">LeetCode</span>,
-              enhancing DSA and system design skills
-            </li>
+            {[
+              "Launched Fashion Friday — streetwear e-comm",
+              "Built portfolio apps (Smart Wristy, etc.)",
+              "Completed 250+ LeetCode problems",
+            ].map((item, idx) => (
+              <motion.li
+                key={idx}
+                variants={fadeInUp}
+                className="flex items-center gap-2"
+              >
+                <GiSevenPointedStar className="text-blue-600" />{" "}
+                <span className="font-medium">{item}</span>
+              </motion.li>
+            ))}
           </ul>
-        </div>
+        </motion.div>
       ),
     },
     {
       title: "Early 2023",
       content: (
-        <p className="text-sm md:text-base font-medium text-neutral-700 dark:text-neutral-300">
+        <motion.p
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.25 }}
+          className="text-sm md:text-base font-medium text-neutral-700 dark:text-neutral-300"
+        >
           Started deep-diving into full-stack development. Focused on React,
           Node.js, TailwindCSS, and MongoDB. Worked on freelance projects and
           small startup MVPs to understand product-market fit.
-        </p>
+        </motion.p>
       ),
     },
     {
       title: "2022",
       content: (
-        <div>
-          <p className="text-sm md:text-base font-medium text-neutral-700 dark:text-neutral-300 mb-2">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.25 }}
+        >
+          <motion.p
+            variants={fadeInUp}
+            className="text-sm md:text-base font-medium text-neutral-700 dark:text-neutral-300 mb-2"
+          >
             Began my coding journey:
-          </p>
+          </motion.p>
+
           <ul className="space-y-2 text-xs md:text-sm text-neutral-600 dark:text-neutral-400">
-            <li className="flex items-center gap-2">
-              <GiSevenPointedStar className="text-blue-600" /> Learned front-end
-              development: HTML, CSS, JavaScript
-            </li>
-            <li className="flex items-center gap-2">
-              <GiSevenPointedStar className="text-blue-600" /> Built small web
-              apps and landing pages
-            </li>
-            <li className="flex items-center gap-2">
-              <GiSevenPointedStar className="text-blue-600" /> Started exploring
-              entrepreneurship and product development
-            </li>
+            {[
+              "Learned HTML, CSS, JavaScript",
+              "Built small web apps & landing pages",
+              "Started exploring entrepreneurship",
+            ].map((item, idx) => (
+              <motion.li
+                key={idx}
+                variants={fadeInUp}
+                className="flex items-center gap-2"
+              >
+                <GiSevenPointedStar className="text-blue-600" /> {item}
+              </motion.li>
+            ))}
           </ul>
-        </div>
+        </motion.div>
       ),
     },
   ];
@@ -93,8 +153,8 @@ export default function ExperiencePage() {
       <ScrollProgress />
       <CustomCursor />
 
-      {/* Background sparkles */}
-      <div className="absolute inset-0">
+      {/* Background sparkles (lazy if your component already lazy-loads internally) */}
+      <div className="absolute inset-0 pointer-events-none">
         <SparklesCore
           id="tsparticles-experience"
           background="transparent"
@@ -109,60 +169,124 @@ export default function ExperiencePage() {
       {/* Navbar */}
       <Navbar />
 
-      {/* Hero Section */}
+      {/* Header Section */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="max-w-5xl mx-auto px-6 text-center pt-28 pb-20"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+        className="relative mx-auto text-center h-screen flex justify-center flex-col items-center"
       >
-        <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 via-blue-600 to-blue-700 bg-clip-text text-transparent">
-          My <span className="text-white">Experience</span>
-        </h1>
-        <p className="mt-4 text-base md:text-lg text-neutral-300 max-w-2xl mx-auto">
-          A timeline of my journey as a software engineer, entrepreneur, and
-          problem solver — showcasing milestones, projects, and skills gained
-          along the way.
-        </p>
+        <span className="absolute top-30 text-sm text-blue-600 tracking-widest border border-blue-700/50 p-2 px-4 mb-10 flex items-center gap-2">
+          <FaStarOfLife /> Experience
+          <span className="w-3 h-2 bg-blue-600 absolute -top-1 -left-1.5"></span>
+          <span className="w-3 h-2 bg-blue-600 absolute -top-1 -right-1.5"></span>
+          <span className="w-3 h-2 bg-blue-600 absolute -bottom-1 -left-1.5"></span>
+          <span className="w-3 h-2 bg-blue-600 absolute -bottom-1 -right-1.5"></span>
+        </span>
+
+        <div className="flex flex-col md:flex-row items-center gap-10 md:gap-20 z-10">
+          <motion.div
+            variants={fadeInUp}
+            className="text-center sm:text-center"
+          >
+            <h1 className="text-5xl sm:text-6xl font-bold bg-gradient-to-r from-blue-400 via-blue-600 to-blue-700 bg-clip-text text-transparent">
+              <span className="text-white">My</span> Experience
+            </h1>
+
+            <p className="mt-4 text-base md:text-lg text-neutral-300 leading-relaxed max-w-xl px-4">
+              A timeline of my journey as a software engineer, entrepreneur, and
+              problem solver — showcasing milestones, projects, and skills
+              gained along the way.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Ribbon (restored) */}
+        <div className="w-full overflow-hidden bg-blue-600 py-2 bottom-20 sm:bottom-10 absolute left-0">
+          <motion.div
+            className="flex gap-6"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{
+              x: {
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 10,
+                ease: linear,
+              },
+            }}
+          >
+            {[
+              "Web Design",
+              "App Development",
+              "Dashboards",
+              "UI/UX",
+              "APIs",
+              "Web Design",
+            ]
+              .concat([
+                "Web Design",
+                "App Development",
+                "Dashboards",
+                "UI/UX",
+                "APIs",
+              ])
+              .map((item, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center gap-2 whitespace-nowrap text-sm md:text-base font-semibold text-black px-3"
+                >
+                  {item} <BiSolidQuoteSingleRight />
+                </div>
+              ))}
+          </motion.div>
+        </div>
       </motion.div>
 
-      {/* Skills Ribbon */}
-      <div className="w-full bg-blue-600 text-black font-semibold py-3 flex gap-6 justify-center items-center overflow-x-auto">
-        <span>Web Development</span> <BiSolidQuoteSingleRight />
-        <span>Full-Stack Apps</span> <BiSolidQuoteSingleRight />
-        <span>React & Next.js</span> <BiSolidQuoteSingleRight />
-        <span>UI/UX Design</span> <BiSolidQuoteSingleRight />
-        <span>Startups</span>
-      </div>
-
       {/* Timeline */}
-      <div className="max-w-6xl mx-auto py-20">
+      <div className="max-w-6xl mx-auto px-4">
+        {/* If Timeline internally animates, these items will play nicely.
+            We pass prebuilt content that already contains motion children. */}
         <Timeline data={experienceData} />
       </div>
 
       {/* Skills & Achievements */}
       <section className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12">
         <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7 }}
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.25 }}
           className="p-8 border border-blue-600 rounded-3xl shadow-lg"
         >
           <h2 className="text-2xl font-bold mb-4">Skills & Expertise</h2>
-          <div className="grid grid-cols-2 gap-3 text-sm md:text-base text-neutral-300">
-            <span>⚡ React & Next.js</span>
-            <span>⚡ Node.js & MongoDB</span>
-            <span>⚡ Tailwind & Framer Motion</span>
-            <span>⚡ UI/UX Design</span>
-            <span>⚡ DSA & System Design</span>
-            <span>⚡ Startup Management</span>
-          </div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.25 }}
+            className="grid grid-cols-2 gap-3 text-sm md:text-base text-neutral-300"
+          >
+            {[
+              "React & Next.js",
+              "Node.js & MongoDB",
+              "Tailwind & Framer Motion",
+              "UI/UX Design",
+              "DSA & System Design",
+              "Startup Management",
+            ].map((skill, idx) => (
+              <motion.span key={idx} variants={fadeInUp}>
+                ⚡ {skill}
+              </motion.span>
+            ))}
+          </motion.div>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7 }}
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.25 }}
           className="p-8 border border-blue-600 rounded-3xl shadow-lg"
         >
           <h2 className="text-2xl font-bold mb-4">Beyond Coding</h2>
@@ -176,7 +300,13 @@ export default function ExperiencePage() {
       </section>
 
       {/* CTA */}
-      <section className="max-w-6xl mx-auto px-6 py-24 text-center relative z-10">
+      <motion.section
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.25 }}
+        className="max-w-6xl mx-auto px-4 py-24 text-center relative z-10"
+      >
         <p className="text-sm text-blue-600">Contact Me</p>
         <h2 className="text-3xl font-bold">
           Let’s Build an{" "}
@@ -186,17 +316,12 @@ export default function ExperiencePage() {
           Have an idea or project? I’ll help you design, build, and ship it
           faster with less risk.
         </p>
-        <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href="/contact">
-            <span className="inline-block px-6 py-3 bg-blue-600 text-black font-semibold rounded-full shadow-md hover:bg-blue-700 transition-all">
-              Go to Contact Page
-            </span>
-          </Link>
-          <button className="px-6 py-3 bg-transparent border border-blue-600 text-blue-600 font-semibold rounded-full shadow-md hover:bg-blue-600 hover:text-black transition-all">
+        <Link href="/contact" className="mt-8 inline-block">
+          <button className="inline-block px-10 py-3 bg-transparent border border-blue-600 text-blue-600 font-semibold rounded-full shadow-md hover:bg-blue-600 hover:text-black transition-all">
             Contact Me
           </button>
-        </div>
-      </section>
+        </Link>
+      </motion.section>
 
       <Footer />
     </div>
