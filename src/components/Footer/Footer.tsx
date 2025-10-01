@@ -16,6 +16,8 @@ export default function Footer() {
       { href: "/about", label: "About" },
       { href: "/skills", label: "Skills" },
       { href: "/projects", label: "Projects" },
+      { href: "/services", label: "Services" },
+      { href: "/achievements", label: "Achievements" },
       { href: "/experience", label: "Experience" },
       { href: "/company", label: "Company" },
       { href: "/startups", label: "Startups" },
@@ -23,6 +25,7 @@ export default function Footer() {
       { href: "/education", label: "Education" },
       { href: "/contact", label: "Contact" },
       { href: "/testimonials", label: "Testimonials" },
+      { href: "/faq", label: "FAQ" },
       { href: "/sitemap", label: "Site Map" },
     ],
     []
