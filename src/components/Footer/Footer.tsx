@@ -21,8 +21,7 @@ export default function Footer() {
       { href: "/experience", label: "Experience" },
       { href: "/company", label: "Company" },
       { href: "/startups", label: "Startups" },
-      { href: "/resume", label: "Resume", target: "_blank" },
-      { href: "/education", label: "Education" },
+      { href: "/resume", label: "Resume" },
       { href: "/contact", label: "Contact" },
       { href: "/testimonials", label: "Testimonials" },
       { href: "/faq", label: "FAQ" },
@@ -45,8 +44,8 @@ export default function Footer() {
 
         {/* Navigation Links */}
         <nav className="flex flex-wrap justify-center text-sm gap-4">
-          {navLinks.map(({ href, label, target }, idx) => (
-            <Link key={idx} href={href} target={target} className={linkStyle}>
+          {navLinks.map(({ href, label }, idx) => (
+            <Link key={idx} href={href} className={linkStyle}>
               {label}
             </Link>
           ))}
