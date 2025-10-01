@@ -9,6 +9,7 @@ import ScrollProgress from "@/components/Common/ScrollProgress";
 import { SparklesCore } from "@/components/ui/effects/sparkles";
 import { IoBusiness } from "react-icons/io5";
 import Link from "next/link";
+import { startups } from "@/data/sections/startups";
 
 // Animation Variants
 const fadeInUp: Variants = {
@@ -25,40 +26,7 @@ const staggerContainer = {
   show: { transition: { staggerChildren: 0.2 } },
 };
 
-interface StartupPlan {
-  name: string;
-  tagline: string;
-  description: string;
-  stage: string;
-  logo: string;
-}
 
-const startupPlans: StartupPlan[] = [
-  {
-    name: "Ecodrops",
-    tagline: "Affordable Water Solutions",
-    description:
-      "Providing eco-friendly water purification systems and waterproofing services with free site visits and water testing.",
-    stage: "Scaling",
-    logo: "/logos/ecodrops.png",
-  },
-  {
-    name: "Fashion Friday",
-    tagline: "Affordable Streetwear & Footwear",
-    description:
-      "Bringing stylish and affordable fashion products like sneakers and crocs to the youth market across India.",
-    stage: "Active Growth",
-    logo: "/logos/fashionfriday.png",
-  },
-  {
-    name: "Zera Events Planner",
-    tagline: "Modern Event Experiences",
-    description:
-      "Event management with a focus on curated dessert and juice experiences, blending tradition with innovation.",
-    stage: "Launch Ready",
-    logo: "/logos/zera.png",
-  },
-];
 
 export default function StartupPage() {
   return (
@@ -158,7 +126,7 @@ export default function StartupPage() {
         className="max-w-6xl mx-auto px-4 pb-16 relative z-10"
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {startupPlans.map((s, idx) => (
+          {startups.map((s, idx) => (
             <motion.article
               key={idx}
               variants={fadeInUp}
