@@ -7,8 +7,8 @@ import Certificates from "@/components/Achievements/Certificates";
 import Github from "@/components/Achievements/gitHub";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
-import Hero from "./hero";
-import GridSection from "./GridSection";
+import Hero from "../../components/Achievements/hero";
+import GridSection from "../../components/Achievements/GridSection";
 import ScrollProgress from "@/components/Common/ScrollProgress";
 
 export default function AchievementsPage() {
