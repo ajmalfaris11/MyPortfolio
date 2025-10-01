@@ -4,8 +4,8 @@ import React, { useEffect, useMemo, useState, useCallback } from "react";
 import { projects } from "@/data/sections/projects";
 import ProjectCard from "@/components/Projects/ProjectCard";
 import Controls from "@/components/Projects/Controls";
-import EmptyState from "./EmptyState";
-import TagRail from "./TagRail";
+import EmptyState from "../../components/Projects/EmptyState";
+import TagRail from "@/components/Projects/TagRail";
 import { motion } from "framer-motion";
 
 // ---------------------------------------------

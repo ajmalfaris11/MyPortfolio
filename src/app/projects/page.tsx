@@ -1,8 +1,8 @@
 import React from "react";
-import Projects from "./projects";
+import Projects from "@/components/Projects/projects";
 import CustomCursor from "@/components/Common/CustomCursor";
 import Navbar from "@/components/Navbar/Navbar";
-import Header from "./header";
+import Header from "../../components/Projects/header";
 import Footer from "@/components/Footer/Footer";
 import { SparklesCore } from "@/components/ui/effects/sparkles";
 import ScrollProgress from "@/components/Common/ScrollProgress";
